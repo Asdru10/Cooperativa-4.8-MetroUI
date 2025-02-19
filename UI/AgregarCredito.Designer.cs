@@ -32,9 +32,9 @@ namespace UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroComboBoxAsociado = new MetroFramework.Controls.MetroComboBox();
             this.metroLabelAsociado = new MetroFramework.Controls.MetroLabel();
             this.metroLabelFechaInicio = new MetroFramework.Controls.MetroLabel();
@@ -58,11 +58,12 @@ namespace UI
             // 
             // metroComboBoxAsociado
             // 
+            this.metroComboBoxAsociado.FontSize = MetroFramework.MetroComboBoxSize.Tall;
             this.metroComboBoxAsociado.FormattingEnabled = true;
-            this.metroComboBoxAsociado.ItemHeight = 24;
-            this.metroComboBoxAsociado.Location = new System.Drawing.Point(193, 82);
+            this.metroComboBoxAsociado.ItemHeight = 29;
+            this.metroComboBoxAsociado.Location = new System.Drawing.Point(213, 82);
             this.metroComboBoxAsociado.Name = "metroComboBoxAsociado";
-            this.metroComboBoxAsociado.Size = new System.Drawing.Size(428, 30);
+            this.metroComboBoxAsociado.Size = new System.Drawing.Size(428, 35);
             this.metroComboBoxAsociado.TabIndex = 44;
             this.metroComboBoxAsociado.UseSelectable = true;
             // 
@@ -71,7 +72,7 @@ namespace UI
             this.metroLabelAsociado.AutoSize = true;
             this.metroLabelAsociado.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelAsociado.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelAsociado.Location = new System.Drawing.Point(71, 87);
+            this.metroLabelAsociado.Location = new System.Drawing.Point(23, 82);
             this.metroLabelAsociado.Name = "metroLabelAsociado";
             this.metroLabelAsociado.Size = new System.Drawing.Size(95, 25);
             this.metroLabelAsociado.TabIndex = 43;
@@ -82,7 +83,7 @@ namespace UI
             this.metroLabelFechaInicio.AutoSize = true;
             this.metroLabelFechaInicio.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelFechaInicio.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelFechaInicio.Location = new System.Drawing.Point(67, 138);
+            this.metroLabelFechaInicio.Location = new System.Drawing.Point(23, 135);
             this.metroLabelFechaInicio.Name = "metroLabelFechaInicio";
             this.metroLabelFechaInicio.Size = new System.Drawing.Size(118, 25);
             this.metroLabelFechaInicio.TabIndex = 45;
@@ -93,7 +94,7 @@ namespace UI
             this.metroLabelFechaFinal.AutoSize = true;
             this.metroLabelFechaFinal.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelFechaFinal.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelFechaFinal.Location = new System.Drawing.Point(67, 186);
+            this.metroLabelFechaFinal.Location = new System.Drawing.Point(23, 185);
             this.metroLabelFechaFinal.Name = "metroLabelFechaFinal";
             this.metroLabelFechaFinal.Size = new System.Drawing.Size(111, 25);
             this.metroLabelFechaFinal.TabIndex = 46;
@@ -104,7 +105,7 @@ namespace UI
             this.metroLabelCapitalCredito.AutoSize = true;
             this.metroLabelCapitalCredito.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelCapitalCredito.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelCapitalCredito.Location = new System.Drawing.Point(67, 238);
+            this.metroLabelCapitalCredito.Location = new System.Drawing.Point(23, 233);
             this.metroLabelCapitalCredito.Name = "metroLabelCapitalCredito";
             this.metroLabelCapitalCredito.Size = new System.Drawing.Size(169, 25);
             this.metroLabelCapitalCredito.TabIndex = 47;
@@ -115,7 +116,7 @@ namespace UI
             this.metroLabelInteresesCredito.AutoSize = true;
             this.metroLabelInteresesCredito.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelInteresesCredito.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelInteresesCredito.Location = new System.Drawing.Point(67, 284);
+            this.metroLabelInteresesCredito.Location = new System.Drawing.Point(23, 281);
             this.metroLabelInteresesCredito.Name = "metroLabelInteresesCredito";
             this.metroLabelInteresesCredito.Size = new System.Drawing.Size(187, 25);
             this.metroLabelInteresesCredito.TabIndex = 48;
@@ -126,7 +127,7 @@ namespace UI
             this.metroLabelSaldoCredito.AutoSize = true;
             this.metroLabelSaldoCredito.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelSaldoCredito.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelSaldoCredito.Location = new System.Drawing.Point(67, 332);
+            this.metroLabelSaldoCredito.Location = new System.Drawing.Point(23, 332);
             this.metroLabelSaldoCredito.Name = "metroLabelSaldoCredito";
             this.metroLabelSaldoCredito.Size = new System.Drawing.Size(157, 25);
             this.metroLabelSaldoCredito.TabIndex = 49;
@@ -137,7 +138,7 @@ namespace UI
             this.metroLabelTasaInteres.AutoSize = true;
             this.metroLabelTasaInteres.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelTasaInteres.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelTasaInteres.Location = new System.Drawing.Point(598, 261);
+            this.metroLabelTasaInteres.Location = new System.Drawing.Point(544, 281);
             this.metroLabelTasaInteres.Name = "metroLabelTasaInteres";
             this.metroLabelTasaInteres.Size = new System.Drawing.Size(144, 25);
             this.metroLabelTasaInteres.TabIndex = 50;
@@ -148,7 +149,7 @@ namespace UI
             this.metroLabelCuotaMensual.AutoSize = true;
             this.metroLabelCuotaMensual.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelCuotaMensual.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelCuotaMensual.Location = new System.Drawing.Point(598, 298);
+            this.metroLabelCuotaMensual.Location = new System.Drawing.Point(544, 332);
             this.metroLabelCuotaMensual.Name = "metroLabelCuotaMensual";
             this.metroLabelCuotaMensual.Size = new System.Drawing.Size(144, 25);
             this.metroLabelCuotaMensual.TabIndex = 51;
@@ -170,7 +171,7 @@ namespace UI
             this.metroTextBoxCapitalCredito.CustomButton.Visible = false;
             this.metroTextBoxCapitalCredito.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.metroTextBoxCapitalCredito.Lines = new string[0];
-            this.metroTextBoxCapitalCredito.Location = new System.Drawing.Point(324, 226);
+            this.metroTextBoxCapitalCredito.Location = new System.Drawing.Point(213, 233);
             this.metroTextBoxCapitalCredito.MaxLength = 32767;
             this.metroTextBoxCapitalCredito.Multiline = true;
             this.metroTextBoxCapitalCredito.Name = "metroTextBoxCapitalCredito";
@@ -203,7 +204,7 @@ namespace UI
             this.metroTextBoxInteresCredito.CustomButton.Visible = false;
             this.metroTextBoxInteresCredito.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.metroTextBoxInteresCredito.Lines = new string[0];
-            this.metroTextBoxInteresCredito.Location = new System.Drawing.Point(324, 274);
+            this.metroTextBoxInteresCredito.Location = new System.Drawing.Point(213, 281);
             this.metroTextBoxInteresCredito.MaxLength = 32767;
             this.metroTextBoxInteresCredito.Multiline = true;
             this.metroTextBoxInteresCredito.Name = "metroTextBoxInteresCredito";
@@ -236,7 +237,7 @@ namespace UI
             this.metroTextBoxSaldoCredito.CustomButton.Visible = false;
             this.metroTextBoxSaldoCredito.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.metroTextBoxSaldoCredito.Lines = new string[0];
-            this.metroTextBoxSaldoCredito.Location = new System.Drawing.Point(324, 322);
+            this.metroTextBoxSaldoCredito.Location = new System.Drawing.Point(213, 332);
             this.metroTextBoxSaldoCredito.MaxLength = 32767;
             this.metroTextBoxSaldoCredito.Multiline = true;
             this.metroTextBoxSaldoCredito.Name = "metroTextBoxSaldoCredito";
@@ -269,7 +270,7 @@ namespace UI
             this.metroTextBoxTasaInteres.CustomButton.Visible = false;
             this.metroTextBoxTasaInteres.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.metroTextBoxTasaInteres.Lines = new string[0];
-            this.metroTextBoxTasaInteres.Location = new System.Drawing.Point(768, 251);
+            this.metroTextBoxTasaInteres.Location = new System.Drawing.Point(711, 281);
             this.metroTextBoxTasaInteres.MaxLength = 32767;
             this.metroTextBoxTasaInteres.Multiline = true;
             this.metroTextBoxTasaInteres.Name = "metroTextBoxTasaInteres";
@@ -302,7 +303,7 @@ namespace UI
             this.metroTextBoxCuotaMensual.CustomButton.Visible = false;
             this.metroTextBoxCuotaMensual.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.metroTextBoxCuotaMensual.Lines = new string[0];
-            this.metroTextBoxCuotaMensual.Location = new System.Drawing.Point(768, 298);
+            this.metroTextBoxCuotaMensual.Location = new System.Drawing.Point(711, 332);
             this.metroTextBoxCuotaMensual.MaxLength = 32767;
             this.metroTextBoxCuotaMensual.Multiline = true;
             this.metroTextBoxCuotaMensual.Name = "metroTextBoxCuotaMensual";
@@ -322,7 +323,7 @@ namespace UI
             // metroButtonAprobar
             // 
             this.metroButtonAprobar.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButtonAprobar.Location = new System.Drawing.Point(437, 388);
+            this.metroButtonAprobar.Location = new System.Drawing.Point(396, 400);
             this.metroButtonAprobar.Name = "metroButtonAprobar";
             this.metroButtonAprobar.Size = new System.Drawing.Size(93, 38);
             this.metroButtonAprobar.TabIndex = 57;
@@ -334,7 +335,7 @@ namespace UI
             // 
             this.metroDateTimeFechaInicio.FontSize = MetroFramework.MetroDateTimeSize.Tall;
             this.metroDateTimeFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTimeFechaInicio.Location = new System.Drawing.Point(271, 133);
+            this.metroDateTimeFechaInicio.Location = new System.Drawing.Point(213, 135);
             this.metroDateTimeFechaInicio.MinimumSize = new System.Drawing.Size(0, 35);
             this.metroDateTimeFechaInicio.Name = "metroDateTimeFechaInicio";
             this.metroDateTimeFechaInicio.Size = new System.Drawing.Size(182, 35);
@@ -345,7 +346,7 @@ namespace UI
             // 
             this.metroDateTimeFechaFinal.FontSize = MetroFramework.MetroDateTimeSize.Tall;
             this.metroDateTimeFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTimeFechaFinal.Location = new System.Drawing.Point(271, 176);
+            this.metroDateTimeFechaFinal.Location = new System.Drawing.Point(213, 185);
             this.metroDateTimeFechaFinal.MinimumSize = new System.Drawing.Size(0, 35);
             this.metroDateTimeFechaFinal.Name = "metroDateTimeFechaFinal";
             this.metroDateTimeFechaFinal.Size = new System.Drawing.Size(182, 35);
@@ -355,52 +356,55 @@ namespace UI
             // metroGridCreditos
             // 
             this.metroGridCreditos.AllowUserToResizeRows = false;
-            this.metroGridCreditos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.metroGridCreditos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.metroGridCreditos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.metroGridCreditos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.metroGridCreditos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.metroGridCreditos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.metroGridCreditos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGridCreditos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGridCreditos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.metroGridCreditos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGridCreditos.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.metroGridCreditos.DefaultCellStyle = dataGridViewCellStyle2;
             this.metroGridCreditos.EnableHeadersVisualStyles = false;
             this.metroGridCreditos.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGridCreditos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGridCreditos.Location = new System.Drawing.Point(24, 454);
+            this.metroGridCreditos.Location = new System.Drawing.Point(23, 459);
             this.metroGridCreditos.Name = "metroGridCreditos";
+            this.metroGridCreditos.ReadOnly = true;
             this.metroGridCreditos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGridCreditos.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGridCreditos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.metroGridCreditos.RowHeadersWidth = 51;
             this.metroGridCreditos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGridCreditos.RowTemplate.Height = 24;
             this.metroGridCreditos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGridCreditos.Size = new System.Drawing.Size(898, 150);
-            this.metroGridCreditos.TabIndex = 58;
+            this.metroGridCreditos.Size = new System.Drawing.Size(845, 155);
+            this.metroGridCreditos.TabIndex = 75;
+            this.metroGridCreditos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGridCreditos_CellContentClick);
             // 
             // AgregarCredito
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(945, 609);
+            this.ClientSize = new System.Drawing.Size(891, 637);
             this.Controls.Add(this.metroGridCreditos);
             this.Controls.Add(this.metroDateTimeFechaFinal);
             this.Controls.Add(this.metroDateTimeFechaInicio);

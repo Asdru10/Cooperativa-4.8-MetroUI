@@ -55,7 +55,7 @@ namespace UI
             this.metroTextBoxIngresos.CustomButton.Visible = false;
             this.metroTextBoxIngresos.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.metroTextBoxIngresos.Lines = new string[0];
-            this.metroTextBoxIngresos.Location = new System.Drawing.Point(42, 169);
+            this.metroTextBoxIngresos.Location = new System.Drawing.Point(41, 137);
             this.metroTextBoxIngresos.MaxLength = 32767;
             this.metroTextBoxIngresos.Multiline = true;
             this.metroTextBoxIngresos.Name = "metroTextBoxIngresos";
@@ -77,7 +77,7 @@ namespace UI
             this.metroLabelIngresos.AutoSize = true;
             this.metroLabelIngresos.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelIngresos.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelIngresos.Location = new System.Drawing.Point(97, 132);
+            this.metroLabelIngresos.Location = new System.Drawing.Point(97, 100);
             this.metroLabelIngresos.Name = "metroLabelIngresos";
             this.metroLabelIngresos.Size = new System.Drawing.Size(84, 25);
             this.metroLabelIngresos.TabIndex = 40;
@@ -88,7 +88,7 @@ namespace UI
             this.metroLabelEgresos.AutoSize = true;
             this.metroLabelEgresos.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelEgresos.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelEgresos.Location = new System.Drawing.Point(358, 132);
+            this.metroLabelEgresos.Location = new System.Drawing.Point(358, 100);
             this.metroLabelEgresos.Name = "metroLabelEgresos";
             this.metroLabelEgresos.Size = new System.Drawing.Size(77, 25);
             this.metroLabelEgresos.TabIndex = 42;
@@ -110,7 +110,7 @@ namespace UI
             this.metroTextBoxEgresos.CustomButton.Visible = false;
             this.metroTextBoxEgresos.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.metroTextBoxEgresos.Lines = new string[0];
-            this.metroTextBoxEgresos.Location = new System.Drawing.Point(303, 169);
+            this.metroTextBoxEgresos.Location = new System.Drawing.Point(303, 137);
             this.metroTextBoxEgresos.MaxLength = 32767;
             this.metroTextBoxEgresos.Multiline = true;
             this.metroTextBoxEgresos.Name = "metroTextBoxEgresos";
@@ -132,7 +132,7 @@ namespace UI
             this.metroLabelLiquidez.AutoSize = true;
             this.metroLabelLiquidez.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelLiquidez.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelLiquidez.Location = new System.Drawing.Point(604, 132);
+            this.metroLabelLiquidez.Location = new System.Drawing.Point(604, 100);
             this.metroLabelLiquidez.Name = "metroLabelLiquidez";
             this.metroLabelLiquidez.Size = new System.Drawing.Size(83, 25);
             this.metroLabelLiquidez.TabIndex = 44;
@@ -154,7 +154,7 @@ namespace UI
             this.metroTextBoxLiquidez.CustomButton.Visible = false;
             this.metroTextBoxLiquidez.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.metroTextBoxLiquidez.Lines = new string[0];
-            this.metroTextBoxLiquidez.Location = new System.Drawing.Point(549, 169);
+            this.metroTextBoxLiquidez.Location = new System.Drawing.Point(548, 137);
             this.metroTextBoxLiquidez.MaxLength = 32767;
             this.metroTextBoxLiquidez.Multiline = true;
             this.metroTextBoxLiquidez.Name = "metroTextBoxLiquidez";
@@ -175,7 +175,7 @@ namespace UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 364);
+            this.ClientSize = new System.Drawing.Size(800, 251);
             this.Controls.Add(this.metroLabelLiquidez);
             this.Controls.Add(this.metroTextBoxLiquidez);
             this.Controls.Add(this.metroLabelEgresos);

@@ -161,6 +161,9 @@ namespace UI
 
         }
 
-        
+        private void metroGridCreditos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

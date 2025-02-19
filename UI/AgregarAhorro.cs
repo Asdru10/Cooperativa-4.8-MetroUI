@@ -122,7 +122,7 @@ namespace UI
 
         private void limpiarCampos()
         {
-            metroComboBoxAsociado.Text = "";
+            metroComboBoxAsociado.SelectedIndex = -1;
             metroTextBoxMonto.Text = "";
         }
 

@@ -172,7 +172,7 @@ namespace UI
 
         private void limpiarCampos()
         {
-            metroComboBoxAsociado.Text = "";
+            metroComboBoxAsociado.SelectedIndex = -1; 
             metroTextBoxDetalle.Text = "";
             metroTextBoxMonto.Text = "";
             metroDateTimeFecha.Value = DateTime.Now;

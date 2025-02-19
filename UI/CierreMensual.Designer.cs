@@ -49,7 +49,7 @@ namespace UI
             this.metroLabelLiquidez.AutoSize = true;
             this.metroLabelLiquidez.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelLiquidez.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelLiquidez.Location = new System.Drawing.Point(604, 292);
+            this.metroLabelLiquidez.Location = new System.Drawing.Point(582, 238);
             this.metroLabelLiquidez.Name = "metroLabelLiquidez";
             this.metroLabelLiquidez.Size = new System.Drawing.Size(83, 25);
             this.metroLabelLiquidez.TabIndex = 51;
@@ -71,7 +71,7 @@ namespace UI
             this.metroTextBoxLiquidez.CustomButton.Visible = false;
             this.metroTextBoxLiquidez.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.metroTextBoxLiquidez.Lines = new string[0];
-            this.metroTextBoxLiquidez.Location = new System.Drawing.Point(549, 329);
+            this.metroTextBoxLiquidez.Location = new System.Drawing.Point(527, 266);
             this.metroTextBoxLiquidez.MaxLength = 32767;
             this.metroTextBoxLiquidez.Multiline = true;
             this.metroTextBoxLiquidez.Name = "metroTextBoxLiquidez";
@@ -93,7 +93,7 @@ namespace UI
             this.metroLabelEgresos.AutoSize = true;
             this.metroLabelEgresos.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelEgresos.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelEgresos.Location = new System.Drawing.Point(358, 292);
+            this.metroLabelEgresos.Location = new System.Drawing.Point(342, 238);
             this.metroLabelEgresos.Name = "metroLabelEgresos";
             this.metroLabelEgresos.Size = new System.Drawing.Size(77, 25);
             this.metroLabelEgresos.TabIndex = 49;
@@ -115,7 +115,7 @@ namespace UI
             this.metroTextBoxEgresos.CustomButton.Visible = false;
             this.metroTextBoxEgresos.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.metroTextBoxEgresos.Lines = new string[0];
-            this.metroTextBoxEgresos.Location = new System.Drawing.Point(303, 329);
+            this.metroTextBoxEgresos.Location = new System.Drawing.Point(282, 266);
             this.metroTextBoxEgresos.MaxLength = 32767;
             this.metroTextBoxEgresos.Multiline = true;
             this.metroTextBoxEgresos.Name = "metroTextBoxEgresos";
@@ -137,7 +137,7 @@ namespace UI
             this.metroLabelIngresos.AutoSize = true;
             this.metroLabelIngresos.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelIngresos.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelIngresos.Location = new System.Drawing.Point(97, 292);
+            this.metroLabelIngresos.Location = new System.Drawing.Point(97, 238);
             this.metroLabelIngresos.Name = "metroLabelIngresos";
             this.metroLabelIngresos.Size = new System.Drawing.Size(84, 25);
             this.metroLabelIngresos.TabIndex = 47;
@@ -159,7 +159,7 @@ namespace UI
             this.metroTextBoxIngresos.CustomButton.Visible = false;
             this.metroTextBoxIngresos.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.metroTextBoxIngresos.Lines = new string[0];
-            this.metroTextBoxIngresos.Location = new System.Drawing.Point(42, 329);
+            this.metroTextBoxIngresos.Location = new System.Drawing.Point(36, 266);
             this.metroTextBoxIngresos.MaxLength = 32767;
             this.metroTextBoxIngresos.Multiline = true;
             this.metroTextBoxIngresos.Name = "metroTextBoxIngresos";
@@ -181,7 +181,7 @@ namespace UI
             this.metroLabelMes.AutoSize = true;
             this.metroLabelMes.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelMes.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelMes.Location = new System.Drawing.Point(155, 90);
+            this.metroLabelMes.Location = new System.Drawing.Point(160, 89);
             this.metroLabelMes.Name = "metroLabelMes";
             this.metroLabelMes.Size = new System.Drawing.Size(47, 25);
             this.metroLabelMes.TabIndex = 52;
@@ -192,7 +192,7 @@ namespace UI
             this.metroLabelAnno.AutoSize = true;
             this.metroLabelAnno.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelAnno.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelAnno.Location = new System.Drawing.Point(388, 90);
+            this.metroLabelAnno.Location = new System.Drawing.Point(372, 89);
             this.metroLabelAnno.Name = "metroLabelAnno";
             this.metroLabelAnno.Size = new System.Drawing.Size(47, 25);
             this.metroLabelAnno.TabIndex = 53;
@@ -200,29 +200,31 @@ namespace UI
             // 
             // metroComboBoxMes
             // 
+            this.metroComboBoxMes.FontSize = MetroFramework.MetroComboBoxSize.Tall;
             this.metroComboBoxMes.FormattingEnabled = true;
-            this.metroComboBoxMes.ItemHeight = 24;
-            this.metroComboBoxMes.Location = new System.Drawing.Point(79, 140);
+            this.metroComboBoxMes.ItemHeight = 29;
+            this.metroComboBoxMes.Location = new System.Drawing.Point(85, 117);
             this.metroComboBoxMes.Name = "metroComboBoxMes";
-            this.metroComboBoxMes.Size = new System.Drawing.Size(192, 30);
+            this.metroComboBoxMes.Size = new System.Drawing.Size(192, 35);
             this.metroComboBoxMes.TabIndex = 54;
             this.metroComboBoxMes.UseSelectable = true;
             this.metroComboBoxMes.SelectedIndexChanged += new System.EventHandler(this.metroComboBoxMes_SelectedIndexChanged);
             // 
             // metroComboBoxAnno
             // 
+            this.metroComboBoxAnno.FontSize = MetroFramework.MetroComboBoxSize.Tall;
             this.metroComboBoxAnno.FormattingEnabled = true;
-            this.metroComboBoxAnno.ItemHeight = 24;
-            this.metroComboBoxAnno.Location = new System.Drawing.Point(347, 140);
+            this.metroComboBoxAnno.ItemHeight = 29;
+            this.metroComboBoxAnno.Location = new System.Drawing.Point(331, 117);
             this.metroComboBoxAnno.Name = "metroComboBoxAnno";
-            this.metroComboBoxAnno.Size = new System.Drawing.Size(131, 30);
+            this.metroComboBoxAnno.Size = new System.Drawing.Size(131, 35);
             this.metroComboBoxAnno.TabIndex = 55;
             this.metroComboBoxAnno.UseSelectable = true;
             // 
             // metroButtonObtener
             // 
             this.metroButtonObtener.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButtonObtener.Location = new System.Drawing.Point(579, 132);
+            this.metroButtonObtener.Location = new System.Drawing.Point(531, 117);
             this.metroButtonObtener.Name = "metroButtonObtener";
             this.metroButtonObtener.Size = new System.Drawing.Size(93, 38);
             this.metroButtonObtener.TabIndex = 56;
@@ -233,7 +235,7 @@ namespace UI
             // CierreMensual
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(774, 360);
             this.Controls.Add(this.metroButtonObtener);
             this.Controls.Add(this.metroComboBoxAnno);
             this.Controls.Add(this.metroComboBoxMes);
