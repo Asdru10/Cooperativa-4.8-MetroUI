@@ -171,7 +171,7 @@ namespace UI
 
         private void limpiarCampos()
         {
-            metroComboBoxAsociado.Text = "";
+            metroComboBoxAsociado.SelectedIndex = -1;
             metroDateTimeFechaInicio.Value = DateTime.Now;
             metroTextBoxCapitalCredito.Text = "";
             metroTextBoxInteresCredito.Text = "";
@@ -215,7 +215,8 @@ namespace UI
                     decimal capital = Convert.ToDecimal(metroTextBoxCapitalCredito.Text.Trim());
                     decimal tasaInteres = Convert.ToDecimal(metroTextBoxTasaInteres.Text.Trim());
                     decimal intereses = capital * (tasaInteres / 100);
-                    metroTextBoxInteresCredito.Text = intereses.ToString();
+                    intereses = Math.Round(intereses, 2);
+                    metroTextBoxInteresCredito.Text = intereses.ToString("N2");
                 }
             }
             catch
@@ -233,7 +234,8 @@ namespace UI
                     decimal capital = Convert.ToDecimal(metroTextBoxCapitalCredito.Text.Trim());
                     decimal intereses = Convert.ToDecimal(metroTextBoxInteresCredito.Text.Trim());
                     decimal saldo = capital + intereses;
-                    metroTextBoxSaldoCredito.Text = saldo.ToString();
+                    saldo = Math.Round(saldo, 2);
+                    metroTextBoxSaldoCredito.Text = saldo.ToString("N2");
                 }
             }
             catch
@@ -250,7 +252,8 @@ namespace UI
                 {
                     decimal saldo = Convert.ToDecimal(metroTextBoxSaldoCredito.Text.Trim());
                     decimal cuota = saldo / 12;
-                    metroTextBoxCuotaMensual.Text = cuota.ToString();
+                    cuota = Math.Round(cuota, 2);
+                    metroTextBoxCuotaMensual.Text = cuota.ToString("N2");
                 }
             }
             catch
@@ -282,60 +285,81 @@ namespace UI
             return 0;
         }
 
-        private void textBoxCapitalDesembolsar_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void textBoxFechaInicio_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxFechaInicio_Leave(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void metroTextBoxCapitalCredito_Leave(object sender, EventArgs e)
         {
-            realizarCalculos();
+            if (decimal.TryParse(metroTextBoxCapitalCredito.Text.Trim(), out decimal capitalCredito))
+            {
+                decimal capital = Convert.ToDecimal(metroTextBoxCapitalCredito.Text.Trim());
+                metroTextBoxCapitalCredito.Text = capital.ToString("N2");
+                realizarCalculos();
+            } 
+            else
+            {
+                MessageBox.Show("El capital de crédito debe ser un número", "Error de capital de crédito", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                metroTextBoxCapitalCredito.Text = "";
+                metroTextBoxCapitalCredito.Focus();
+                return;
+            }
 
         }
 
         private void metroTextBoxTasaInteres_Leave(object sender, EventArgs e)
         {
-            if (metroTextBoxTasaInteres.Text.Trim().Equals("") || Convert.ToDecimal(metroTextBoxTasaInteres.Text.Trim()) < 0 || Convert.ToDecimal(metroTextBoxTasaInteres.Text.Trim()) > 100)
+            if (decimal.TryParse(metroTextBoxTasaInteres.Text.Trim(), out decimal tasaInteres))
             {
-                MessageBox.Show("La tasa de interés debe ser mayor a 0 y menor a 100", "Error de tasa de interés", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                metroTextBoxTasaInteres.Text = "12";
-                metroTextBoxTasaInteres.Focus();
-                return;
+                if (metroTextBoxTasaInteres.Text.Trim().Equals("") || Convert.ToDecimal(metroTextBoxTasaInteres.Text.Trim()) < 0 || Convert.ToDecimal(metroTextBoxTasaInteres.Text.Trim()) > 100)
+                {
+                    MessageBox.Show("La tasa de interés debe ser mayor a 0 y menor a 100", "Error de tasa de interés", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    metroTextBoxTasaInteres.Text = "12";
+                    metroTextBoxTasaInteres.Focus();
+                    return;
+                }
+                else
+                {
+                    realizarCalculos();
+                }
             }
             else
             {
-                realizarCalculos();
+                MessageBox.Show("La tasa de interés debe ser un número", "Error de tasa de interés", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                metroTextBoxTasaInteres.Text = "12";
+                metroTextBoxTasaInteres.Focus();
+                return;
+
             }
         }
 
         private decimal calcularLiquidez()
         {
-            List<EstadoFinancieroMensual> estadosFinancieros = new List<EstadoFinancieroMensual>();
-            estadosFinancieros = cooperativa.getEstadosFinancieros();
             decimal ingresos = 0;
             decimal egresos = 0;
             decimal liquidez = 0;
-            foreach (EstadoFinancieroMensual estado in estadosFinancieros)
-            {
-                if (estado.Identificador == "S")
-                {
-                    ingresos += estado.Monto;
-                }
-                else if (estado.Identificador == "R")
-                {
-                    egresos += estado.Monto;
 
-                }
+            List<Aporte> aportes = cooperativa.getAportes();
+            List<Ahorro> ahorros = cooperativa.getAhorros();
+            List<Credito> creditos = cooperativa.getCreditos();
+            List<Abono> abonos = cooperativa.getAbonos();
+
+            foreach (Aporte aporte in aportes)
+            {
+                ingresos += aporte.Monto;
             }
+            foreach (Ahorro ahorro in ahorros)
+            {
+                ingresos += ahorro.Monto;
+            }
+            foreach (Credito credito in creditos)
+            {
+                egresos += credito.Saldo_Total - credito.Intereses;
+                // este calculo lo probe y se puede omitir esta linea ingresos += credito.Intereses_Cancelados;
+            }
+            foreach (Abono abono in abonos)
+            {
+                ingresos += abono.Abono_Interes;
+            }
+
             liquidez = ingresos - egresos;
             return liquidez;
         }
@@ -358,7 +382,7 @@ namespace UI
             }
             foreach (Credito credito in creditos)
             {
-                saldoEgresos += credito.Total_Credito;
+                saldoEgresos += credito.Capital_Desembolsado;
             }
             foreach (Abono abono in abonos)
             {
@@ -367,7 +391,18 @@ namespace UI
 
             if ((saldoIngresos - saldoEgresos) * 2 < Convert.ToDecimal(metroTextBoxSaldoCredito.Text.Trim()))
             {
-                return false;
+                DialogResult resultado = MetroFramework.MetroMessageBox.Show(this, "El asociado no ha realizado los suficientes aportes para poder solicitar este crédito ¿Desea continuar?", "Exceso de Crédito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (resultado == DialogResult.Yes)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Seleccionaste Sí.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Seleccionaste No.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
             }
             else
             {
@@ -407,7 +442,7 @@ namespace UI
 
         private void dateTimePickerFechaInicio_ValueChanged(object sender, EventArgs e)
         {
-        }        
+        }
 
         private void dateTimePickerFechaFinal_ValueChanged(object sender, EventArgs e)
         {
@@ -433,6 +468,20 @@ namespace UI
         }
 
         private void buttonSalir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxCapitalDesembolsar_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void textBoxFechaInicio_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxFechaInicio_Leave(object sender, EventArgs e)
         {
 
         }

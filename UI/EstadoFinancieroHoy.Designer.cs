@@ -57,7 +57,6 @@ namespace UI
             this.metroTextBoxIngresos.Lines = new string[0];
             this.metroTextBoxIngresos.Location = new System.Drawing.Point(41, 137);
             this.metroTextBoxIngresos.MaxLength = 32767;
-            this.metroTextBoxIngresos.Multiline = true;
             this.metroTextBoxIngresos.Name = "metroTextBoxIngresos";
             this.metroTextBoxIngresos.PasswordChar = '\0';
             this.metroTextBoxIngresos.ReadOnly = true;
@@ -112,7 +111,6 @@ namespace UI
             this.metroTextBoxEgresos.Lines = new string[0];
             this.metroTextBoxEgresos.Location = new System.Drawing.Point(303, 137);
             this.metroTextBoxEgresos.MaxLength = 32767;
-            this.metroTextBoxEgresos.Multiline = true;
             this.metroTextBoxEgresos.Name = "metroTextBoxEgresos";
             this.metroTextBoxEgresos.PasswordChar = '\0';
             this.metroTextBoxEgresos.ReadOnly = true;
@@ -156,7 +154,6 @@ namespace UI
             this.metroTextBoxLiquidez.Lines = new string[0];
             this.metroTextBoxLiquidez.Location = new System.Drawing.Point(548, 137);
             this.metroTextBoxLiquidez.MaxLength = 32767;
-            this.metroTextBoxLiquidez.Multiline = true;
             this.metroTextBoxLiquidez.Name = "metroTextBoxLiquidez";
             this.metroTextBoxLiquidez.PasswordChar = '\0';
             this.metroTextBoxLiquidez.ReadOnly = true;

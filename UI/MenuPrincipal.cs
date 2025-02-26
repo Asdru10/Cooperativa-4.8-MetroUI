@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Timers;
 using Timer = System.Timers.Timer;
 using MetroFramework.Forms;
+using MetroFramework;
 
 namespace UI
 {
@@ -128,6 +129,8 @@ namespace UI
         {
             verificarCreditosAtrasados();
             ConfigureDailyTask();
+
+            MetroMessageBox.Show(this, "Bienvenido a la Cooperativa", "Bienvenida", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void verificarCreditosAtrasados()

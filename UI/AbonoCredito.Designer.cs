@@ -91,7 +91,6 @@ namespace UI
             this.metroTextBoxSaldoActual.Lines = new string[0];
             this.metroTextBoxSaldoActual.Location = new System.Drawing.Point(181, 345);
             this.metroTextBoxSaldoActual.MaxLength = 32767;
-            this.metroTextBoxSaldoActual.Multiline = true;
             this.metroTextBoxSaldoActual.Name = "metroTextBoxSaldoActual";
             this.metroTextBoxSaldoActual.PasswordChar = '\0';
             this.metroTextBoxSaldoActual.ReadOnly = true;
@@ -135,7 +134,6 @@ namespace UI
             this.metroTextBoxNuevoSaldo.Lines = new string[0];
             this.metroTextBoxNuevoSaldo.Location = new System.Drawing.Point(181, 398);
             this.metroTextBoxNuevoSaldo.MaxLength = 32767;
-            this.metroTextBoxNuevoSaldo.Multiline = true;
             this.metroTextBoxNuevoSaldo.Name = "metroTextBoxNuevoSaldo";
             this.metroTextBoxNuevoSaldo.PasswordChar = '\0';
             this.metroTextBoxNuevoSaldo.ReadOnly = true;
@@ -179,7 +177,6 @@ namespace UI
             this.metroTextBoxMontoAbono.Lines = new string[0];
             this.metroTextBoxMontoAbono.Location = new System.Drawing.Point(747, 345);
             this.metroTextBoxMontoAbono.MaxLength = 32767;
-            this.metroTextBoxMontoAbono.Multiline = true;
             this.metroTextBoxMontoAbono.Name = "metroTextBoxMontoAbono";
             this.metroTextBoxMontoAbono.PasswordChar = '\0';
             this.metroTextBoxMontoAbono.ScrollBars = System.Windows.Forms.ScrollBars.None;

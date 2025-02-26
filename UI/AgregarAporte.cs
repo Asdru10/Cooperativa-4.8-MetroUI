@@ -78,18 +78,6 @@ namespace UI
                 MessageBox.Show("Ingrese un detalle", "Error de detalle", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if (!decimal.TryParse(metroTextBoxMonto.Text.Trim(), out decimal monto))
-            {
-                metroTextBoxMonto.Focus();
-                MessageBox.Show("Debe ingresar un monto utlizando una coma (,) como separador de decimales.", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            else if (Convert.ToDecimal(metroTextBoxMonto.Text.Trim()) <= 0)
-            {
-                metroTextBoxMonto.Focus();
-                MessageBox.Show("Ingrese un monto válido", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             else if (metroDateTimeFecha.Value < metroDateTimeFecha.MinDate && metroDateTimeFecha.Value > metroDateTimeFecha.MaxDate)
             {
                 MessageBox.Show("La fecha seleccionada está fuera del rango permitido.", "Error de fecha", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -170,6 +158,27 @@ namespace UI
             }
         }
 
+        private void metroTextBoxMonto_Leave(object sender, EventArgs e)
+        {
+            if (!decimal.TryParse(metroTextBoxMonto.Text.Trim(), out decimal monto))
+            {
+                metroTextBoxMonto.Focus();
+                MessageBox.Show("Debe ingresar un monto utlizando una coma (,) como separador de decimales.", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (Convert.ToDecimal(metroTextBoxMonto.Text.Trim()) <= 0)
+            {
+                metroTextBoxMonto.Focus();
+                MessageBox.Show("Ingrese un monto mayor a cero.", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                decimal montoAporte = Convert.ToDecimal(metroTextBoxMonto.Text.Trim());
+                metroTextBoxMonto.Text = montoAporte.ToString("N2");
+            }
+        }
+
         private void limpiarCampos()
         {
             metroComboBoxAsociado.SelectedIndex = -1; 
@@ -195,5 +204,7 @@ namespace UI
         {
 
         }
+
+        
     }
 }

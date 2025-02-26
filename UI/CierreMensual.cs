@@ -82,7 +82,7 @@ namespace UI
             }
             foreach (Credito credito in creditos)
             {
-                egresos += credito.Saldo_Total;
+                egresos += credito.Saldo_Total - credito.Intereses;
             }
             foreach (Abono abono in abonos)
             {
@@ -119,7 +119,7 @@ namespace UI
             }
             foreach (Credito credito in creditos)
             {
-                egresos += credito.Saldo_Total;
+                egresos += credito.Saldo_Total - credito.Intereses;
             }
             foreach (Abono abono in abonos)
             {

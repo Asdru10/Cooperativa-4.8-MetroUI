@@ -120,14 +120,14 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error al cargar créditos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
         private void metroGridCreditos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 int id = (int)metroGridCreditos.Rows[e.RowIndex].Cells["ID"].Value;
                 creditoAcutal = cooperativa.getCreditoPorID(id);
-                metroTextBoxSaldoActual.Text = creditoAcutal.Saldo_Total.ToString();
+                metroTextBoxSaldoActual.Text = creditoAcutal.Saldo_Total.ToString("N2");
                 metroTextBoxMontoAbono.Text = "";
                 metroTextBoxNuevoSaldo.Text = "";
             }
@@ -145,16 +145,36 @@ namespace UI
                 MessageBox.Show("Seleccione un crédito para abonar", "Error de crédito seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            if (metroTextBoxMontoAbono.Text.Trim() != "")
+            else if (metroTextBoxMontoAbono.Text.Trim() != "")
             {
-                if (Convert.ToDecimal(metroTextBoxMontoAbono.Text) > Convert.ToDecimal(metroTextBoxSaldoActual.Text))
+                if (decimal.TryParse(metroTextBoxMontoAbono.Text.Trim(), out decimal montoAbono))
                 {
-                    metroTextBoxMontoAbono.Text = "";
-                    MessageBox.Show("El monto de abono no debe superar el saldo del crédito", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (Convert.ToDecimal(metroTextBoxMontoAbono.Text) > Convert.ToDecimal(metroTextBoxSaldoActual.Text))
+                    {
+                        metroTextBoxMontoAbono.Text = "";
+                        metroTextBoxMontoAbono.Focus();
+                        MessageBox.Show("El monto de abono no debe superar el saldo del crédito", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else if (Convert.ToDecimal(metroTextBoxMontoAbono.Text) <= 0)
+                    {
+                        metroTextBoxMontoAbono.Text = "";
+                        metroTextBoxMontoAbono.Focus();
+                        MessageBox.Show("El monto de abono debe ser mayor a cero.", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    decimal monto = Convert.ToDecimal(metroTextBoxMontoAbono.Text);
+                    metroTextBoxMontoAbono.Text = monto.ToString("N2");
+                    decimal nuevoSaldo = calcularNuevoSaldo(Convert.ToDecimal(metroTextBoxSaldoActual.Text), Convert.ToDecimal(metroTextBoxMontoAbono.Text));
+                    nuevoSaldo = Math.Round(nuevoSaldo, 2);
+                    metroTextBoxNuevoSaldo.Text = nuevoSaldo.ToString("N2");
+                }
+                else
+                {
+                    metroTextBoxMontoAbono.Focus();
+                    MessageBox.Show("Debe ingresar un monto conformado por números.", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                metroTextBoxNuevoSaldo.Text = Convert.ToString(calcularNuevoSaldo(Convert.ToDecimal(metroTextBoxSaldoActual.Text), Convert.ToDecimal(metroTextBoxMontoAbono.Text)));
             }
         }
 
@@ -162,7 +182,7 @@ namespace UI
         {
             return saldo - abono;
         }
-        
+
         private void metroButtonCancelacionTotal_Click(object sender, EventArgs e)
         {
             if (metroTextBoxSaldoActual.Text.Trim().Equals(""))
@@ -173,7 +193,9 @@ namespace UI
             }
 
             metroTextBoxMontoAbono.Text = metroTextBoxSaldoActual.Text;
-            metroTextBoxNuevoSaldo.Text = Convert.ToString(calcularNuevoSaldo(Convert.ToDecimal(metroTextBoxSaldoActual.Text), Convert.ToDecimal(metroTextBoxMontoAbono.Text)));
+            decimal nuevoSaldo = calcularNuevoSaldo(Convert.ToDecimal(metroTextBoxSaldoActual.Text), Convert.ToDecimal(metroTextBoxMontoAbono.Text));
+            nuevoSaldo = Math.Round(nuevoSaldo, 2);
+            metroTextBoxNuevoSaldo.Text = nuevoSaldo.ToString("N2");
         }
 
         private void metroButtonAbonar_Click(object sender, EventArgs e)
@@ -182,18 +204,6 @@ namespace UI
             {
                 MessageBox.Show("Seleccione un asociado", "Error de asociado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 metroComboBoxAsociado.DroppedDown = true;
-                return;
-            }
-            else if (!decimal.TryParse(metroTextBoxMontoAbono.Text.Trim(), out decimal monto))
-            {
-                metroTextBoxMontoAbono.Focus();
-                MessageBox.Show("Debe ingresar un monto utlizando una coma (,) como separador de decimales.", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            else if (metroTextBoxMontoAbono.Text.Trim().Equals("") || Convert.ToDecimal(metroTextBoxMontoAbono.Text.Trim()) <= 0)
-            {
-                metroTextBoxMontoAbono.Focus();
-                MessageBox.Show("Ingrese un monto válido para abonar", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else if (metroDateTimeFechaAbono.Value < metroDateTimeFechaAbono.MinDate && metroDateTimeFechaAbono.Value > metroDateTimeFechaAbono.MaxDate)
@@ -324,7 +334,7 @@ namespace UI
                 if (credito.Saldo_Total == 0)
                 {
                     credito.Estado = "Cancelado";
-                    cooperativa.eliminarProyeccion(credito.ID);    
+                    cooperativa.eliminarProyeccion(credito.ID);
                     break;
                 }
                 else if (proyecciones[i].Fecha.Month == mesActual && proyecciones[i].Fecha.Year == annoActual)

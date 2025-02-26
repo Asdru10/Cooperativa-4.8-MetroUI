@@ -59,18 +59,6 @@ namespace UI
                 metroComboBoxAsociado.DroppedDown = true;
                 return;
             }
-            else if (!decimal.TryParse(metroTextBoxMonto.Text.Trim(), out decimal monto))
-            {
-                metroTextBoxMonto.Focus();
-                MessageBox.Show("Debe ingresar un monto utlizando una coma (,) como separador de decimales.", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            else if (Convert.ToDecimal(metroTextBoxMonto.Text.Trim()) <= 0 )
-            {
-                metroTextBoxMonto.Focus();
-                MessageBox.Show("Ingrese un monto válido", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
 
             try
             {
@@ -118,6 +106,28 @@ namespace UI
             {
                 MessageBox.Show(ex.Message, "Error al cargar ahorros", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void metroTextBoxMonto_Leave(object sender, EventArgs e)
+        {
+            if (!decimal.TryParse(metroTextBoxMonto.Text.Trim(), out decimal monto))
+            {
+                metroTextBoxMonto.Focus();
+                MessageBox.Show("Debe ingresar un monto utlizando una coma (,) como separador de decimales.", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (Convert.ToDecimal(metroTextBoxMonto.Text.Trim()) <= 0)
+            {
+                metroTextBoxMonto.Focus();
+                MessageBox.Show("Ingrese un monto mayor a cero", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                decimal montoAhorro = Convert.ToDecimal(metroTextBoxMonto.Text.Trim());
+                metroTextBoxMonto.Text = monto.ToString("N2");
+            }
+
         }
 
         private void limpiarCampos()

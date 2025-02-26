@@ -173,7 +173,6 @@ namespace UI
             this.metroTextBoxCapitalCredito.Lines = new string[0];
             this.metroTextBoxCapitalCredito.Location = new System.Drawing.Point(213, 233);
             this.metroTextBoxCapitalCredito.MaxLength = 32767;
-            this.metroTextBoxCapitalCredito.Multiline = true;
             this.metroTextBoxCapitalCredito.Name = "metroTextBoxCapitalCredito";
             this.metroTextBoxCapitalCredito.PasswordChar = '\0';
             this.metroTextBoxCapitalCredito.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -206,7 +205,6 @@ namespace UI
             this.metroTextBoxInteresCredito.Lines = new string[0];
             this.metroTextBoxInteresCredito.Location = new System.Drawing.Point(213, 281);
             this.metroTextBoxInteresCredito.MaxLength = 32767;
-            this.metroTextBoxInteresCredito.Multiline = true;
             this.metroTextBoxInteresCredito.Name = "metroTextBoxInteresCredito";
             this.metroTextBoxInteresCredito.PasswordChar = '\0';
             this.metroTextBoxInteresCredito.ReadOnly = true;
@@ -239,7 +237,6 @@ namespace UI
             this.metroTextBoxSaldoCredito.Lines = new string[0];
             this.metroTextBoxSaldoCredito.Location = new System.Drawing.Point(213, 332);
             this.metroTextBoxSaldoCredito.MaxLength = 32767;
-            this.metroTextBoxSaldoCredito.Multiline = true;
             this.metroTextBoxSaldoCredito.Name = "metroTextBoxSaldoCredito";
             this.metroTextBoxSaldoCredito.PasswordChar = '\0';
             this.metroTextBoxSaldoCredito.ReadOnly = true;
@@ -272,7 +269,6 @@ namespace UI
             this.metroTextBoxTasaInteres.Lines = new string[0];
             this.metroTextBoxTasaInteres.Location = new System.Drawing.Point(711, 281);
             this.metroTextBoxTasaInteres.MaxLength = 32767;
-            this.metroTextBoxTasaInteres.Multiline = true;
             this.metroTextBoxTasaInteres.Name = "metroTextBoxTasaInteres";
             this.metroTextBoxTasaInteres.PasswordChar = '\0';
             this.metroTextBoxTasaInteres.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -305,7 +301,6 @@ namespace UI
             this.metroTextBoxCuotaMensual.Lines = new string[0];
             this.metroTextBoxCuotaMensual.Location = new System.Drawing.Point(711, 332);
             this.metroTextBoxCuotaMensual.MaxLength = 32767;
-            this.metroTextBoxCuotaMensual.Multiline = true;
             this.metroTextBoxCuotaMensual.Name = "metroTextBoxCuotaMensual";
             this.metroTextBoxCuotaMensual.PasswordChar = '\0';
             this.metroTextBoxCuotaMensual.ReadOnly = true;

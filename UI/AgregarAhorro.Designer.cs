@@ -82,7 +82,6 @@ namespace UI
             this.metroTextBoxMonto.Lines = new string[0];
             this.metroTextBoxMonto.Location = new System.Drawing.Point(139, 143);
             this.metroTextBoxMonto.MaxLength = 32767;
-            this.metroTextBoxMonto.Multiline = true;
             this.metroTextBoxMonto.Name = "metroTextBoxMonto";
             this.metroTextBoxMonto.PasswordChar = '\0';
             this.metroTextBoxMonto.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -95,6 +94,7 @@ namespace UI
             this.metroTextBoxMonto.UseSelectable = true;
             this.metroTextBoxMonto.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBoxMonto.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.metroTextBoxMonto.Leave += new System.EventHandler(this.metroTextBoxMonto_Leave);
             // 
             // metroLabelMonto
             // 

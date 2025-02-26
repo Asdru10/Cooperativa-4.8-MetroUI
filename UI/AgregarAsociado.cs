@@ -32,12 +32,18 @@ namespace UI
             metroDateTimeFechaNacimento.MaxDate = DateTime.Now.AddYears(1);
             metroDateTimeFechaNacimento.Value = DateTime.Now;
         }
-        
+
         private void metroButtonAgregar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (metroTextBoxCedula.Text.Trim().Length != 9 || metroTextBoxCedula.Text.Trim().Equals(""))
+                if (!int.TryParse(metroTextBoxCedula.Text.Trim(), out int cedula))
+                {
+                    metroTextBoxCedula.Focus();
+                    MessageBox.Show("La cédula debe ser conformada por números", "Error de cédula", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else if (metroTextBoxCedula.Text.Trim().Length != 9 || metroTextBoxCedula.Text.Trim().Equals(""))
                 {
                     metroTextBoxCedula.Focus();
                     MessageBox.Show("La cédula debe tener 9 dígitos", "Error de cédula", MessageBoxButtons.OK, MessageBoxIcon.Error);
