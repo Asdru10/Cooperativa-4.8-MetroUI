@@ -106,14 +106,13 @@ namespace UI
                 MessageBox.Show("Ingrese un monto de capital válido a desembolsar", "Error de capital", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if (calcularLiquidez() < Convert.ToDecimal(metroTextBoxSaldoCredito.Text.Trim()))
+            else if (calcularLiquidez() < Convert.ToDecimal(metroTextBoxCapitalCredito.Text.Trim()))
             {
                 MessageBox.Show("No se puede aprobar el crédito, el saldo supera el capital disponible", "Error de liquidez", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else if (!aprobarCredito())
             {
-                MessageBox.Show("No se puede aprobar el crédito, el asociado no tiene suficientes ingresos para cubrir el crédito", "Error de capacidad de crédito", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -389,18 +388,27 @@ namespace UI
                 saldoIngresos += abono.Abono_Total;
             }
 
-            if ((saldoIngresos - saldoEgresos) * 2 < Convert.ToDecimal(metroTextBoxSaldoCredito.Text.Trim()))
+            decimal capacidadCredito = (saldoIngresos - saldoEgresos) * 2;
+
+            if (capacidadCredito < Convert.ToDecimal(metroTextBoxSaldoCredito.Text.Trim()))
             {
-                DialogResult resultado = MetroFramework.MetroMessageBox.Show(this, "El asociado no ha realizado los suficientes aportes para poder solicitar este crédito ¿Desea continuar?", "Exceso de Crédito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult resultado;
+                if (capacidadCredito < 0)
+                {
+                    resultado = MessageBox.Show("El asociado no ha realizado los suficientes aportes para poder solicitar este crédito.\nSu capacidad de crédito es negativa. \n¿Desea continuar?", "Exceso de Crédito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                }
+                else
+                {
+                    resultado = MessageBox.Show("El asociado no ha realizado los suficientes aportes para poder solicitar este crédito.\nSu capacidad de crédito es de " + capacidadCredito + " colones. \n¿Desea continuar?", "Exceso de Crédito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                }
 
                 if (resultado == DialogResult.Yes)
                 {
-                    MetroFramework.MetroMessageBox.Show(this, "Seleccionaste Sí.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
                 {
-                    MetroFramework.MetroMessageBox.Show(this, "Seleccionaste No.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Ha decidido no aprobar el crédito", "Reprobado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
             }

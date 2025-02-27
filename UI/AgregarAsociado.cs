@@ -16,6 +16,7 @@ namespace UI
     public partial class AgregarAsociado : MetroForm
     {
         private CooperativaManager cooperativa = new CooperativaManager();
+        private MensajeAUsuario mensajeAUsuario = new MensajeAUsuario();
 
         public AgregarAsociado()
         {

@@ -130,7 +130,7 @@ namespace UI
             verificarCreditosAtrasados();
             ConfigureDailyTask();
 
-            MetroMessageBox.Show(this, "Bienvenido a la Cooperativa", "Bienvenida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MetroMessageBox.Show(this, "Bienvenido a la Cooperativa", "Bienvenida", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void verificarCreditosAtrasados()
