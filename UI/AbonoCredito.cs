@@ -354,14 +354,14 @@ namespace UI
                 else if (proyecciones[i].Fecha.Month == mesActual && proyecciones[i].Fecha.Year == annoActual)
                 {
                     saldoTotal = proyecciones[i].Saldo_Total;
-                    if (proyecciones[i].Fecha <= fechaActual && saldoTotal < credito.Saldo_Total)
-                    {
-                        credito.Estado = "Atrasado";
-                        break;
-                    }
-                    else if (saldoTotal >= credito.Saldo_Total)
+                    if (saldoTotal >= credito.Saldo_Total)
                     {
                         credito.Estado = "Al día";
+                        break;
+                    }
+                    else //if (proyecciones[i].Fecha <= fechaActual && saldoTotal < credito.Saldo_Total)
+                    {
+                        credito.Estado = "Atrasado";
                         break;
                     }
                 }

@@ -85,7 +85,7 @@ namespace UI
 
         private void comboBoxAsociado_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void cargarAportes()
@@ -184,13 +184,13 @@ namespace UI
                     if (atrasos[i] > 0)
                     {
                         metroGridCreditos.Rows[i].Cells["Estado"].Style.BackColor = Color.Red;
-                    } 
+                    }
                     else if (atrasos[i] == 0)
                     {
                         metroGridCreditos.Rows[i].Cells["Estado"].Style.BackColor = Color.LightGreen;
                     }
                 }
-                
+
 
             }
             catch (Exception ex)
@@ -213,12 +213,7 @@ namespace UI
             foreach (var creditoActual in creditos)
             {
                 Credito credito = cooperativa.getCreditoPorID(creditoActual.ID);
-                if (credito.Estado.Equals("Al día") || credito.Estado.Equals("Aprobado"))
-                {
-                    atrasos.Add(0);
-                    continue;
-                }
-                else
+                if (credito.Estado.Equals("Atrasado"))
                 {
                     List<ProyeccionPagoCredito> proyecciones = cooperativa.getProyeccionesCredito(credito.ID);
                     for (int i = 0; i < proyecciones.Count; i++)
@@ -226,7 +221,7 @@ namespace UI
                         if (proyecciones[i].Fecha.Month == mesActual && proyecciones[i].Fecha.Year == annoActual)
                         {
                             saldoCredito = proyecciones[i].Saldo_Total;
-                            if (proyecciones[i].Fecha <= fechaActual && saldoCredito < credito.Saldo_Total)
+                            if (saldoCredito < credito.Saldo_Total)
                             {
                                 decimal totalCancelado = credito.Capital_Cancelado + credito.Intereses_Cancelados;
                                 decimal totalAtrasado = proyecciones[i].Monto_Abono * (i + 1) - totalCancelado;
@@ -239,6 +234,11 @@ namespace UI
                             }
                         }
                     }
+                }
+                else
+                {
+                    atrasos.Add(0);
+                    continue;
                 }
             }
             metroTextBoxTotalPendienteCreditos.Text = saldoTotal.ToString();
