@@ -129,7 +129,8 @@ namespace UI
         {
             verificarCreditosAtrasados();
             ConfigureDailyTask();
-
+            MensajeAUsuario mensajeAUsuario = new MensajeAUsuario();
+            //mensajeAUsuario.mostrar("Bienvenida", "Debe ingresar un monto utlizando una coma (,) como separador de decimales.", "Info");
             //MetroMessageBox.Show(this, "Bienvenido a la Cooperativa", "Bienvenida", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

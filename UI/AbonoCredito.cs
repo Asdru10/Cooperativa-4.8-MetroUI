@@ -13,6 +13,7 @@ namespace UI
         private CooperativaManager cooperativa = new CooperativaManager();
         private List<Asociado> asociados = new List<Asociado>();
         private Credito creditoAcutal;
+        private MensajeAUsuario mensaje = new MensajeAUsuario();
 
         public AbonoCredito()
         {
@@ -57,8 +58,8 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al cargar asociados", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al cargar asociados", ex.Message, "error");
             }
         }
 
@@ -80,7 +81,8 @@ namespace UI
                 List<Credito> creditos = cooperativa.getCreditosAsociado(asociados[metroComboBoxAsociado.SelectedIndex].Cedula);
                 if (creditos.Count == 0)
                 {
-                    MessageBox.Show("El asociado no tiene créditos", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Aviso", "El asociado no tiene créditos", "info");
                     return;
                 }
                 else
@@ -96,7 +98,8 @@ namespace UI
 
                     if (creditosActivos.Count == 0)
                     {
-                        MessageBox.Show("El asociado no tiene créditos activos", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        mensaje = new MensajeAUsuario();
+                        mensaje.mostrar("Aviso", "El asociado no tiene créditos activos", "info");
                     }
                     metroGridCreditos.DataSource = creditosActivos;
 
@@ -117,7 +120,8 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al cargar créditos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al cargar créditos", ex.Message, "error");
             }
         }
 
@@ -142,7 +146,8 @@ namespace UI
             if (metroTextBoxSaldoActual.Text.Trim().Equals(""))
             {
                 metroTextBoxMontoAbono.Text = "";
-                MessageBox.Show("Seleccione un crédito para abonar", "Error de crédito seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de crédito seleccionado", "Seleccione un crédito para abonar", "error");
                 return;
             }
             else if (metroTextBoxMontoAbono.Text.Trim() != "")
@@ -153,14 +158,16 @@ namespace UI
                     {
                         metroTextBoxMontoAbono.Text = "";
                         metroTextBoxMontoAbono.Focus();
-                        MessageBox.Show("El monto de abono no debe superar el saldo del crédito", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        mensaje = new MensajeAUsuario();
+                        mensaje.mostrar("Error de monto", "El monto de abono no debe superar el saldo del crédito", "error");
                         return;
                     }
                     else if (Convert.ToDecimal(metroTextBoxMontoAbono.Text) <= 0)
                     {
                         metroTextBoxMontoAbono.Text = "";
                         metroTextBoxMontoAbono.Focus();
-                        MessageBox.Show("El monto de abono debe ser mayor a cero.", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        mensaje = new MensajeAUsuario();
+                        mensaje.mostrar("Error de monto", "El monto de abono debe ser mayor a cero.", "error");
                         return;
                     }
                     decimal monto = Convert.ToDecimal(metroTextBoxMontoAbono.Text);
@@ -172,7 +179,8 @@ namespace UI
                 else
                 {
                     metroTextBoxMontoAbono.Focus();
-                    MessageBox.Show("Debe ingresar un monto conformado por números.", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Error de monto", "Debe ingresar un monto conformado por números.", "error");
                     return;
                 }
             }
@@ -188,7 +196,8 @@ namespace UI
             if (metroTextBoxSaldoActual.Text.Trim().Equals(""))
             {
                 metroTextBoxMontoAbono.Text = "";
-                MessageBox.Show("Seleccione un crédito para abonar", "Error de crédito seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de crédito seleccionado", "Seleccione un crédito para abonar", "error");
                 return;
             }
 
@@ -202,13 +211,15 @@ namespace UI
         {
             if (metroComboBoxAsociado.SelectedIndex < 0)
             {
-                MessageBox.Show("Seleccione un asociado", "Error de asociado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de asociado", "Seleccione un asociado", "error");
                 metroComboBoxAsociado.DroppedDown = true;
                 return;
             }
             else if (metroDateTimeFechaAbono.Value < metroDateTimeFechaAbono.MinDate && metroDateTimeFechaAbono.Value > metroDateTimeFechaAbono.MaxDate)
             {
-                MessageBox.Show("La fecha seleccionada está fuera del rango permitido.", "Error de fecha", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de fecha", "La fecha seleccionada está fuera del rango permitido.", "error");
                 return;
             }
 
@@ -284,17 +295,20 @@ namespace UI
                 limpiarCampos();
                 if (creditoAcutal.Saldo_Total == 0)
                 {
-                    MessageBox.Show("Crédito cancelado");
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Completado", "Crédito cancelado", "check");
                 }
                 else
                 {
-                    MessageBox.Show("Abono realizado con éxito");
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Completado", "Abono realizado con éxito", "check");
                 }
                 cargarCreditos();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al abonar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al abonar", ex.Message, "error");
             }
 
         }

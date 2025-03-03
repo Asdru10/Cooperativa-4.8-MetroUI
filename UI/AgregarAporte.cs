@@ -18,6 +18,7 @@ namespace UI
     {
         private CooperativaManager cooperativa = new CooperativaManager();
         private List<Asociado> asociados;
+        private MensajeAUsuario mensaje = new MensajeAUsuario();
 
         public AgregarAporte()
         {
@@ -56,8 +57,8 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al cargar asociados", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al cargar asociados", ex.Message, "error");
             }
         }
 
@@ -68,24 +69,28 @@ namespace UI
 
             if (metroComboBoxAsociado.SelectedIndex < 0)
             {
-                MessageBox.Show("Seleccione un asociado", "Error de asociado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de asociado", "Seleccione un asociado", "error");
                 metroComboBoxAsociado.DroppedDown = true;
                 return;
             }
             else if (metroTextBoxDetalle.Text.Trim().Equals(""))
             {
                 metroTextBoxDetalle.Focus();
-                MessageBox.Show("Ingrese un detalle", "Error de detalle", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de detalle", "Ingrese un detalle", "error");
                 return;
             }
             else if (metroDateTimeFecha.Value < metroDateTimeFecha.MinDate && metroDateTimeFecha.Value > metroDateTimeFecha.MaxDate)
             {
-                MessageBox.Show("La fecha seleccionada está fuera del rango permitido.", "Error de fecha", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de fecha", "La fecha seleccionada está fuera del rango permitido.", "error");
                 return;
             }
             else if (tipoAporte.Equals(""))
             {
-                MessageBox.Show("Seleccione un tipo de aporte", "Error de tipo de aporte", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de tipo de aporte", "Seleccione un tipo de aporte", "error");
                 return;
             }
 
@@ -105,11 +110,13 @@ namespace UI
                 cooperativa.agregarAporte(aporte);
                 limpiarCampos();
                 cargarAportes();
-                MessageBox.Show("Aporte agregado exitosamente");
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Completado", "Aporte agregado exitosamente", "check");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al agregar aporte", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al agregar aporte", ex.Message, "error");
             }
 
         }
@@ -134,7 +141,8 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al cargar aportes", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al cargar aportes", ex.Message, "error");
             }
         }
 
@@ -163,13 +171,15 @@ namespace UI
             if (!decimal.TryParse(metroTextBoxMonto.Text.Trim(), out decimal monto))
             {
                 metroTextBoxMonto.Focus();
-                MessageBox.Show("Debe ingresar un monto utlizando una coma (,) como separador de decimales.", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de monto", "Debe ingresar un monto utlizando una coma (,) como separador de decimales.", "error");
                 return;
             }
             else if (Convert.ToDecimal(metroTextBoxMonto.Text.Trim()) <= 0)
             {
                 metroTextBoxMonto.Focus();
-                MessageBox.Show("Ingrese un monto mayor a cero.", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de monto", "Ingrese un monto mayor a cero.", "error");
                 return;
             }
             else

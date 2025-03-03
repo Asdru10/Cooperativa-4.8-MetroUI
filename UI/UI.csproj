@@ -127,6 +127,12 @@
     <Compile Include="MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="PreguntaAUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PreguntaAUsuario.Designer.cs">
+      <DependentUpon>PreguntaAUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AbonoCredito.resx">
@@ -165,6 +171,9 @@
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PreguntaAUsuario.resx">
+      <DependentUpon>PreguntaAUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -173,6 +182,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -197,6 +207,33 @@
       <Project>{0EE0FA10-D6E7-40D8-B88E-F69CF5F9DDFD}</Project>
       <Name>DOM</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="iconos\check1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="iconos\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="iconos\advertencia1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="iconos\error1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\advertencia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\pregunta.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -18,6 +18,8 @@ namespace UI
         private CooperativaManager cooperativa = new CooperativaManager();
         private List<Asociado> asociados;
         private Constantes constantes = new Constantes();
+        private MensajeAUsuario mensaje = new MensajeAUsuario();
+        private PreguntaAUsuario pregunta = new PreguntaAUsuario();
 
         public AgregarCredito()
         {
@@ -64,8 +66,8 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al cargar asociados", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al cargar asociados", ex.Message, "error");
             }
         }
 
@@ -77,7 +79,8 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al cargar créditos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al cargar créditos", ex.Message, "error");
             }
         }
 
@@ -85,30 +88,35 @@ namespace UI
         {
             if (metroComboBoxAsociado.SelectedIndex < 0)
             {
-                MessageBox.Show("Seleccione un asociado", "Error de asociado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de asociado", "Seleccione un asociado", "error");
                 metroComboBoxAsociado.DroppedDown = true;
                 return;
             }
             else if (metroDateTimeFechaInicio.Value < metroDateTimeFechaInicio.MinDate && metroDateTimeFechaInicio.Value > metroDateTimeFechaInicio.MaxDate)
             {
-                MessageBox.Show("La fecha de inicio está fuera del rango permitido.", "Error de fecha", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de fecha", "La fecha de inicio está fuera del rango permitido", "error");
                 return;
             }
             else if (!decimal.TryParse(metroTextBoxCapitalCredito.Text.Trim(), out decimal monto))
             {
                 metroTextBoxCapitalCredito.Focus();
-                MessageBox.Show("Debe ingresar un monto utlizando una coma (,) como separador de decimales.", "Error de capital", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de capital", "Debe ingresar un monto utlizando una coma (,) como separador de decimales.", "error");
                 return;
             }
             else if (Convert.ToDecimal(metroTextBoxCapitalCredito.Text.Trim()) <= 0)
             {
                 metroTextBoxCapitalCredito.Focus();
-                MessageBox.Show("Ingrese un monto de capital válido a desembolsar", "Error de capital", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de capital", "Ingrese un monto de capital válido a desembolsar", "error");
                 return;
             }
             else if (calcularLiquidez() < Convert.ToDecimal(metroTextBoxCapitalCredito.Text.Trim()))
             {
-                MessageBox.Show("No se puede aprobar el crédito, el saldo supera el capital disponible", "Error de liquidez", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de liquidez", "No se puede aprobar el crédito, el saldo supera el capital disponible", "error");
                 return;
             }
             else if (!aprobarCredito())
@@ -148,11 +156,13 @@ namespace UI
                 cooperativa.crearProyeccion(crearProyeccion(creditoActual));
                 limpiarCampos();
                 cargarCreditos();
-                MessageBox.Show("Crédito agregado exitosamente");
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Completado", "Crédito agregado exitosamente", "check");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al agregar crédito", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al agregar crédito", ex.Message, "error");
             }
         }
 
@@ -200,7 +210,8 @@ namespace UI
             catch
             {
                 metroDateTimeFechaInicio.Value = DateTime.Now;
-                MessageBox.Show("Error al calcular fecha final", "Error de fecha", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de fecha", "Error al calcular fecha final", "error");
             }
 
         }
@@ -220,7 +231,8 @@ namespace UI
             }
             catch
             {
-                MessageBox.Show("Error al calcular intereses", "Error de intereses", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de intereses", "Error al calcular intereses", "error");
             }
         }
 
@@ -239,7 +251,8 @@ namespace UI
             }
             catch
             {
-                MessageBox.Show("Error al calcular saldo", "Error de saldo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de saldo", "Error al calcular saldo", "error");
             }
         }
 
@@ -257,7 +270,8 @@ namespace UI
             }
             catch
             {
-                MessageBox.Show("Error al calcular cuota", "Error de cuota", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de cuota", "Error al calcular cuota", "error");
             }
 
         }
@@ -296,7 +310,8 @@ namespace UI
             } 
             else
             {
-                MessageBox.Show("El capital de crédito debe ser un número", "Error de capital de crédito", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de capital", "El capital de crédito debe ser un número", "error");
                 metroTextBoxCapitalCredito.Text = "";
                 metroTextBoxCapitalCredito.Focus();
                 return;
@@ -310,7 +325,8 @@ namespace UI
             {
                 if (metroTextBoxTasaInteres.Text.Trim().Equals("") || Convert.ToDecimal(metroTextBoxTasaInteres.Text.Trim()) < 0 || Convert.ToDecimal(metroTextBoxTasaInteres.Text.Trim()) > 100)
                 {
-                    MessageBox.Show("La tasa de interés debe ser mayor a 0 y menor a 100", "Error de tasa de interés", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Error de tasa de interés", "La tasa de interés debe ser mayor a 0 y menor a 100", "error");
                     metroTextBoxTasaInteres.Text = "12";
                     metroTextBoxTasaInteres.Focus();
                     return;
@@ -322,7 +338,8 @@ namespace UI
             }
             else
             {
-                MessageBox.Show("La tasa de interés debe ser un número", "Error de tasa de interés", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de tasa de interés", "La tasa de interés debe ser un número", "error");
                 metroTextBoxTasaInteres.Text = "12";
                 metroTextBoxTasaInteres.Focus();
                 return;
@@ -395,11 +412,17 @@ namespace UI
                 DialogResult resultado;
                 if (capacidadCredito < 0)
                 {
-                    resultado = MessageBox.Show("El asociado no ha realizado los suficientes aportes para poder solicitar este crédito.\nSu capacidad de crédito es negativa. \n¿Desea continuar?", "Exceso de Crédito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    pregunta = new PreguntaAUsuario();
+                    pregunta.titulo("Exceso de Crédito");
+                    pregunta.mensaje("El asociado no ha realizado los suficientes aportes para poder solicitar este crédito.\nSu capacidad de crédito es negativa. \n¿Desea continuar?");
+                    resultado = pregunta.ShowDialog();
                 }
                 else
                 {
-                    resultado = MessageBox.Show("El asociado no ha realizado los suficientes aportes para poder solicitar este crédito.\nSu capacidad de crédito es de " + capacidadCredito + " colones. \n¿Desea continuar?", "Exceso de Crédito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    pregunta = new PreguntaAUsuario();
+                    pregunta.titulo("Exceso de Crédito");
+                    pregunta.mensaje("El asociado no ha realizado los suficientes aportes para poder solicitar este crédito.\nSu capacidad de crédito es de " + capacidadCredito + " colones. \n¿Desea continuar?");
+                    resultado = pregunta.ShowDialog();
                 }
 
                 if (resultado == DialogResult.Yes)
@@ -408,7 +431,8 @@ namespace UI
                 }
                 else
                 {
-                    MessageBox.Show("Ha decidido no aprobar el crédito", "Reprobado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Crédito no aprobado", "Ha decidido no aprobar el crédito", "advertencia");
                     return false;
                 }
             }

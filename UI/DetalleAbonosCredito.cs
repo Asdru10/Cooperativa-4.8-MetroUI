@@ -17,6 +17,7 @@ namespace UI
     {
         private CooperativaManager cooperativa = new CooperativaManager();
         private List<Asociado> asociados;
+        private MensajeAUsuario mensaje = new MensajeAUsuario();
         private Credito creditoAcutal;
 
         public DetalleAbonosCredito()
@@ -69,8 +70,8 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al cargar asociados", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al cargar asociados", ex.Message, "error");
             }
         }
 
@@ -87,7 +88,8 @@ namespace UI
                 List<Credito> creditos = cooperativa.getCreditosAsociado(asociados[metroComboBoxAsociado.SelectedIndex].Cedula);
                 if (creditos.Count == 0)
                 {
-                    MessageBox.Show("El asociado no tiene créditos", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Aviso", "El asociado no tiene créditos", "info");
                     return;
                 }
                 else
@@ -103,7 +105,8 @@ namespace UI
 
                     if (creditosActivos.Count == 0)
                     {
-                        MessageBox.Show("El asociado no tiene créditos activos", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        mensaje = new MensajeAUsuario();
+                        mensaje.mostrar("Aviso", "El asociado no tiene créditos activos", "info");
                     }
                     metroGridCreditos.DataSource = creditosActivos;
 
@@ -124,7 +127,8 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al cargar créditos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al cargar créditos", ex.Message, "error");
             }
         }
 
@@ -142,7 +146,8 @@ namespace UI
                 metroGridAbonos.DataSource = cooperativa.getAbonosCredito(id);
                 if (metroGridAbonos.Rows.Count == 0)
                 {
-                    MessageBox.Show("El crédito no tiene abonos", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Aviso", "El crédito no tiene abonos", "info");
                 }
             }
             catch (Exception ex)

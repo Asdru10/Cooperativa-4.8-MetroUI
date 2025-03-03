@@ -16,7 +16,7 @@ namespace UI
     public partial class AgregarAsociado : MetroForm
     {
         private CooperativaManager cooperativa = new CooperativaManager();
-        private MensajeAUsuario mensajeAUsuario = new MensajeAUsuario();
+        private MensajeAUsuario mensaje = new MensajeAUsuario();
 
         public AgregarAsociado()
         {
@@ -41,36 +41,42 @@ namespace UI
                 if (!int.TryParse(metroTextBoxCedula.Text.Trim(), out int cedula))
                 {
                     metroTextBoxCedula.Focus();
-                    MessageBox.Show("La cédula debe ser conformada por números", "Error de cédula", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Error de cédula", "La cédula debe ser conformada por números", "error");
                     return;
                 }
                 else if (metroTextBoxCedula.Text.Trim().Length != 9 || metroTextBoxCedula.Text.Trim().Equals(""))
                 {
                     metroTextBoxCedula.Focus();
-                    MessageBox.Show("La cédula debe tener 9 dígitos", "Error de cédula", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Error de cédula", "La cédula debe tener 9 dígitos", "error");
                     return;
                 }
                 else if (metroTextBoxNombre.Text.Trim().Equals(""))
                 {
                     metroTextBoxNombre.Focus();
-                    MessageBox.Show("Debe agregar un nombre", "Error de nombre", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Error de nombre", "Debe agregar un nombre", "error");
                     return;
                 }
                 else if (metroTextBoxPrimerApellido.Text.Trim().Equals(""))
                 {
                     metroTextBoxPrimerApellido.Focus();
-                    MessageBox.Show("Debe agregar un primer apellido", "Error de apellido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Error de apellido", "Debe agregar un primer apellido", "error");
                     return;
                 }
                 else if (metroTextBoxSegundoApellido.Text.Trim().Equals(""))
                 {
                     metroTextBoxSegundoApellido.Focus();
-                    MessageBox.Show("Debe agregar un segundo apellido", "Error de apellido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Error de apellido", "Debe agregar un segundo apellido", "error");
                     return;
                 }
                 else if (metroDateTimeFechaNacimento.Value < metroDateTimeFechaNacimento.MinDate || metroDateTimeFechaNacimento.Value > metroDateTimeFechaNacimento.MaxDate)
                 {
-                    MessageBox.Show("La fecha seleccionada está fuera del rango permitido.", "Error de fecha", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Error de fecha", "La fecha seleccionada está fuera del rango permitido.", "error");
                     return;
                 }
 
@@ -84,11 +90,13 @@ namespace UI
                 cooperativa.agregarAsociado(asociado);
                 limpiarCampos();
                 cargarAsociados();
-                MessageBox.Show("Asociado agregado correctamente");
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Completado", "Asociado agregado correctamente", "check");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al agregar asociado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al agregar asociado", ex.Message, "error");
             }
         }
         private void textBoxPrimerApellid5o_TextChanged(object sender, EventArgs e)
@@ -104,7 +112,8 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al cargar asociados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al cargar asociados", ex.Message, "error");
             }
         }
 

@@ -17,6 +17,7 @@ namespace UI
     {
         private CooperativaManager cooperativa = new CooperativaManager();
         private List<Asociado> asociados;
+        private MensajeAUsuario mensaje = new MensajeAUsuario();
 
         public AgregarAhorro()
         {
@@ -46,8 +47,8 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al cargar asociados", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al cargar asociados", ex.Message, "error");
             }
         }
 
@@ -55,7 +56,8 @@ namespace UI
         {
             if (metroComboBoxAsociado.SelectedIndex < 0)
             {
-                MessageBox.Show("Seleccione un asociado", "Error de asociado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de asociado", "Seleccione un asociado", "error");
                 metroComboBoxAsociado.DroppedDown = true;
                 return;
             }
@@ -76,11 +78,13 @@ namespace UI
 
                 limpiarCampos();
                 cargarAhorros();
-                MessageBox.Show("Ahorro agregado exitosamente");
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Completado", "Ahorro agregado exitosamente", "check");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al agregar ahorro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al agregar ahorro", ex.Message, "error");
             }
         }
 
@@ -104,7 +108,8 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al cargar ahorros", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al cargar ahorros", ex.Message, "error");
             }
         }
 
@@ -113,13 +118,15 @@ namespace UI
             if (!decimal.TryParse(metroTextBoxMonto.Text.Trim(), out decimal monto))
             {
                 metroTextBoxMonto.Focus();
-                MessageBox.Show("Debe ingresar un monto utlizando una coma (,) como separador de decimales.", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de monto", "Debe ingresar un monto utlizando una coma (,) como separador de decimales.", "error");
                 return;
             }
             else if (Convert.ToDecimal(metroTextBoxMonto.Text.Trim()) <= 0)
             {
                 metroTextBoxMonto.Focus();
-                MessageBox.Show("Ingrese un monto mayor a cero", "Error de monto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de monto", "Ingrese un monto mayor a cero", "error");
                 return;
             }
             else

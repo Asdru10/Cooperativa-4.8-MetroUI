@@ -18,6 +18,7 @@ namespace UI
 
         private CooperativaManager cooperativa = new CooperativaManager();
         Constantes constantes = new Constantes();
+        private MensajeAUsuario mensaje = new MensajeAUsuario();
         public bool mensual;
         public bool anual;
 
@@ -142,12 +143,14 @@ namespace UI
         {
             if ((metroComboBoxMes.SelectedIndex + 1) > DateTime.Now.Month && Convert.ToInt32(metroComboBoxAnno.Text) == DateTime.Now.Year)
             {
-                MessageBox.Show("Aún no hay registros de " + metroComboBoxMes.Text + " en el año actual.", "Error de Fecha", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de Fecha", "Aún no hay registros de " + metroComboBoxMes.Text + " en el año actual.", "error");
                 return false;
             }
             else if ((metroComboBoxMes.SelectedIndex + 1) < constantes.FECHA_INICIO_COOPERATIVA.Month && Convert.ToInt32(metroComboBoxAnno.Text) == constantes.FECHA_INICIO_COOPERATIVA.Year)
             {
-                MessageBox.Show("El mes seleccionado no es válido en " + metroComboBoxAnno.Text, "Error de Fecha", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de Fecha", "La cooperativa no existía en " + metroComboBoxMes.Text + " del año " + metroComboBoxAnno.Text, "error");
                 return false;
             }
             else
@@ -160,7 +163,8 @@ namespace UI
         {
             if (Convert.ToInt32(metroComboBoxAnno.Text) < constantes.FECHA_INICIO_COOPERATIVA.Year || Convert.ToInt32(metroComboBoxAnno.Text) > DateTime.Now.Year)
             {
-                MessageBox.Show("El año seleccionado no es válido", "Error de Fecha", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de Fecha", "El año seleccionado no es válido", "error");
                 return false;
             }
             else

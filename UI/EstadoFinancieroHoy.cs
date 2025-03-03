@@ -16,6 +16,7 @@ namespace UI
     public partial class EstadoFinancieroHoy : MetroForm
     {
         private CooperativaManager cooperativa = new CooperativaManager();
+        private MensajeAUsuario mensaje = new MensajeAUsuario();
 
         public EstadoFinancieroHoy()
         {

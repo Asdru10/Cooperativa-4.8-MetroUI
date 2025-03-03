@@ -20,6 +20,7 @@ namespace UI
         private CooperativaManager cooperativa = new CooperativaManager();
         private List<Asociado> asociados = new List<Asociado>();
         private Constantes constantes = new Constantes();
+        private MensajeAUsuario mensaje = new MensajeAUsuario();
 
         public EstadoCta()
         {
@@ -77,8 +78,8 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al cargar asociados", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al cargar asociados", ex.Message, "error");
             }
         }
 
@@ -103,7 +104,8 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al cargar aportes", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al cargar aportes", ex.Message, "error");
             }
         }
 
@@ -124,7 +126,8 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al cargar ahorros", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al cargar ahorros", ex.Message, "error");
             }
         }
 
@@ -192,7 +195,8 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al cargar créditos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al cargar créditos", ex.Message, "error");
             }
         }
 
