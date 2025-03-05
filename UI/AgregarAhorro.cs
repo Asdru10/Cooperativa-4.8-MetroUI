@@ -32,6 +32,7 @@ namespace UI
             metroGridAhorros.Columns["Cedula_Asociado"].HeaderText = "Cédula Asociado";
             metroGridAhorros.Columns["ID_Estado_Financiero_Mensual"].Visible = false;
             metroGridAhorros.Columns["Periodo_Estado_Financiero_Mensual"].HeaderText = "Periodo";
+            metroGridAhorros.Columns["Monto"].DefaultCellStyle.Format = "N2";
         }
 
         private void cargarAsociados()

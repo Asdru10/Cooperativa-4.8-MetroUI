@@ -43,6 +43,15 @@ namespace UI
             metroGridCreditos.Columns["Cuota_Intereses"].Visible = false;
             metroGridCreditos.Columns["Total_Cuota"].HeaderText = "Cuota Mensual Total";
             metroGridCreditos.Columns["Total_Credito"].HeaderText = "Crédito Total";
+            metroGridCreditos.Columns["Capital_Desembolsado"].DefaultCellStyle.Format = "N2";
+            metroGridCreditos.Columns["Capital_Cancelado"].DefaultCellStyle.Format = "N2";
+            metroGridCreditos.Columns["Saldo_Capital"].DefaultCellStyle.Format = "N2";
+            metroGridCreditos.Columns["Intereses"].DefaultCellStyle.Format = "N2";
+            metroGridCreditos.Columns["Intereses_Cancelados"].DefaultCellStyle.Format = "N2";
+            metroGridCreditos.Columns["Saldo_Intereses"].DefaultCellStyle.Format = "N2";
+            metroGridCreditos.Columns["Saldo_Total"].DefaultCellStyle.Format = "N2";
+            metroGridCreditos.Columns["Total_Cuota"].DefaultCellStyle.Format = "N2";
+            metroGridCreditos.Columns["Total_Credito"].DefaultCellStyle.Format = "N2";
         }
 
         private void cargarAsociados()

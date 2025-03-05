@@ -242,7 +242,7 @@ namespace UI
             // metroGridAportes
             // 
             this.metroGridAportes.AllowUserToResizeRows = false;
-            this.metroGridAportes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.metroGridAportes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.metroGridAportes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.metroGridAportes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGridAportes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
@@ -282,7 +282,7 @@ namespace UI
             this.metroGridAportes.RowHeadersWidth = 51;
             this.metroGridAportes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGridAportes.RowTemplate.Height = 24;
-            this.metroGridAportes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.metroGridAportes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.metroGridAportes.Size = new System.Drawing.Size(748, 150);
             this.metroGridAportes.TabIndex = 72;
             // 

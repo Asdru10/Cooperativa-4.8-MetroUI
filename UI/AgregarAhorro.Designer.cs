@@ -121,7 +121,7 @@ namespace UI
             // metroGridAhorros
             // 
             this.metroGridAhorros.AllowUserToResizeRows = false;
-            this.metroGridAhorros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.metroGridAhorros.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.metroGridAhorros.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.metroGridAhorros.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGridAhorros.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
@@ -161,7 +161,7 @@ namespace UI
             this.metroGridAhorros.RowHeadersWidth = 51;
             this.metroGridAhorros.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGridAhorros.RowTemplate.Height = 24;
-            this.metroGridAhorros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.metroGridAhorros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.metroGridAhorros.Size = new System.Drawing.Size(499, 150);
             this.metroGridAhorros.TabIndex = 74;
             // 

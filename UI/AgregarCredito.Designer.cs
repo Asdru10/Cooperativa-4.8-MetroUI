@@ -351,7 +351,7 @@ namespace UI
             // metroGridCreditos
             // 
             this.metroGridCreditos.AllowUserToResizeRows = false;
-            this.metroGridCreditos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.metroGridCreditos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.metroGridCreditos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.metroGridCreditos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGridCreditos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
@@ -391,7 +391,7 @@ namespace UI
             this.metroGridCreditos.RowHeadersWidth = 51;
             this.metroGridCreditos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGridCreditos.RowTemplate.Height = 24;
-            this.metroGridCreditos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.metroGridCreditos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.metroGridCreditos.Size = new System.Drawing.Size(845, 155);
             this.metroGridCreditos.TabIndex = 75;
             this.metroGridCreditos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGridCreditos_CellContentClick);

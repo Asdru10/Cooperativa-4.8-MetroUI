@@ -1,5 +1,6 @@
 ﻿using BL;
 using DOM;
+using MetroFramework.Controls;
 using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
@@ -36,11 +37,14 @@ namespace UI
             metroGridAportes.Columns["Cedula_Asociado"].Visible = false;
             metroGridAportes.Columns["ID_Estado_Financiero_Mensual"].Visible = false;
             metroGridAportes.Columns["Periodo_Estado_Financiero_Mensual"].Visible = false;
+            metroGridAportes.Columns["Monto"].DefaultCellStyle.Format = "N2";
 
             metroGridAhorros.DataSource = new List<Ahorro>();
             metroGridAhorros.Columns["Cedula_Asociado"].Visible = false;
             metroGridAhorros.Columns["ID_Estado_Financiero_Mensual"].Visible = false;
             metroGridAhorros.Columns["Periodo_Estado_Financiero_Mensual"].Visible = false;
+            metroGridAhorros.Columns["Monto"].DefaultCellStyle.Format = "N2";
+
 
             metroGridCreditos.DataSource = new List<Credito>();
             metroGridCreditos.Columns["Cedula_Asociado"].Visible = false;
@@ -62,7 +66,10 @@ namespace UI
             metroGridCreditos.Columns.Add("TotalCancelado", "Total Cancelado");
             metroGridCreditos.Columns.Add("TotalAtrasado", "Total Atrasado");
 
-
+            metroGridCreditos.Columns["Saldo_Total"].DefaultCellStyle.Format = "N2";
+            metroGridCreditos.Columns["Total_Credito"].DefaultCellStyle.Format = "N2";
+            metroGridCreditos.Columns["TotalCancelado"].DefaultCellStyle.Format = "N2";
+            metroGridCreditos.Columns["TotalAtrasado"].DefaultCellStyle.Format = "N2";
         }
 
         private void cargarAsociados()
@@ -98,7 +105,7 @@ namespace UI
                 {
                     totalAportes += aporte.Monto;
                 }
-                metroTextBoxTotalAportes.Text = totalAportes.ToString();
+                metroTextBoxTotalAportes.Text = totalAportes.ToString("N2");
                 metroGridAportes.DataSource = aportes;
                 calcularCuotasPendientesAporte(aportes);
             }
@@ -121,7 +128,7 @@ namespace UI
                     totalAhorros += ahorro.Monto;
                 }
 
-                metroTextBoxTotalAhorros.Text = totalAhorros.ToString();
+                metroTextBoxTotalAhorros.Text = totalAhorros.ToString("N2");
                 metroGridAhorros.DataSource = ahorros;
             }
             catch (Exception ex)
@@ -158,6 +165,7 @@ namespace UI
                     }
                 }
 
+                metroTextBoxStatusCreditos.UseCustomForeColor = true;
                 if (atrasado)
                 {
                     metroTextBoxStatusCreditos.Text = "Atrasado";
@@ -168,7 +176,7 @@ namespace UI
                     metroTextBoxStatusCreditos.Text = "Al día";
                     metroTextBoxStatusCreditos.ForeColor = Color.Green;
                 }
-                metroTextBoxSaldoCreditos.Text = saldoCreditos.ToString();
+                metroTextBoxSaldoCreditos.Text = saldoCreditos.ToString("N2");
 
                 metroGridCreditos.DataSource = creditosActivos;
                 List<decimal> atrasos = calcularCuotasPendientesCredito(creditosActivos);
@@ -179,7 +187,7 @@ namespace UI
                     decimal capitalCancelado = Convert.ToDecimal(metroGridCreditos.Rows[i].Cells["Capital_Cancelado"].Value ?? 0);
 
                     metroGridCreditos.Rows[i].Cells["TotalCancelado"].Value = interesesCancelados + capitalCancelado;
-                    metroGridCreditos.Rows[i].Cells["TotalAtrasado"].Value = atrasos[i].ToString();
+                    metroGridCreditos.Rows[i].Cells["TotalAtrasado"].Value = atrasos[i].ToString("N2");
 
                     if (atrasos[i] > 0)
                     {
@@ -241,7 +249,7 @@ namespace UI
                     continue;
                 }
             }
-            metroTextBoxTotalPendienteCreditos.Text = saldoTotal.ToString();
+            metroTextBoxTotalPendienteCreditos.Text = saldoTotal.ToString("N2");
             return atrasos;
         }
 
@@ -324,7 +332,7 @@ namespace UI
             }
 
             decimal totalPendiente = totalAportesRequeridos - totalAportes;
-            metroTextBoxTotalPendienteAportes.Text = totalPendiente.ToString();
+            metroTextBoxTotalPendienteAportes.Text = totalPendiente.ToString("N2");
         }
 
         private void label7_Click(object sender, EventArgs e)

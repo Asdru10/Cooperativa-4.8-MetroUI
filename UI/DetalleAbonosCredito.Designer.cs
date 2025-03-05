@@ -95,7 +95,7 @@ namespace UI
             // metroGridCreditos
             // 
             this.metroGridCreditos.AllowUserToResizeRows = false;
-            this.metroGridCreditos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.metroGridCreditos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.metroGridCreditos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.metroGridCreditos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGridCreditos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
@@ -135,7 +135,7 @@ namespace UI
             this.metroGridCreditos.RowHeadersWidth = 51;
             this.metroGridCreditos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGridCreditos.RowTemplate.Height = 24;
-            this.metroGridCreditos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.metroGridCreditos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.metroGridCreditos.Size = new System.Drawing.Size(966, 186);
             this.metroGridCreditos.TabIndex = 87;
             this.metroGridCreditos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGridCreditos_CellClick);
@@ -144,7 +144,7 @@ namespace UI
             // metroGridAbonos
             // 
             this.metroGridAbonos.AllowUserToResizeRows = false;
-            this.metroGridAbonos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.metroGridAbonos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.metroGridAbonos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.metroGridAbonos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGridAbonos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
@@ -184,7 +184,7 @@ namespace UI
             this.metroGridAbonos.RowHeadersWidth = 51;
             this.metroGridAbonos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGridAbonos.RowTemplate.Height = 24;
-            this.metroGridAbonos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.metroGridAbonos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.metroGridAbonos.Size = new System.Drawing.Size(792, 186);
             this.metroGridAbonos.TabIndex = 88;
             // 

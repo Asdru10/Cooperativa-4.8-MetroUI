@@ -92,9 +92,9 @@ namespace UI
 
             liquidez = ingresos - egresos;
 
-            metroTextBoxIngresos.Text = ingresos.ToString();
-            metroTextBoxEgresos.Text = egresos.ToString();
-            metroTextBoxLiquidez.Text = liquidez.ToString();
+            metroTextBoxIngresos.Text = ingresos.ToString("N2");
+            metroTextBoxEgresos.Text = egresos.ToString("N2");
+            metroTextBoxLiquidez.Text = liquidez.ToString("N2");
         }
 
         private void calcularCierreAnual()
@@ -129,9 +129,9 @@ namespace UI
 
             liquidez = ingresos - egresos;
 
-            metroTextBoxIngresos.Text = ingresos.ToString();
-            metroTextBoxEgresos.Text = egresos.ToString();
-            metroTextBoxLiquidez.Text = liquidez.ToString();
+            metroTextBoxIngresos.Text = ingresos.ToString("N2");
+            metroTextBoxEgresos.Text = egresos.ToString("N2");
+            metroTextBoxLiquidez.Text = liquidez.ToString("N2");
         }
 
         private void comboBoxMes_SelectedIndexChanged(object sender, EventArgs e)
