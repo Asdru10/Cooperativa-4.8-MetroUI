@@ -27,6 +27,9 @@ namespace UI
         private void AgregarAhorro_Load(object sender, EventArgs e)
         {
             asociados = cooperativa.getAsociados();
+            metroDateTimeFecha.MinDate = new DateTime(1900, 1, 1);
+            metroDateTimeFecha.MaxDate = DateTime.Now.AddYears(1);
+            metroDateTimeFecha.Value = DateTime.Now;
             cargarAsociados();
             cargarAhorros();
             metroGridAhorros.Columns["Cedula_Asociado"].HeaderText = "Cédula Asociado";
@@ -62,6 +65,12 @@ namespace UI
                 metroComboBoxAsociado.DroppedDown = true;
                 return;
             }
+            else if (metroDateTimeFecha.Value < metroDateTimeFecha.MinDate && metroDateTimeFecha.Value > metroDateTimeFecha.MaxDate)
+            {
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error de fecha", "La fecha seleccionada está fuera del rango permitido.", "error");
+                return;
+            }
 
             try
             {
@@ -69,7 +78,7 @@ namespace UI
                 Ahorro ahorro = new Ahorro();
                 ahorro.Cedula_Asociado = asociados[metroComboBoxAsociado.SelectedIndex].Cedula;
                 ahorro.Monto = Convert.ToDecimal(metroTextBoxMonto.Text.Trim());
-                ahorro.Fecha = DateTime.Now;
+                ahorro.Fecha = metroDateTimeFecha.Value;
 
                 agregarEstadoFinanciero();
                 EstadoFinancieroMensual estadoActual = cooperativa.getUltimoEstadoFinancieroMensual();
@@ -91,10 +100,10 @@ namespace UI
 
         private void agregarEstadoFinanciero()
         {
-            String periodoActual = DateTime.Now.Month + "" + DateTime.Now.Year;
+            String periodoActual = metroDateTimeFecha.Value.Month + "" + metroDateTimeFecha.Value.Year;
             EstadoFinancieroMensual estadoFinanciero = new EstadoFinancieroMensual();
             estadoFinanciero.Periodo = Convert.ToInt32(periodoActual);
-            estadoFinanciero.Fecha = DateTime.Now;
+            estadoFinanciero.Fecha = metroDateTimeFecha.Value;
             estadoFinanciero.Concepto = "Ahorro";
             estadoFinanciero.Monto = Convert.ToDecimal(metroTextBoxMonto.Text.Trim());
             estadoFinanciero.Identificador = "S";
@@ -142,6 +151,7 @@ namespace UI
         {
             metroComboBoxAsociado.SelectedIndex = -1;
             metroTextBoxMonto.Text = "";
+            metroDateTimeFecha.Value = DateTime.Now;
         }
 
         private void buttonAgregar_Click(object sender, EventArgs e)
