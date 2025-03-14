@@ -51,7 +51,7 @@ namespace UI
             metroGridCreditos.Columns["Total_Cuota"].DefaultCellStyle.Format = "N2";
             metroGridCreditos.Columns["Total_Credito"].DefaultCellStyle.Format = "N2";
             metroDateTimeFechaInicio.MinDate = new DateTime(1900, 1, 1);
-            metroDateTimeFechaInicio.MaxDate = DateTime.Now.AddYears(3);
+            metroDateTimeFechaInicio.MaxDate = DateTime.Now.AddMonths(1);
             metroDateTimeFechaInicio.Value = DateTime.Now;
             calcularFechaFinal();
             metroTextBoxTasaInteres.Text = constantes.PORCENTAJE_INTERESES_CREDITO.ToString();
@@ -177,7 +177,7 @@ namespace UI
             estadoFinanciero.Periodo = Convert.ToInt32(periodoActual);
             estadoFinanciero.Fecha = metroDateTimeFechaInicio.Value;
             estadoFinanciero.Concepto = "Crédito";
-            estadoFinanciero.Monto = Convert.ToDecimal(metroTextBoxSaldoCredito.Text.Trim());
+            estadoFinanciero.Monto = Convert.ToDecimal(metroTextBoxCapitalCredito.Text.Trim());
             estadoFinanciero.Identificador = "R";
             cooperativa.agregarEstadoFinancieroMensual(estadoFinanciero);
         }

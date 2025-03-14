@@ -1,5 +1,6 @@
 ﻿using DAO;
 using DOM;
+using System;
 using System.Collections.Generic;
 
 namespace BL
@@ -22,6 +23,16 @@ namespace BL
             return cooperativa.getAsociados();
         }
 
+        public void actualizarAsociado(Asociado asociado)
+        {
+            cooperativa.actualizarAsociado(asociado);
+        }
+
+        public void eliminarAsociado(int cedula)
+        {
+            cooperativa.eliminarAsociado(cedula);
+        }
+
         public void agregarEstadoFinancieroMensual(EstadoFinancieroMensual estadoFinancieroMensual)
         {
             cooperativa.agregarEstadoFinancieroMensual(estadoFinancieroMensual);
@@ -40,6 +51,16 @@ namespace BL
         public List<EstadoFinancieroMensual> getEstadosFinancierosPorPeriodo(int periodo)
         {
             return cooperativa.getEstadosFinancierosPorPeriodo(periodo);
+        }
+
+        public void actualizarEstadoFinancieroMensual(EstadoFinancieroMensual estadoFinancieroMensual)
+        {
+            cooperativa.actualizarEstadoFinancieroMensual(estadoFinancieroMensual);
+        }
+
+        public void eliminarEstadoFinancieroMensual(int id)
+        {
+            cooperativa.eliminarEstadoFinancieroMensual(id);
         }
 
         public void agregarAporte(Aporte aporte)
@@ -67,6 +88,21 @@ namespace BL
             return cooperativa.getAportesPorAnno(anno);
         }
 
+        public List<Aporte> getAportesPorFecha(DateTime fechaInicio, DateTime fechaFin)
+        {
+            return cooperativa.getAportesPorFecha(fechaInicio, fechaFin);
+        }
+
+        public void actualizarAporte(Aporte aporte)
+        {
+            cooperativa.actualizarAporte(aporte);
+        }
+
+        public void eliminarAporte(int id)
+        {
+            cooperativa.eliminarAporte(id);
+        }
+
         public void agregarAhorro(Ahorro ahorro)
         {
             cooperativa.agregarAhorro(ahorro);
@@ -90,6 +126,21 @@ namespace BL
         public List<Ahorro> getAhorrosPorAnno (int anno)
         {
             return cooperativa.getAhorrosPorAnno(anno);
+        }
+
+        public List<Ahorro> getAhorrosPorFecha(DateTime fechaInicio, DateTime fechaFin)
+        {
+            return cooperativa.getAhorrosPorFecha(fechaInicio, fechaFin);
+        }
+
+        public void actualizarAhorro(Ahorro ahorro)
+        {
+            cooperativa.actualizarAhorro(ahorro);
+        }
+
+        public void eliminarAhorro(int id)
+        {
+            cooperativa.eliminarAhorro(id);
         }
 
         public void agregarCredito(Credito credito)
@@ -142,6 +193,21 @@ namespace BL
             cooperativa.actualizarCreditoPorAbono(credito);
         }
 
+        public List<Credito> getCreditosPorFecha(DateTime fechaInicio, DateTime fechaFin)
+        {
+            return cooperativa.getCreditosPorFecha(fechaInicio, fechaFin);
+        }
+
+        public void actualizarCredito(Credito credito)
+        {
+            cooperativa.actualizarCredito(credito);
+        }
+
+        public void eliminarCredito(int id)
+        {
+            cooperativa.eliminarCredito(id);
+        }
+
         public void agregarAbono(Abono abono)
         {
             cooperativa.agregarAbono(abono);
@@ -170,6 +236,10 @@ namespace BL
         public List<Abono> getAbonosPorAnno(int anno)
         {
             return cooperativa.getAbonosPorAnno(anno);
+        }
+        public List<Abono> getAbonosPorFecha(DateTime fechaInicio, DateTime fechaFin)
+        {
+            return cooperativa.getAbonosPorFecha(fechaInicio, fechaFin);
         }
 
         public void crearProyeccion (List<ProyeccionPagoCredito> proyecciones)

@@ -1,6 +1,5 @@
 ﻿using BL;
 using DOM;
-using MetroFramework.Controls;
 using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
@@ -11,27 +10,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
-using Font = System.Drawing.Font;
 
 namespace UI
 {
-    public partial class EstadoCta : MetroForm
+    public partial class Transacciones : MetroForm
     {
         private CooperativaManager cooperativa = new CooperativaManager();
         private List<Asociado> asociados = new List<Asociado>();
         private Constantes constantes = new Constantes();
         private MensajeAUsuario mensaje = new MensajeAUsuario();
+        private Credito creditoAcutal = new Credito();
 
-        public EstadoCta()
+        public Transacciones()
         {
             InitializeComponent();
         }
 
-        private void EstadoCta_Load(object sender, EventArgs e)
+        private void Transacciones_Load(object sender, EventArgs e)
         {
             asociados = cooperativa.getAsociados();
             cargarAsociados();
+            metroDateTimeFechaInicio.MinDate = constantes.FECHA_INICIO_COOPERATIVA;
+            metroDateTimeFechaInicio.MaxDate = DateTime.Now.AddMonths(1);
+            metroDateTimeFechaInicio.Value = constantes.FECHA_INICIO_COOPERATIVA;
+            metroDateTimeFechaFinal.MinDate = constantes.FECHA_INICIO_COOPERATIVA;
+            metroDateTimeFechaFinal.MaxDate = DateTime.Now.AddMonths(1);
+            metroDateTimeFechaFinal.Value = DateTime.Now;
 
             metroGridAportes.DataSource = new List<Aporte>();
             metroGridAportes.Columns["Cedula_Asociado"].Visible = false;
@@ -63,13 +67,21 @@ namespace UI
             metroGridCreditos.Columns["Cuota_Intereses"].Visible = false;
             metroGridCreditos.Columns["Total_Cuota"].Visible = false;
             metroGridCreditos.Columns["Total_Credito"].HeaderText = "Crédito Total";
-            metroGridCreditos.Columns.Add("TotalCancelado", "Total Cancelado");
-            metroGridCreditos.Columns.Add("TotalAtrasado", "Total Atrasado");
 
             metroGridCreditos.Columns["Saldo_Total"].DefaultCellStyle.Format = "N2";
             metroGridCreditos.Columns["Total_Credito"].DefaultCellStyle.Format = "N2";
-            metroGridCreditos.Columns["TotalCancelado"].DefaultCellStyle.Format = "N2";
-            metroGridCreditos.Columns["TotalAtrasado"].DefaultCellStyle.Format = "N2";
+
+            metroGridAbonos.DataSource = new List<Abono>();
+            metroGridAbonos.Columns["ID_Credito"].HeaderText = "ID Crédito";
+            metroGridAbonos.Columns["ID_Estado_Financiero_Mensual"].Visible = false;
+            metroGridAbonos.Columns["Periodo_Estado_Financiero_Mensual"].HeaderText = "Periodo";
+            metroGridAbonos.Columns["Abono_Capital"].HeaderText = "Abono al Capital";
+            metroGridAbonos.Columns["Abono_Interes"].HeaderText = "Abono a Intereses";
+            metroGridAbonos.Columns["Abono_Total"].HeaderText = "Abono Total";
+
+            metroGridAbonos.Columns["Abono_Capital"].DefaultCellStyle.Format = "N2";
+            metroGridAbonos.Columns["Abono_Interes"].DefaultCellStyle.Format = "N2";
+            metroGridAbonos.Columns["Abono_Total"].DefaultCellStyle.Format = "N2";
         }
 
         private void cargarAsociados()
@@ -90,24 +102,12 @@ namespace UI
             }
         }
 
-        private void comboBoxAsociado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void cargarAportes()
         {
             try
             {
                 List<Aporte> aportes = cooperativa.getAportesAsociado(asociados[metroComboBoxAsociado.SelectedIndex].Cedula);
-                decimal totalAportes = 0;
-                foreach (var aporte in aportes)
-                {
-                    totalAportes += aporte.Monto;
-                }
-                metroTextBoxTotalAportes.Text = totalAportes.ToString("N2");
                 metroGridAportes.DataSource = aportes;
-                calcularCuotasPendientesAporte(aportes);
             }
             catch (Exception ex)
             {
@@ -121,14 +121,6 @@ namespace UI
             try
             {
                 List<Ahorro> ahorros = cooperativa.getAhorrosAsociado(asociados[metroComboBoxAsociado.SelectedIndex].Cedula);
-                decimal totalAhorros = 0;
-
-                foreach (var ahorro in ahorros)
-                {
-                    totalAhorros += ahorro.Monto;
-                }
-
-                metroTextBoxTotalAhorros.Text = totalAhorros.ToString("N2");
                 metroGridAhorros.DataSource = ahorros;
             }
             catch (Exception ex)
@@ -165,41 +157,19 @@ namespace UI
                     }
                 }
 
-                metroTextBoxStatusCreditos.UseCustomForeColor = true;
-                if (atrasado)
-                {
-                    metroTextBoxStatusCreditos.Text = "Atrasado";
-                    metroTextBoxStatusCreditos.ForeColor = Color.Red;
-                }
-                else
-                {
-                    metroTextBoxStatusCreditos.Text = "Al día";
-                    metroTextBoxStatusCreditos.ForeColor = Color.Green;
-                }
-                metroTextBoxSaldoCreditos.Text = saldoCreditos.ToString("N2");
-
                 metroGridCreditos.DataSource = creditosActivos;
-                List<decimal> atrasos = calcularCuotasPendientesCredito(creditosActivos);
 
                 for (int i = 0; i < metroGridCreditos.Rows.Count; i++)
                 {
-                    decimal interesesCancelados = Convert.ToDecimal(metroGridCreditos.Rows[i].Cells["Intereses_Cancelados"].Value ?? 0);
-                    decimal capitalCancelado = Convert.ToDecimal(metroGridCreditos.Rows[i].Cells["Capital_Cancelado"].Value ?? 0);
-
-                    metroGridCreditos.Rows[i].Cells["TotalCancelado"].Value = interesesCancelados + capitalCancelado;
-                    metroGridCreditos.Rows[i].Cells["TotalAtrasado"].Value = atrasos[i].ToString("N2");
-
-                    if (atrasos[i] > 0)
+                    if (metroGridCreditos.Rows[i].Cells["Estado"].Value.Equals("Atrasado"))
                     {
                         metroGridCreditos.Rows[i].Cells["Estado"].Style.BackColor = Color.Red;
                     }
-                    else if (atrasos[i] == 0)
+                    else
                     {
                         metroGridCreditos.Rows[i].Cells["Estado"].Style.BackColor = Color.LightGreen;
                     }
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -208,110 +178,49 @@ namespace UI
             }
         }
 
-        private List<decimal> calcularCuotasPendientesCredito(List<Credito> creditos)
-        {
-            DateTime fechaActual = DateTime.Now.Date;
-            int mesActual = fechaActual.Month;
-            int annoActual = fechaActual.Year;
-            decimal saldoCredito = 0;
-            decimal saldoTotal = 0;
-            List<decimal> atrasos = new List<decimal>();
-
-            foreach (var creditoActual in creditos)
-            {
-                Credito credito = cooperativa.getCreditoPorID(creditoActual.ID);
-                if (credito.Estado.Equals("Atrasado"))
-                {
-                    List<ProyeccionPagoCredito> proyecciones = cooperativa.getProyeccionesCredito(credito.ID);
-                    for (int i = 0; i < proyecciones.Count; i++)
-                    {
-                        if (proyecciones[i].Fecha.Month == mesActual && proyecciones[i].Fecha.Year == annoActual)
-                        {
-                            saldoCredito = proyecciones[i].Saldo_Total;
-                            if (saldoCredito < credito.Saldo_Total)
-                            {
-                                decimal totalCancelado = credito.Capital_Cancelado + credito.Intereses_Cancelados;
-                                decimal totalAtrasado = proyecciones[i].Monto_Abono * (i + 1) - totalCancelado;
-                                if (totalAtrasado > 0)
-                                {
-                                    saldoTotal = saldoTotal + totalAtrasado;
-                                    atrasos.Add(totalAtrasado);
-                                }
-                                continue;
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    atrasos.Add(0);
-                    continue;
-                }
-            }
-            metroTextBoxTotalPendienteCreditos.Text = saldoTotal.ToString("N2");
-            return atrasos;
-        }
-
-        private void calcularCuotasPendientesAporte(List<Aporte> aportes)
-        {
-            DateTime fechaInicio = constantes.FECHA_INICIO_COOPERATIVA.Date;
-            DateTime fechaActual = DateTime.Now.Date;
-            bool fin = false;
-            int meses = 0;
-            int annos = 0;
-            do
-            {
-                if (fechaInicio.Month == fechaActual.Month && fechaInicio.Year == fechaActual.Year)
-                {
-                    fin = true;
-                }
-                else
-                {
-                    fechaInicio = fechaInicio.AddMonths(1);
-                    meses++;
-                    if (fechaInicio.Month == 1)
-                    {
-                        annos++;
-                    }
-                }
-            } while (!fin);
-
-            decimal totalAportesMensualesRequeridos = meses * constantes.CUOTA_MENSUAL;
-            decimal totalAportesAnualesRequeridos = annos * constantes.CUOTA_ANUAL;
-            decimal totalAportesRequeridos = totalAportesAnualesRequeridos + totalAportesMensualesRequeridos + constantes.CUOTA_INGRESO;
-
-            decimal totalAportes = 0;
-            foreach (var aporte in aportes)
-            {
-                totalAportes += aporte.Monto;
-            }
-
-            decimal totalPendiente = totalAportesRequeridos - totalAportes;
-            metroTextBoxTotalPendienteAportes.Text = totalPendiente.ToString("N2");
-        }
-
-        private void label7_Click(object sender, EventArgs e)
+        private void metroLabelDetallesAbonos_Click(object sender, EventArgs e)
         {
 
         }
 
         private void metroGridCreditos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-        }
-
-        private void metroComboBoxAsociado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (metroComboBoxAsociado.SelectedIndex == -1)
+            try
             {
-                metroGridAportes.DataSource = new List<Aporte>();
-                metroGridAhorros.DataSource = new List<Ahorro>();
-                metroGridCreditos.DataSource = new List<Credito>();
+                int id = (int)metroGridCreditos.Rows[e.RowIndex].Cells["ID"].Value;
+                creditoAcutal = cooperativa.getCreditoPorID(id);
+                metroGridAbonos.DataSource = cooperativa.getAbonosCredito(id);
+                if (metroGridAbonos.Rows.Count == 0)
+                {
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Aviso", "El crédito no tiene abonos", "info");
+                }
+            }
+            catch (Exception ex)
+            {
                 return;
             }
+        }
+
+        private void metroButtonRestablecer_Click(object sender, EventArgs e)
+        {
+            metroDateTimeFechaInicio.Value = constantes.FECHA_INICIO_COOPERATIVA;
+            metroDateTimeFechaFinal.Value = DateTime.Now;
+            metroComboBoxAsociado.SelectedIndex = -1;
+            metroGridAportes.DataSource = new List<Aporte>();
+            metroGridAhorros.DataSource = new List<Ahorro>();
+            metroGridCreditos.DataSource = new List<Credito>();
+            metroGridAbonos.DataSource = new List<Abono>();
+        }
+
+        private void metroButtonObtener_Click(object sender, EventArgs e)
+        {
             cargarAportes();
             cargarAhorros();
             cargarCreditos();
         }
+
+        private void metroGridAbonos_CellClick(object sender, DataGridViewCellEventArgs e) { }
+
     }
 }

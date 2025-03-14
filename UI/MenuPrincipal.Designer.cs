@@ -74,6 +74,7 @@ namespace UI
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.transaccionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -180,7 +181,8 @@ namespace UI
             this.contabilidadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cierreMensualToolStripMenuItem,
             this.cieToolStripMenuItem,
-            this.estadosFinancierosAlDíaToolStripMenuItem});
+            this.estadosFinancierosAlDíaToolStripMenuItem,
+            this.transaccionesToolStripMenuItem});
             this.contabilidadToolStripMenuItem.Name = "contabilidadToolStripMenuItem";
             this.contabilidadToolStripMenuItem.Size = new System.Drawing.Size(109, 24);
             this.contabilidadToolStripMenuItem.Text = "Contabilidad";
@@ -408,6 +410,13 @@ namespace UI
             this.toolStrip.Text = "ToolStrip";
             this.toolStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip_ItemClicked);
             // 
+            // transaccionesToolStripMenuItem
+            // 
+            this.transaccionesToolStripMenuItem.Name = "transaccionesToolStripMenuItem";
+            this.transaccionesToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
+            this.transaccionesToolStripMenuItem.Text = "Transacciones";
+            this.transaccionesToolStripMenuItem.Click += new System.EventHandler(this.transaccionesToolStripMenuItem_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -476,6 +485,7 @@ namespace UI
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripButton helpToolStripButton;
         private ToolStrip toolStrip;
+        private ToolStripMenuItem transaccionesToolStripMenuItem;
     }
 }
 

@@ -356,5 +356,19 @@ namespace UI
         {
 
         }
+
+        private void transaccionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Transacciones transacciones = new Transacciones();
+
+            transacciones.FormClosed += (s, args) =>
+            {
+                this.Show();
+            };
+
+            this.Hide();
+
+            transacciones.Show();
+        }
     }
 }
