@@ -9,8 +9,8 @@ namespace DAO
     public class DAOCooperativa
     {
 
-        //private SqlConnection conexion = new SqlConnection("Data Source=.; Initial Catalog=CoopeBarZam; Integrated Security=true");
-        private SqlConnection conexion = new SqlConnection("Data Source=ASDRU-PC\\SQLDEVELOPER22; Initial Catalog=CoopeBarZam; Integrated Security=true");
+        private SqlConnection conexion = new SqlConnection("Data Source=.; Initial Catalog=CoopeBarZam; Integrated Security=true");
+        //private SqlConnection conexion = new SqlConnection("Data Source=ASDRU-PC\\SQLDEVELOPER22; Initial Catalog=CoopeBarZam; Integrated Security=true");
 
 
 

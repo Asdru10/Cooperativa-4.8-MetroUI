@@ -44,8 +44,10 @@ namespace UI
             }
             foreach (Credito credito in creditos)
             {
-                egresos += credito.Saldo_Total - credito.Intereses;
-                // este calculo lo probe y se puede omitir esta linea ingresos += credito.Intereses_Cancelados;
+                if (!credito.Estado.Equals("Cancelado"))
+                {
+                    egresos += credito.Saldo_Capital;
+                }
             }
             foreach (Abono abono in abonos)
             {
