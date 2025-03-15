@@ -17,6 +17,8 @@ namespace UI
     {
         private CooperativaManager cooperativa = new CooperativaManager();
         private MensajeAUsuario mensaje = new MensajeAUsuario();
+        private PreguntaAUsuario pregunta = new PreguntaAUsuario();
+        private Asociado asociadoSeleccionado = new Asociado();
 
         public AgregarAsociado()
         {
@@ -80,29 +82,55 @@ namespace UI
                     return;
                 }
 
-                Asociado asociado = new Asociado();
-                asociado.Cedula = Convert.ToInt32(metroTextBoxCedula.Text.Trim());
-                asociado.Nombre = metroTextBoxNombre.Text.Trim();
-                asociado.Primer_Apellido = metroTextBoxPrimerApellido.Text.Trim();
-                asociado.Segundo_Apellido = metroTextBoxSegundoApellido.Text.Trim();
-                asociado.Fecha_Nacimiento = metroDateTimeFechaNacimento.Value;
+                if (metroButtonAgregar.Text.Equals("Agregar"))
+                {
+                    agregarAsociado();
+                }
+                else if (metroButtonAgregar.Text.Equals("Actualizar"))
+                {
+                    actualizarAsociado();
+                }
 
-                cooperativa.agregarAsociado(asociado);
-                limpiarCampos();
-                cargarAsociados();
-                mensaje = new MensajeAUsuario();
-                mensaje.mostrar("Completado", "Asociado agregado correctamente", "check");
             }
             catch (Exception ex)
             {
                 mensaje = new MensajeAUsuario();
-                mensaje.mostrar("Error al agregar asociado", ex.Message, "error");
+                mensaje.mostrar("Error de asociado", ex.Message, "error");
             }
         }
-        private void textBoxPrimerApellid5o_TextChanged(object sender, EventArgs e)
-        {
 
+        private void agregarAsociado()
+        {
+            Asociado asociado = new Asociado();
+            asociado.Cedula = Convert.ToInt32(metroTextBoxCedula.Text.Trim());
+            asociado.Nombre = metroTextBoxNombre.Text.Trim();
+            asociado.Primer_Apellido = metroTextBoxPrimerApellido.Text.Trim();
+            asociado.Segundo_Apellido = metroTextBoxSegundoApellido.Text.Trim();
+            asociado.Fecha_Nacimiento = metroDateTimeFechaNacimento.Value;
+
+            cooperativa.agregarAsociado(asociado);
+            limpiarCampos();
+            cargarAsociados();
+            mensaje = new MensajeAUsuario();
+            mensaje.mostrar("Completado", "Asociado agregado correctamente", "check");
         }
+
+        private void actualizarAsociado()
+        {
+            asociadoSeleccionado.Nombre = metroTextBoxNombre.Text.Trim();
+            asociadoSeleccionado.Primer_Apellido = metroTextBoxPrimerApellido.Text.Trim();
+            asociadoSeleccionado.Segundo_Apellido = metroTextBoxSegundoApellido.Text.Trim();
+            asociadoSeleccionado.Fecha_Nacimiento = metroDateTimeFechaNacimento.Value;
+            cooperativa.actualizarAsociado(asociadoSeleccionado);
+            limpiarCampos();
+            cargarAsociados();
+            metroButtonAgregar.Text = "Agregar";
+            metroTextBoxCedula.ReadOnly = false;
+            asociadoSeleccionado = new Asociado();
+            mensaje = new MensajeAUsuario();
+            mensaje.mostrar("Completado", "Asociado actualizado correctamente", "check");
+        }
+
 
         private void cargarAsociados()
         {
@@ -126,6 +154,69 @@ namespace UI
             metroDateTimeFechaNacimento.Value = DateTime.Now;
         }
 
+        private void metroGridAsociados_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int cedula = Convert.ToInt32(metroGridAsociados.Rows[e.RowIndex].Cells["Cedula"].Value);
+            asociadoSeleccionado = cooperativa.getAsociadoPorCedula(cedula);
+        }
+
+        private void metroButtonEditar_Click(object sender, EventArgs e)
+        {
+            if (asociadoSeleccionado.Cedula == 0)
+            {
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al editar asociado", "Debe seleccionar un asociado", "error");
+                return;
+            }
+            metroButtonAgregar.Text = "Actualizar";
+            metroTextBoxCedula.Text = asociadoSeleccionado.Cedula.ToString();
+            metroTextBoxCedula.ReadOnly = true;
+            metroTextBoxNombre.Text = asociadoSeleccionado.Nombre;
+            metroTextBoxPrimerApellido.Text = asociadoSeleccionado.Primer_Apellido;
+            metroTextBoxSegundoApellido.Text = asociadoSeleccionado.Segundo_Apellido;
+            metroDateTimeFechaNacimento.Value = asociadoSeleccionado.Fecha_Nacimiento;
+        }
+
+        private void metroButtonEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (asociadoSeleccionado.Cedula == 0)
+                {
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Error al eliminar asociado", "Debe seleccionar un asociado", "error");
+                    return;
+                }
+
+                DialogResult resultado;
+                pregunta = new PreguntaAUsuario();
+                pregunta.titulo("Eliminar asociado");
+                pregunta.mensaje("¿Está seguro que desea eliminar a " + asociadoSeleccionado.Nombre + " como asociado? \nEsta acción no se puede deshacer");
+                resultado = pregunta.ShowDialog();
+
+                if (resultado == DialogResult.Yes)
+                {
+                    cooperativa.eliminarAsociado(asociadoSeleccionado.Cedula);
+                    limpiarCampos();
+                    cargarAsociados();
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Completado", "Asociado eliminado correctamente", "check");
+                }
+                else
+                {
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Asociado No Eliminado", "Ha decidido no eliminar a " + asociadoSeleccionado.Nombre, "advertencia");
+                }
+                asociadoSeleccionado = new Asociado();
+
+            }
+            catch (Exception ex)
+            {
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al eliminar asociado", ex.Message, "error");
+            }
+        }
+
         private void dataGridViewAsociados_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -140,5 +231,11 @@ namespace UI
         {
 
         }
+
+        private void textBoxPrimerApellid5o_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

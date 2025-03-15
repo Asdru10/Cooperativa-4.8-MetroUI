@@ -18,6 +18,11 @@ namespace BL
             cooperativa.agregarAsociado(asociado);
         }
 
+        public Asociado getAsociadoPorCedula(int cedula)
+        {
+            return cooperativa.getAsociadoPorCedula(cedula);
+        }
+
         public List<Asociado> getAsociados()
         {
             return cooperativa.getAsociados();

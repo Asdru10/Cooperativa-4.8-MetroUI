@@ -36,6 +36,27 @@ namespace DAO
             closeConnection();
         }
 
+        public Asociado getAsociadoPorCedula(int cedula)
+        {
+            Asociado asociado = new Asociado();
+            string sentence = "";
+            SqlCommand command = new SqlCommand(sentence, conexion);
+            openConnection();
+            command.CommandText = "select Cedula, Nombre, Primer_Apellido, Segundo_Apellido, Fecha_Nacimiento from Asociado where Cedula = @Cedula";
+            command.Parameters.AddWithValue("@Cedula", cedula);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                asociado.Cedula = reader.GetInt32(0);
+                asociado.Nombre = reader.GetString(1);
+                asociado.Primer_Apellido = reader.GetString(2);
+                asociado.Segundo_Apellido = reader.GetString(3);
+                asociado.Fecha_Nacimiento = reader.GetDateTime(4);
+            }
+            closeConnection();
+            return asociado;
+        }
+
         public List<Asociado> getAsociados()
         {
             List<Asociado> asociados = new List<Asociado>();

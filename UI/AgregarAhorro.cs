@@ -17,7 +17,10 @@ namespace UI
     {
         private CooperativaManager cooperativa = new CooperativaManager();
         private List<Asociado> asociados;
+        private List<Ahorro> ahorros;
         private MensajeAUsuario mensaje = new MensajeAUsuario();
+        private PreguntaAUsuario pregunta = new PreguntaAUsuario();
+        private Ahorro ahorroSeleccionado = new Ahorro();
 
         public AgregarAhorro()
         {
@@ -114,7 +117,8 @@ namespace UI
         {
             try
             {
-                metroGridAhorros.DataSource = cooperativa.getAhorros();
+                ahorros = cooperativa.getAhorros();
+                metroGridAhorros.DataSource = ahorros;
             }
             catch (Exception ex)
             {
@@ -157,6 +161,61 @@ namespace UI
         private void buttonAgregar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void metroButtonEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ahorroSeleccionado.ID == 0)
+                {
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Error al eliminar ahorro", "Debe seleccionar un ahorro", "error");
+                    return;
+                }
+
+                DialogResult resultado;
+                pregunta = new PreguntaAUsuario();
+                pregunta.titulo("Eliminar ahorro");
+                pregunta.mensaje("¿Está seguro que desea eliminar el ahorro seleccionado? \nEsta acción no se puede deshacer");
+                resultado = pregunta.ShowDialog();
+
+                if (resultado == DialogResult.Yes)
+                {
+                    int idEstadoFinanciero = ahorroSeleccionado.ID_Estado_Financiero_Mensual;
+                    cooperativa.eliminarAhorro(ahorroSeleccionado.ID);
+                    cooperativa.eliminarEstadoFinancieroMensual(idEstadoFinanciero);
+                    limpiarCampos();
+                    cargarAhorros();
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Completado", "Ahorro eliminado correctamente", "check");
+                }
+                else
+                {
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Ahorro No Eliminado", "Ha decidido no eliminar el ahorro seleccionado", "advertencia");
+                }
+                ahorroSeleccionado = new Ahorro();
+
+            }
+            catch (Exception ex)
+            {
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al eliminar ahorro", ex.Message, "error");
+            }
+        }
+
+        private void metroGridAhorros_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int idAhorro = Convert.ToInt32(metroGridAhorros.Rows[e.RowIndex].Cells["ID"].Value);
+            foreach (var ahorro in ahorros)
+            {
+                if (ahorro.ID == idAhorro)
+                {
+                    ahorroSeleccionado = ahorro;
+                    break;
+                }
+            }
         }
     }
 }
