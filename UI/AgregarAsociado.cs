@@ -125,6 +125,7 @@ namespace UI
             limpiarCampos();
             cargarAsociados();
             metroButtonAgregar.Text = "Agregar";
+            metroButtonEditar.Text = "Editar";
             metroTextBoxCedula.ReadOnly = false;
             asociadoSeleccionado = new Asociado();
             mensaje = new MensajeAUsuario();
@@ -162,19 +163,37 @@ namespace UI
 
         private void metroButtonEditar_Click(object sender, EventArgs e)
         {
-            if (asociadoSeleccionado.Cedula == 0)
+            try
+            {
+                if (metroButtonEditar.Text.Equals("Cancelar"))
+                {
+                    limpiarCampos();
+                    metroButtonAgregar.Text = "Agregar";
+                    metroButtonEditar.Text = "Editar";
+                    metroTextBoxCedula.ReadOnly = false;
+                    asociadoSeleccionado = new Asociado();
+                    return;
+                }
+                else if (asociadoSeleccionado.Cedula == 0)
+                {
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Error al editar asociado", "Debe seleccionar un asociado", "error");
+                    return;
+                }
+                metroButtonAgregar.Text = "Actualizar";
+                metroTextBoxCedula.Text = asociadoSeleccionado.Cedula.ToString();
+                metroTextBoxCedula.ReadOnly = true;
+                metroTextBoxNombre.Text = asociadoSeleccionado.Nombre;
+                metroTextBoxPrimerApellido.Text = asociadoSeleccionado.Primer_Apellido;
+                metroTextBoxSegundoApellido.Text = asociadoSeleccionado.Segundo_Apellido;
+                metroDateTimeFechaNacimento.Value = asociadoSeleccionado.Fecha_Nacimiento;
+                metroButtonEditar.Text = "Cancelar";
+            }
+            catch (Exception ex)
             {
                 mensaje = new MensajeAUsuario();
-                mensaje.mostrar("Error al editar asociado", "Debe seleccionar un asociado", "error");
-                return;
+                mensaje.mostrar("Error al editar asociado", ex.Message, "error");
             }
-            metroButtonAgregar.Text = "Actualizar";
-            metroTextBoxCedula.Text = asociadoSeleccionado.Cedula.ToString();
-            metroTextBoxCedula.ReadOnly = true;
-            metroTextBoxNombre.Text = asociadoSeleccionado.Nombre;
-            metroTextBoxPrimerApellido.Text = asociadoSeleccionado.Primer_Apellido;
-            metroTextBoxSegundoApellido.Text = asociadoSeleccionado.Segundo_Apellido;
-            metroDateTimeFechaNacimento.Value = asociadoSeleccionado.Fecha_Nacimiento;
         }
 
         private void metroButtonEliminar_Click(object sender, EventArgs e)

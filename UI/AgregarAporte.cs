@@ -18,7 +18,11 @@ namespace UI
     {
         private CooperativaManager cooperativa = new CooperativaManager();
         private List<Asociado> asociados;
+        private List<Aporte> aportes;
         private MensajeAUsuario mensaje = new MensajeAUsuario();
+        private PreguntaAUsuario pregunta = new PreguntaAUsuario();
+        private Aporte aporteSeleccionado;
+        private string tipoAporte = "";
 
         public AgregarAporte()
         {
@@ -63,10 +67,10 @@ namespace UI
             }
         }
 
-        
+
         private void metroButtonAgregar_Click(object sender, EventArgs e)
         {
-            string tipoAporte = tipoAporteSeleccionado();
+            tipoAporte = tipoAporteSeleccionado();
 
             if (metroComboBoxAsociado.SelectedIndex < 0)
             {
@@ -97,22 +101,14 @@ namespace UI
 
             try
             {
-                Aporte aporte = new Aporte();
-                aporte.Cedula_Asociado = asociados[metroComboBoxAsociado.SelectedIndex].Cedula;
-                aporte.Detalle = metroTextBoxDetalle.Text.Trim();
-                aporte.Monto = Convert.ToDecimal(metroTextBoxMonto.Text.Trim());
-                aporte.Fecha = metroDateTimeFecha.Value;
-                aporte.Tipo = tipoAporte;
-
-                agregarEstadoFinanciero();
-                EstadoFinancieroMensual estadoActual = cooperativa.getUltimoEstadoFinancieroMensual();
-                aporte.ID_Estado_Financiero_Mensual = estadoActual.ID;
-                aporte.Periodo_Estado_Financiero_Mensual = estadoActual.Periodo;
-                cooperativa.agregarAporte(aporte);
-                limpiarCampos();
-                cargarAportes();
-                mensaje = new MensajeAUsuario();
-                mensaje.mostrar("Completado", "Aporte agregado exitosamente", "check");
+                if (metroButtonAgregar.Text.Equals("Agregar"))
+                {
+                    agregarAporte();
+                }
+                else if (metroButtonAgregar.Text.Equals("Actualizar"))
+                {
+                    actualizarAporte();
+                }
             }
             catch (Exception ex)
             {
@@ -120,6 +116,53 @@ namespace UI
                 mensaje.mostrar("Error al agregar aporte", ex.Message, "error");
             }
 
+        }
+
+        private void agregarAporte()
+        {
+            Aporte aporte = new Aporte();
+            aporte.Cedula_Asociado = asociados[metroComboBoxAsociado.SelectedIndex].Cedula;
+            aporte.Detalle = metroTextBoxDetalle.Text.Trim();
+            aporte.Monto = Convert.ToDecimal(metroTextBoxMonto.Text.Trim());
+            aporte.Fecha = metroDateTimeFecha.Value;
+            aporte.Tipo = tipoAporte;
+
+            agregarEstadoFinanciero();
+            EstadoFinancieroMensual estadoActual = cooperativa.getUltimoEstadoFinancieroMensual();
+            aporte.ID_Estado_Financiero_Mensual = estadoActual.ID;
+            aporte.Periodo_Estado_Financiero_Mensual = estadoActual.Periodo;
+            cooperativa.agregarAporte(aporte);
+            limpiarCampos();
+            cargarAportes();
+            mensaje = new MensajeAUsuario();
+            mensaje.mostrar("Completado", "Aporte agregado exitosamente", "check");
+        }
+
+        private void actualizarAporte()
+        {
+            aporteSeleccionado.Cedula_Asociado = asociados[metroComboBoxAsociado.SelectedIndex].Cedula;
+            aporteSeleccionado.Detalle = metroTextBoxDetalle.Text.Trim();
+            aporteSeleccionado.Monto = Convert.ToDecimal(metroTextBoxMonto.Text.Trim());
+            aporteSeleccionado.Fecha = metroDateTimeFecha.Value;
+            aporteSeleccionado.Tipo = tipoAporte;
+
+            EstadoFinancieroMensual estadoActual = cooperativa.getEstadoFinancieroPorID(aporteSeleccionado.ID_Estado_Financiero_Mensual);
+            estadoActual.ID = aporteSeleccionado.ID_Estado_Financiero_Mensual;
+            String periodoActual = metroDateTimeFecha.Value.Month + "" + metroDateTimeFecha.Value.Year;
+            estadoActual.Periodo = Convert.ToInt32(periodoActual);
+            estadoActual.Fecha = metroDateTimeFecha.Value;
+            estadoActual.Monto = Convert.ToDecimal(metroTextBoxMonto.Text.Trim());
+
+            cooperativa.actualizarAporte(aporteSeleccionado);
+            cooperativa.actualizarEstadoFinancieroMensual(estadoActual);
+            
+            limpiarCampos();
+            cargarAportes();
+            metroButtonAgregar.Text = "Agregar";
+            metroButtonEditar.Text = "Editar";
+            aporteSeleccionado = new Aporte();
+            mensaje = new MensajeAUsuario();
+            mensaje.mostrar("Completado", "Aporte actualizado exitosamente", "check");
         }
 
         private void agregarEstadoFinanciero()
@@ -138,7 +181,8 @@ namespace UI
         {
             try
             {
-                metroGridAportes.DataSource = cooperativa.getAportes();
+                aportes = cooperativa.getAportes();
+                metroGridAportes.DataSource = aportes;
             }
             catch (Exception ex)
             {
@@ -192,13 +236,113 @@ namespace UI
 
         private void limpiarCampos()
         {
-            metroComboBoxAsociado.SelectedIndex = -1; 
+            metroComboBoxAsociado.SelectedIndex = -1;
             metroTextBoxDetalle.Text = "";
             metroTextBoxMonto.Text = "";
             metroDateTimeFecha.Value = DateTime.Now;
             metroRadioButtonMensual.Checked = false;
             metroRadioButtonAnual.Checked = false;
             metroRadioButtonInteresBanco.Checked = false;
+        }
+
+        private void metroGridAportes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int idAporte = Convert.ToInt32(metroGridAportes.Rows[e.RowIndex].Cells["ID"].Value);
+            foreach (var aporte in aportes)
+            {
+                if (aporte.ID == idAporte)
+                {
+                    aporteSeleccionado = aporte;
+                    break;
+                }
+            }
+        }
+
+        private void metroButtonEditar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (metroButtonEditar.Text == "Cancelar")
+                {
+                    limpiarCampos();
+                    metroButtonAgregar.Text = "Agregar";
+                    metroButtonEditar.Text = "Editar";
+                    aporteSeleccionado = new Aporte();
+                    return;
+                }
+                else if (aporteSeleccionado.ID == 0)
+                {
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Error al editar aporte", "Debe seleccionar un aporte", "error");
+                    return;
+                }
+                metroButtonAgregar.Text = "Actualizar";
+                metroButtonEditar.Text = "Cancelar";
+                metroComboBoxAsociado.SelectedIndex = asociados.FindIndex(x => x.Cedula == aporteSeleccionado.Cedula_Asociado);
+                metroTextBoxDetalle.Text = aporteSeleccionado.Detalle;
+                metroTextBoxMonto.Text = aporteSeleccionado.Monto.ToString();
+                metroDateTimeFecha.Value = aporteSeleccionado.Fecha;
+                switch (aporteSeleccionado.Tipo)
+                {
+                    case "M":
+                        metroRadioButtonMensual.Checked = true;
+                        break;
+                    case "A":
+                        metroRadioButtonAnual.Checked = true;
+                        break;
+                    case "IB":
+                        metroRadioButtonInteresBanco.Checked = true;
+                        break;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al editar aporte", ex.Message, "error");
+            }
+        }
+
+        private void metroButtonEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (aporteSeleccionado.ID == 0)
+                {
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Error al eliminar aporte", "Debe seleccionar un aporte", "error");
+                    return;
+                }
+
+                DialogResult resultado;
+                pregunta = new PreguntaAUsuario();
+                pregunta.titulo("Eliminar aporte");
+                pregunta.mensaje("¿Está seguro que desea eliminar el aporte seleccionado? \nEsta acción no se puede deshacer");
+                resultado = pregunta.ShowDialog();
+
+                if (resultado == DialogResult.Yes)
+                {
+                    int idEstadoFinanciero = aporteSeleccionado.ID_Estado_Financiero_Mensual;
+                    cooperativa.eliminarAporte(aporteSeleccionado.ID);
+                    cooperativa.eliminarEstadoFinancieroMensual(idEstadoFinanciero);
+                    limpiarCampos();
+                    cargarAportes();
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Completado", "Aporte eliminado correctamente", "check");
+                }
+                else
+                {
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Aporte No Eliminado", "Ha decidido no eliminar el aporte seleccionado", "advertencia");
+                }
+                aporteSeleccionado = new Aporte();
+
+            }
+            catch (Exception ex)
+            {
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al eliminar aporte", ex.Message, "error");
+            }
         }
 
         private void dataGridViewAportes_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -215,7 +359,5 @@ namespace UI
         {
 
         }
-
-        
     }
 }

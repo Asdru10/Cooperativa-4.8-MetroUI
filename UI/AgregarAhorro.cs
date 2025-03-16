@@ -77,28 +77,64 @@ namespace UI
 
             try
             {
-
-                Ahorro ahorro = new Ahorro();
-                ahorro.Cedula_Asociado = asociados[metroComboBoxAsociado.SelectedIndex].Cedula;
-                ahorro.Monto = Convert.ToDecimal(metroTextBoxMonto.Text.Trim());
-                ahorro.Fecha = metroDateTimeFecha.Value;
-
-                agregarEstadoFinanciero();
-                EstadoFinancieroMensual estadoActual = cooperativa.getUltimoEstadoFinancieroMensual();
-                ahorro.ID_Estado_Financiero_Mensual = estadoActual.ID;
-                ahorro.Periodo_Estado_Financiero_Mensual = estadoActual.Periodo;
-                cooperativa.agregarAhorro(ahorro);
-
-                limpiarCampos();
-                cargarAhorros();
-                mensaje = new MensajeAUsuario();
-                mensaje.mostrar("Completado", "Ahorro agregado exitosamente", "check");
+                if (metroButtonAgregar.Text == "Agregar")
+                {
+                    agregarAhorro();
+                }
+                else if (metroButtonAgregar.Text == "Actualizar")
+                {
+                    actualizarAhorro();
+                }
             }
             catch (Exception ex)
             {
                 mensaje = new MensajeAUsuario();
-                mensaje.mostrar("Error al agregar ahorro", ex.Message, "error");
+                mensaje.mostrar("Error de ahorro", ex.Message, "error");
             }
+        }
+
+        private void agregarAhorro ()
+        {
+            Ahorro ahorro = new Ahorro();
+            ahorro.Cedula_Asociado = asociados[metroComboBoxAsociado.SelectedIndex].Cedula;
+            ahorro.Monto = Convert.ToDecimal(metroTextBoxMonto.Text.Trim());
+            ahorro.Fecha = metroDateTimeFecha.Value;
+
+            agregarEstadoFinanciero();
+            EstadoFinancieroMensual estadoActual = cooperativa.getUltimoEstadoFinancieroMensual();
+            ahorro.ID_Estado_Financiero_Mensual = estadoActual.ID;
+            ahorro.Periodo_Estado_Financiero_Mensual = estadoActual.Periodo;
+            cooperativa.agregarAhorro(ahorro);
+
+            limpiarCampos();
+            cargarAhorros();
+            mensaje = new MensajeAUsuario();
+            mensaje.mostrar("Completado", "Ahorro agregado exitosamente", "check");
+        }
+
+        private void actualizarAhorro ()
+        {
+            ahorroSeleccionado.Cedula_Asociado = asociados[metroComboBoxAsociado.SelectedIndex].Cedula;
+            ahorroSeleccionado.Monto = Convert.ToDecimal(metroTextBoxMonto.Text.Trim());
+            ahorroSeleccionado.Fecha = metroDateTimeFecha.Value;
+
+            EstadoFinancieroMensual estadoActual = cooperativa.getEstadoFinancieroPorID(ahorroSeleccionado.ID_Estado_Financiero_Mensual);
+            estadoActual.ID = ahorroSeleccionado.ID_Estado_Financiero_Mensual;
+            String periodoActual = metroDateTimeFecha.Value.Month + "" + metroDateTimeFecha.Value.Year;
+            estadoActual.Periodo = Convert.ToInt32(periodoActual);
+            estadoActual.Fecha = metroDateTimeFecha.Value;
+            estadoActual.Monto = Convert.ToDecimal(metroTextBoxMonto.Text.Trim());
+
+            cooperativa.actualizarAhorro(ahorroSeleccionado);
+            cooperativa.actualizarEstadoFinancieroMensual(estadoActual);
+            
+            limpiarCampos();
+            cargarAhorros();
+            metroButtonAgregar.Text = "Agregar";
+            metroButtonEditar.Text = "Editar";
+            ahorroSeleccionado = new Ahorro();
+            mensaje = new MensajeAUsuario();
+            mensaje.mostrar("Completado", "Ahorro actualizado exitosamente", "check");
         }
 
         private void agregarEstadoFinanciero()
@@ -158,9 +194,34 @@ namespace UI
             metroDateTimeFecha.Value = DateTime.Now;
         }
 
-        private void buttonAgregar_Click(object sender, EventArgs e)
+        private void metroButtonEditar_Click(object sender, EventArgs e)
         {
-
+            try {
+                if (metroButtonEditar.Text == "Cancelar")
+                {
+                    limpiarCampos();
+                    metroButtonAgregar.Text = "Agregar";
+                    metroButtonEditar.Text = "Editar";
+                    ahorroSeleccionado = new Ahorro();
+                    return;
+                } 
+                else if (ahorroSeleccionado.ID == 0)
+                {
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Error al editar ahorro", "Debe seleccionar un ahorro", "error");
+                    return;
+                }
+                metroButtonAgregar.Text = "Actualizar";
+                metroComboBoxAsociado.SelectedIndex = asociados.FindIndex(a => a.Cedula == ahorroSeleccionado.Cedula_Asociado);
+                metroTextBoxMonto.Text = ahorroSeleccionado.Monto.ToString();
+                metroDateTimeFecha.Value = ahorroSeleccionado.Fecha;
+                metroButtonEditar.Text = "Cancelar";
+            }
+            catch (Exception ex)
+            {
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al editar ahorro", ex.Message, "error");
+            }
         }
 
         private void metroButtonEliminar_Click(object sender, EventArgs e)
@@ -217,5 +278,12 @@ namespace UI
                 }
             }
         }
+
+        private void buttonAgregar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }

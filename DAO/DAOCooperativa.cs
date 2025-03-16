@@ -120,7 +120,27 @@ namespace DAO
             command.Parameters.AddWithValue("@Identificador", estadoFinancieroMensual.Identificador);
             command.ExecuteNonQuery();
             closeConnection();
+        }
 
+        public EstadoFinancieroMensual getEstadoFinancieroPorID (int id)
+        {
+            EstadoFinancieroMensual estadoFinancieroMensual = new EstadoFinancieroMensual();
+            string sentence = "";
+            SqlCommand command = new SqlCommand(sentence, conexion);
+            openConnection();
+            command.CommandText = "select Periodo, Fecha, Concepto, Monto, Identificador from Estado_Financiero_Mensual where ID = @ID";
+            command.Parameters.AddWithValue("@ID", id);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                estadoFinancieroMensual.Periodo = reader.GetInt32(0);
+                estadoFinancieroMensual.Fecha = reader.GetDateTime(1);
+                estadoFinancieroMensual.Concepto = reader.GetString(2);
+                estadoFinancieroMensual.Monto = reader.GetDecimal(3);
+                estadoFinancieroMensual.Identificador = reader.GetString(4);
+            }
+            closeConnection();
+            return estadoFinancieroMensual;
         }
 
         public EstadoFinancieroMensual getUltimoEstadoFinancieroMensual ()

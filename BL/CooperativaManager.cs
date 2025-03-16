@@ -43,6 +43,11 @@ namespace BL
             cooperativa.agregarEstadoFinancieroMensual(estadoFinancieroMensual);
         }
 
+        public EstadoFinancieroMensual getEstadoFinancieroPorID(int id)
+        {
+            return cooperativa.getEstadoFinancieroPorID(id);
+        }
+
         public EstadoFinancieroMensual getUltimoEstadoFinancieroMensual ()
         {
             return cooperativa.getUltimoEstadoFinancieroMensual();

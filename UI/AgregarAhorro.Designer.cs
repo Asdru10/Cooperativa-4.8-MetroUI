@@ -43,6 +43,7 @@ namespace UI
             this.metroDateTimeFecha = new MetroFramework.Controls.MetroDateTime();
             this.metroLabelFecha = new MetroFramework.Controls.MetroLabel();
             this.metroButtonEliminar = new MetroFramework.Controls.MetroButton();
+            this.metroButtonEditar = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.metroGridAhorros)).BeginInit();
             this.SuspendLayout();
             // 
@@ -201,10 +202,22 @@ namespace UI
             this.metroButtonEliminar.UseSelectable = true;
             this.metroButtonEliminar.Click += new System.EventHandler(this.metroButtonEliminar_Click);
             // 
+            // metroButtonEditar
+            // 
+            this.metroButtonEditar.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.metroButtonEditar.Location = new System.Drawing.Point(596, 342);
+            this.metroButtonEditar.Name = "metroButtonEditar";
+            this.metroButtonEditar.Size = new System.Drawing.Size(93, 38);
+            this.metroButtonEditar.TabIndex = 78;
+            this.metroButtonEditar.Text = "Editar";
+            this.metroButtonEditar.UseSelectable = true;
+            this.metroButtonEditar.Click += new System.EventHandler(this.metroButtonEditar_Click);
+            // 
             // AgregarAhorro
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(712, 515);
+            this.Controls.Add(this.metroButtonEditar);
             this.Controls.Add(this.metroButtonEliminar);
             this.Controls.Add(this.metroDateTimeFecha);
             this.Controls.Add(this.metroLabelFecha);
@@ -235,5 +248,6 @@ namespace UI
         private MetroFramework.Controls.MetroDateTime metroDateTimeFecha;
         private MetroFramework.Controls.MetroLabel metroLabelFecha;
         private MetroFramework.Controls.MetroButton metroButtonEliminar;
+        private MetroFramework.Controls.MetroButton metroButtonEditar;
     }
 }
