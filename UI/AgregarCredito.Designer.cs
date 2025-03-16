@@ -53,6 +53,8 @@ namespace UI
             this.metroDateTimeFechaInicio = new MetroFramework.Controls.MetroDateTime();
             this.metroDateTimeFechaFinal = new MetroFramework.Controls.MetroDateTime();
             this.metroGridCreditos = new MetroFramework.Controls.MetroGrid();
+            this.metroButtonEliminar = new MetroFramework.Controls.MetroButton();
+            this.metroButtonEditar = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.metroGridCreditos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -318,7 +320,7 @@ namespace UI
             // metroButtonAprobar
             // 
             this.metroButtonAprobar.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButtonAprobar.Location = new System.Drawing.Point(396, 400);
+            this.metroButtonAprobar.Location = new System.Drawing.Point(452, 401);
             this.metroButtonAprobar.Name = "metroButtonAprobar";
             this.metroButtonAprobar.Size = new System.Drawing.Size(93, 38);
             this.metroButtonAprobar.TabIndex = 57;
@@ -394,12 +396,37 @@ namespace UI
             this.metroGridCreditos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.metroGridCreditos.Size = new System.Drawing.Size(845, 155);
             this.metroGridCreditos.TabIndex = 75;
+            this.metroGridCreditos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGridCreditos_CellClick);
             this.metroGridCreditos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGridCreditos_CellContentClick);
+            // 
+            // metroButtonEliminar
+            // 
+            this.metroButtonEliminar.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.metroButtonEliminar.Location = new System.Drawing.Point(882, 571);
+            this.metroButtonEliminar.Name = "metroButtonEliminar";
+            this.metroButtonEliminar.Size = new System.Drawing.Size(93, 38);
+            this.metroButtonEliminar.TabIndex = 77;
+            this.metroButtonEliminar.Text = "Eliminar";
+            this.metroButtonEliminar.UseSelectable = true;
+            this.metroButtonEliminar.Click += new System.EventHandler(this.metroButtonEliminar_Click);
+            // 
+            // metroButtonEditar
+            // 
+            this.metroButtonEditar.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.metroButtonEditar.Location = new System.Drawing.Point(882, 459);
+            this.metroButtonEditar.Name = "metroButtonEditar";
+            this.metroButtonEditar.Size = new System.Drawing.Size(93, 38);
+            this.metroButtonEditar.TabIndex = 76;
+            this.metroButtonEditar.Text = "Editar";
+            this.metroButtonEditar.UseSelectable = true;
+            this.metroButtonEditar.Click += new System.EventHandler(this.metroButtonEditar_Click);
             // 
             // AgregarCredito
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(891, 637);
+            this.ClientSize = new System.Drawing.Size(998, 637);
+            this.Controls.Add(this.metroButtonEliminar);
+            this.Controls.Add(this.metroButtonEditar);
             this.Controls.Add(this.metroGridCreditos);
             this.Controls.Add(this.metroDateTimeFechaFinal);
             this.Controls.Add(this.metroDateTimeFechaInicio);
@@ -448,5 +475,7 @@ namespace UI
         private MetroFramework.Controls.MetroDateTime metroDateTimeFechaInicio;
         private MetroFramework.Controls.MetroDateTime metroDateTimeFechaFinal;
         private MetroFramework.Controls.MetroGrid metroGridCreditos;
+        private MetroFramework.Controls.MetroButton metroButtonEliminar;
+        private MetroFramework.Controls.MetroButton metroButtonEditar;
     }
 }

@@ -93,7 +93,7 @@ namespace UI
             }
         }
 
-        private void agregarAhorro ()
+        private void agregarAhorro()
         {
             Ahorro ahorro = new Ahorro();
             ahorro.Cedula_Asociado = asociados[metroComboBoxAsociado.SelectedIndex].Cedula;
@@ -112,7 +112,7 @@ namespace UI
             mensaje.mostrar("Completado", "Ahorro agregado exitosamente", "check");
         }
 
-        private void actualizarAhorro ()
+        private void actualizarAhorro()
         {
             ahorroSeleccionado.Cedula_Asociado = asociados[metroComboBoxAsociado.SelectedIndex].Cedula;
             ahorroSeleccionado.Monto = Convert.ToDecimal(metroTextBoxMonto.Text.Trim());
@@ -127,7 +127,7 @@ namespace UI
 
             cooperativa.actualizarAhorro(ahorroSeleccionado);
             cooperativa.actualizarEstadoFinancieroMensual(estadoActual);
-            
+
             limpiarCampos();
             cargarAhorros();
             metroButtonAgregar.Text = "Agregar";
@@ -196,7 +196,8 @@ namespace UI
 
         private void metroButtonEditar_Click(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 if (metroButtonEditar.Text == "Cancelar")
                 {
                     limpiarCampos();
@@ -204,7 +205,7 @@ namespace UI
                     metroButtonEditar.Text = "Editar";
                     ahorroSeleccionado = new Ahorro();
                     return;
-                } 
+                }
                 else if (ahorroSeleccionado.ID == 0)
                 {
                     mensaje = new MensajeAUsuario();
@@ -268,14 +269,21 @@ namespace UI
 
         private void metroGridAhorros_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int idAhorro = Convert.ToInt32(metroGridAhorros.Rows[e.RowIndex].Cells["ID"].Value);
-            foreach (var ahorro in ahorros)
+            try
             {
-                if (ahorro.ID == idAhorro)
+                int idAhorro = Convert.ToInt32(metroGridAhorros.Rows[e.RowIndex].Cells["ID"].Value);
+                foreach (var ahorro in ahorros)
                 {
-                    ahorroSeleccionado = ahorro;
-                    break;
+                    if (ahorro.ID == idAhorro)
+                    {
+                        ahorroSeleccionado = ahorro;
+                        break;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                return;
             }
         }
 
@@ -284,6 +292,6 @@ namespace UI
 
         }
 
-        
+
     }
 }

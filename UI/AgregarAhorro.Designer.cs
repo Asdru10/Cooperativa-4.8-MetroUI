@@ -114,7 +114,7 @@ namespace UI
             // metroButtonAgregar
             // 
             this.metroButtonAgregar.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButtonAgregar.Location = new System.Drawing.Point(253, 274);
+            this.metroButtonAgregar.Location = new System.Drawing.Point(303, 274);
             this.metroButtonAgregar.Name = "metroButtonAgregar";
             this.metroButtonAgregar.Size = new System.Drawing.Size(93, 38);
             this.metroButtonAgregar.TabIndex = 73;

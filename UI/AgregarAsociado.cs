@@ -157,8 +157,15 @@ namespace UI
 
         private void metroGridAsociados_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int cedula = Convert.ToInt32(metroGridAsociados.Rows[e.RowIndex].Cells["Cedula"].Value);
-            asociadoSeleccionado = cooperativa.getAsociadoPorCedula(cedula);
+            try
+            {
+                int cedula = Convert.ToInt32(metroGridAsociados.Rows[e.RowIndex].Cells["Cedula"].Value);
+                asociadoSeleccionado = cooperativa.getAsociadoPorCedula(cedula);
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
         }
 
         private void metroButtonEditar_Click(object sender, EventArgs e)

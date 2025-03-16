@@ -17,8 +17,12 @@ namespace UI
     {
         private CooperativaManager cooperativa = new CooperativaManager();
         private List<Asociado> asociados;
+        private List<Credito> creditosActivos;
+        private List<Abono> abonos;
         private MensajeAUsuario mensaje = new MensajeAUsuario();
-        private Credito creditoAcutal;
+        private PreguntaAUsuario pregunta = new PreguntaAUsuario();
+        private Credito creditoAcutal = new Credito();
+        private Abono abonoSeleccionado = new Abono();
 
         public DetalleAbonosCredito()
         {
@@ -106,7 +110,7 @@ namespace UI
                 }
                 else
                 {
-                    List<Credito> creditosActivos = new List<Credito>();
+                    creditosActivos = new List<Credito>();
                     foreach (var credito in creditos)
                     {
                         if (!credito.Estado.Equals("Cancelado"))
@@ -155,7 +159,8 @@ namespace UI
             {
                 int id = (int)metroGridCreditos.Rows[e.RowIndex].Cells["ID"].Value;
                 creditoAcutal = cooperativa.getCreditoPorID(id);
-                metroGridAbonos.DataSource = cooperativa.getAbonosCredito(id);
+                abonos = cooperativa.getAbonosCredito(id);
+                metroGridAbonos.DataSource = abonos;
                 if (metroGridAbonos.Rows.Count == 0)
                 {
                     mensaje = new MensajeAUsuario();
@@ -165,6 +170,73 @@ namespace UI
             catch (Exception ex)
             {
                 return;
+            }
+        }
+
+        private void metroGridAbonos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(metroGridAbonos.Rows[e.RowIndex].Cells["ID"].Value);
+                foreach (var abono in abonos)
+                {
+                    if (abono.ID == id)
+                    {
+                        abonoSeleccionado = abono;
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+        }
+
+        private void metroButtonEditar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroButtonEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (abonoSeleccionado.ID == 0)
+                {
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Error al eliminar abono", "Debe seleccionar un abono", "error");
+                    return;
+                }
+
+                DialogResult resultado;
+                pregunta = new PreguntaAUsuario();
+                pregunta.titulo("Eliminar abono");
+                pregunta.mensaje("¿Está seguro que desea eliminar el abono seleccionado? \nEsta acción no se puede deshacer");
+                resultado = pregunta.ShowDialog();
+
+                if (resultado == DialogResult.Yes)
+                {
+                    int idEstadoFinanciero = abonoSeleccionado.ID_Estado_Financiero_Mensual;
+                    cooperativa.eliminarAbono(abonoSeleccionado.ID);
+                    cooperativa.eliminarEstadoFinancieroMensual(idEstadoFinanciero);
+                    cargarCreditos();
+                    metroGridAbonos.DataSource = cooperativa.getAbonosCredito(creditoAcutal.ID);
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Completado", "Abono eliminado correctamente", "check");
+                }
+                else
+                {
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Abono No Eliminado", "Ha decidido no eliminar el abono seleccionado", "advertencia");
+                }
+                abonoSeleccionado = new Abono();
+
+            }
+            catch (Exception ex)
+            {
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al eliminar abono", ex.Message, "error");
             }
         }
 

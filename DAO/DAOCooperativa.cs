@@ -1155,6 +1155,35 @@ namespace DAO
             return abonos;
         }
 
+        public void actualizarAbono (Abono abono)
+        {
+            string sentence = "";
+            SqlCommand command = new SqlCommand(sentence, conexion);
+            openConnection();
+            command.CommandText = "update Abono set ID_Credito = @ID_Credito, ID_Estado_Financiero_Mensual = @ID_Estado_Financiero_Mensual, Periodo_Estado_Financiero_Mensual = @Periodo_Estado_Financiero_Mensual, Fecha = @Fecha, Abono_Capital = @Abono_Capital, Abono_Intereses = @Abono_Intereses, Abono_Total = @Abono_Total where ID = @ID";
+            command.Parameters.AddWithValue("@ID_Credito", abono.ID_Credito);
+            command.Parameters.AddWithValue("@ID_Estado_Financiero_Mensual", abono.ID_Estado_Financiero_Mensual);
+            command.Parameters.AddWithValue("@Periodo_Estado_Financiero_Mensual", abono.Periodo_Estado_Financiero_Mensual);
+            command.Parameters.AddWithValue("@Fecha", abono.Fecha);
+            command.Parameters.AddWithValue("@Abono_Capital", abono.Abono_Capital);
+            command.Parameters.AddWithValue("@Abono_Intereses", abono.Abono_Interes);
+            command.Parameters.AddWithValue("@Abono_Total", abono.Abono_Total);
+            command.Parameters.AddWithValue("@ID", abono.ID);
+            command.ExecuteNonQuery();
+            closeConnection();
+        }
+
+        public void eliminarAbono(int id)
+        {
+            string sentence = "";
+            SqlCommand command = new SqlCommand(sentence, conexion);
+            openConnection();
+            command.CommandText = "delete from Abono where ID = @ID";
+            command.Parameters.AddWithValue("@ID", id);
+            command.ExecuteNonQuery();
+            closeConnection();
+        }
+
         public void crearProyeccion(List<ProyeccionPagoCredito> proyeccion)
         {
             string sentence = "INSERT INTO Proyeccion_Pago_Credito (ID_Credito, Fecha, Monto_Abono, Saldo_Total) VALUES (@ID_Credito, @Fecha, @Monto_Abono, @Saldo_Total)";

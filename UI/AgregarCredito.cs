@@ -17,9 +17,12 @@ namespace UI
     {
         private CooperativaManager cooperativa = new CooperativaManager();
         private List<Asociado> asociados;
+        private List<Credito> creditos;
+        private List<Abono> abonos;
         private Constantes constantes = new Constantes();
         private MensajeAUsuario mensaje = new MensajeAUsuario();
         private PreguntaAUsuario pregunta = new PreguntaAUsuario();
+        private Credito creditoSeleccionado = new Credito();
 
         public AgregarCredito()
         {
@@ -79,7 +82,8 @@ namespace UI
         {
             try
             {
-                metroGridCreditos.DataSource = cooperativa.getCreditos();
+                creditos = cooperativa.getCreditos();
+                metroGridCreditos.DataSource = creditos;
             }
             catch (Exception ex)
             {
@@ -130,44 +134,92 @@ namespace UI
 
             try
             {
-
                 calcularFechaFinal();
                 realizarCalculos();
 
-                Credito credito = new Credito();
-                credito.Cedula_Asociado = asociados[metroComboBoxAsociado.SelectedIndex].Cedula;
-                credito.Fecha_Desembolso = metroDateTimeFechaInicio.Value;
-                credito.Fecha_Final = metroDateTimeFechaFinal.Value;
-                credito.Capital_Desembolsado = Convert.ToDecimal(metroTextBoxCapitalCredito.Text.Trim());
-                credito.Capital_Cancelado = 0;
-                credito.Saldo_Capital = Convert.ToDecimal(metroTextBoxCapitalCredito.Text.Trim());
-                credito.Intereses = Convert.ToDecimal(metroTextBoxInteresCredito.Text.Trim());
-                credito.Intereses_Cancelados = 0;
-                credito.Saldo_Intereses = Convert.ToDecimal(metroTextBoxInteresCredito.Text.Trim());
-                credito.Saldo_Total = Convert.ToDecimal(metroTextBoxSaldoCredito.Text.Trim());
-                credito.Cuota_Mensual = calcularCuotaCapital();
-                credito.Cuota_Intereses = calcularCuotaIntereses();
-                credito.Total_Cuota = Convert.ToDecimal(metroTextBoxCuotaMensual.Text.Trim());
-                credito.Total_Credito = Convert.ToDecimal(metroTextBoxSaldoCredito.Text.Trim());
-                credito.Estado = "Aprobado";
+                if (metroButtonAprobar.Text.Equals("Aprobar"))
+                {
+                    agregarCredito();
+                }
+                else if (metroButtonAprobar.Text.Equals("Actualizar"))
+                {
+                    actualizarCredito();
+                }
 
-                agregarEstadoFinanciero();
-                EstadoFinancieroMensual estadoActual = cooperativa.getUltimoEstadoFinancieroMensual();
-                credito.ID_Estado_Financiero_Mensual = estadoActual.ID;
-                credito.Periodo_Estado_Financiero_Mensual = estadoActual.Periodo;
-                cooperativa.agregarCredito(credito);
-                Credito creditoActual = cooperativa.getUltimoCredito();
-                cooperativa.crearProyeccion(crearProyeccion(creditoActual));
-                limpiarCampos();
-                cargarCreditos();
-                mensaje = new MensajeAUsuario();
-                mensaje.mostrar("Completado", "Crédito agregado exitosamente", "check");
             }
             catch (Exception ex)
             {
                 mensaje = new MensajeAUsuario();
                 mensaje.mostrar("Error al agregar crédito", ex.Message, "error");
             }
+        }
+
+        private void agregarCredito()
+        {
+            Credito credito = new Credito();
+            credito.Cedula_Asociado = asociados[metroComboBoxAsociado.SelectedIndex].Cedula;
+            credito.Fecha_Desembolso = metroDateTimeFechaInicio.Value;
+            credito.Fecha_Final = metroDateTimeFechaFinal.Value;
+            credito.Capital_Desembolsado = Convert.ToDecimal(metroTextBoxCapitalCredito.Text.Trim());
+            credito.Capital_Cancelado = 0;
+            credito.Saldo_Capital = Convert.ToDecimal(metroTextBoxCapitalCredito.Text.Trim());
+            credito.Intereses = Convert.ToDecimal(metroTextBoxInteresCredito.Text.Trim());
+            credito.Intereses_Cancelados = 0;
+            credito.Saldo_Intereses = Convert.ToDecimal(metroTextBoxInteresCredito.Text.Trim());
+            credito.Saldo_Total = Convert.ToDecimal(metroTextBoxSaldoCredito.Text.Trim());
+            credito.Cuota_Mensual = calcularCuotaCapital();
+            credito.Cuota_Intereses = calcularCuotaIntereses();
+            credito.Total_Cuota = Convert.ToDecimal(metroTextBoxCuotaMensual.Text.Trim());
+            credito.Total_Credito = Convert.ToDecimal(metroTextBoxSaldoCredito.Text.Trim());
+            credito.Estado = "Aprobado";
+
+            agregarEstadoFinanciero();
+            EstadoFinancieroMensual estadoActual = cooperativa.getUltimoEstadoFinancieroMensual();
+            credito.ID_Estado_Financiero_Mensual = estadoActual.ID;
+            credito.Periodo_Estado_Financiero_Mensual = estadoActual.Periodo;
+            cooperativa.agregarCredito(credito);
+            Credito creditoActual = cooperativa.getUltimoCredito();
+            cooperativa.crearProyeccion(crearProyeccion(creditoActual));
+            limpiarCampos();
+            cargarCreditos();
+            mensaje = new MensajeAUsuario();
+            mensaje.mostrar("Completado", "Crédito agregado exitosamente", "check");
+        }
+
+        private void actualizarCredito()
+        {
+            creditoSeleccionado.Cedula_Asociado = asociados[metroComboBoxAsociado.SelectedIndex].Cedula;
+            creditoSeleccionado.Fecha_Desembolso = metroDateTimeFechaInicio.Value;
+            creditoSeleccionado.Fecha_Final = metroDateTimeFechaFinal.Value;
+            creditoSeleccionado.Capital_Desembolsado = Convert.ToDecimal(metroTextBoxCapitalCredito.Text.Trim());
+            creditoSeleccionado.Saldo_Capital = Convert.ToDecimal(metroTextBoxCapitalCredito.Text.Trim());
+            creditoSeleccionado.Intereses = Convert.ToDecimal(metroTextBoxInteresCredito.Text.Trim());
+            creditoSeleccionado.Saldo_Intereses = Convert.ToDecimal(metroTextBoxInteresCredito.Text.Trim());
+            creditoSeleccionado.Saldo_Total = Convert.ToDecimal(metroTextBoxSaldoCredito.Text.Trim());
+            creditoSeleccionado.Cuota_Mensual = calcularCuotaCapital();
+            creditoSeleccionado.Cuota_Intereses = calcularCuotaIntereses();
+            creditoSeleccionado.Total_Cuota = Convert.ToDecimal(metroTextBoxCuotaMensual.Text.Trim());
+            creditoSeleccionado.Total_Credito = Convert.ToDecimal(metroTextBoxSaldoCredito.Text.Trim());
+
+            EstadoFinancieroMensual estadoActual = cooperativa.getEstadoFinancieroPorID(creditoSeleccionado.ID_Estado_Financiero_Mensual);
+            estadoActual.ID = creditoSeleccionado.ID_Estado_Financiero_Mensual;
+            String periodoActual = metroDateTimeFechaInicio.Value.Month + "" + metroDateTimeFechaInicio.Value.Year;
+            estadoActual.Periodo = Convert.ToInt32(periodoActual);
+            estadoActual.Fecha = metroDateTimeFechaInicio.Value;
+            estadoActual.Monto = Convert.ToDecimal(metroTextBoxCapitalCredito.Text.Trim());
+
+            cooperativa.actualizarCredito(creditoSeleccionado);
+            cooperativa.actualizarEstadoFinancieroMensual(estadoActual);
+            cooperativa.eliminarProyeccion(creditoSeleccionado.ID);
+            cooperativa.crearProyeccion(crearProyeccion(creditoSeleccionado));
+
+            cargarCreditos();
+            limpiarCampos();
+            metroButtonAprobar.Text = "Aprobar";
+            metroButtonEditar.Text = "Editar";
+            creditoSeleccionado = new Credito();
+            mensaje = new MensajeAUsuario();
+            mensaje.mostrar("Completado", "Crédito actualizado exitosamente", "check");
         }
 
         private void agregarEstadoFinanciero()
@@ -302,7 +354,7 @@ namespace UI
             return 0;
         }
 
-        
+
 
         private void metroTextBoxCapitalCredito_Leave(object sender, EventArgs e)
         {
@@ -311,7 +363,7 @@ namespace UI
                 decimal capital = Convert.ToDecimal(metroTextBoxCapitalCredito.Text.Trim());
                 metroTextBoxCapitalCredito.Text = capital.ToString("N2");
                 realizarCalculos();
-            } 
+            }
             else
             {
                 mensaje = new MensajeAUsuario();
@@ -372,8 +424,11 @@ namespace UI
             }
             foreach (Credito credito in creditos)
             {
-                egresos += credito.Saldo_Total - credito.Intereses;
-                // este calculo lo probe y se puede omitir esta linea ingresos += credito.Intereses_Cancelados;
+                if (!credito.Estado.Equals("Cancelado"))
+                {
+                    egresos += credito.Saldo_Capital;
+                }
+                //egresos += credito.Saldo_Total - credito.Intereses;
             }
             foreach (Abono abono in abonos)
             {
@@ -402,11 +457,16 @@ namespace UI
             }
             foreach (Credito credito in creditos)
             {
-                saldoEgresos += credito.Capital_Desembolsado;
+                if (!credito.Estado.Equals("Cancelado"))
+                {
+                    saldoEgresos += credito.Saldo_Capital;
+                }
+                //saldoEgresos += credito.Capital_Desembolsado;
             }
             foreach (Abono abono in abonos)
             {
-                saldoIngresos += abono.Abono_Total;
+                saldoIngresos += abono.Abono_Interes;
+                //saldoIngresos += abono.Abono_Total;
             }
 
             decimal capacidadCredito = (saldoIngresos - saldoEgresos) * 2;
@@ -476,6 +536,116 @@ namespace UI
 
         }
 
+        private void metroGridCreditos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int idCredito = Convert.ToInt32(metroGridCreditos.Rows[e.RowIndex].Cells["ID"].Value);
+                foreach (var credito in creditos)
+                {
+                    if (credito.ID == idCredito)
+                    {
+                        creditoSeleccionado = credito;
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+        }
+
+        private void metroButtonEditar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (metroButtonEditar.Text == "Cancelar")
+                {
+                    limpiarCampos();
+                    metroButtonAprobar.Text = "Aprobar";
+                    metroButtonEditar.Text = "Editar";
+                    creditoSeleccionado = new Credito();
+                    return;
+                }
+                else if (creditoSeleccionado.ID == 0)
+                {
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Error al editar crédito", "Debe seleccionar un crédito", "error");
+                    return;
+                }
+
+                abonos = cooperativa.getAbonosCredito(creditoSeleccionado.ID);
+                if (abonos.Count > 0)
+                {
+                    metroButtonAprobar.Text = "Aprobar";
+                    metroButtonEditar.Text = "Editar";
+                    creditoSeleccionado = new Credito();
+                    limpiarCampos();
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Crédito no actualizado", "No se puede actualizar un crédito con abonos registrados", "error");
+                    return;
+                }
+
+                metroButtonAprobar.Text = "Actualizar";
+                metroButtonEditar.Text = "Cancelar";
+                metroComboBoxAsociado.SelectedIndex = asociados.FindIndex(x => x.Cedula == creditoSeleccionado.Cedula_Asociado);
+                metroDateTimeFechaInicio.Value = creditoSeleccionado.Fecha_Desembolso;
+                metroDateTimeFechaFinal.Value = creditoSeleccionado.Fecha_Final;
+                metroTextBoxCapitalCredito.Text = creditoSeleccionado.Capital_Desembolsado.ToString("N2");
+                metroTextBoxInteresCredito.Text = creditoSeleccionado.Intereses.ToString("N2");
+                metroTextBoxSaldoCredito.Text = creditoSeleccionado.Total_Credito.ToString("N2");
+                metroTextBoxCuotaMensual.Text = creditoSeleccionado.Total_Cuota.ToString("N2");
+            }
+            catch (Exception ex)
+            {
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al editar crédito", ex.Message, "error");
+            }
+        }
+
+        private void metroButtonEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (creditoSeleccionado.ID == 0)
+                {
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Error al eliminar crédito", "Debe seleccionar un crédito", "error");
+                    return;
+                }
+
+                DialogResult resultado;
+                pregunta = new PreguntaAUsuario();
+                pregunta.titulo("Eliminar crédito");
+                pregunta.mensaje("¿Está seguro que desea eliminar el crédito seleccionado? \nEsta acción no se puede deshacer");
+                resultado = pregunta.ShowDialog();
+
+                if (resultado == DialogResult.Yes)
+                {
+                    int idEstadoFinanciero = creditoSeleccionado.ID_Estado_Financiero_Mensual;
+                    cooperativa.eliminarProyeccion(creditoSeleccionado.ID);
+                    cooperativa.eliminarCredito(creditoSeleccionado.ID);
+                    cooperativa.eliminarEstadoFinancieroMensual(idEstadoFinanciero);
+                    limpiarCampos();
+                    cargarCreditos();
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Completado", "Crédito eliminado correctamente", "check");
+                }
+                else
+                {
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Crédito No Eliminado", "Ha decidido no eliminar el crédito seleccionado", "advertencia");
+                }
+                creditoSeleccionado = new Credito();
+            }
+            catch (Exception ex)
+            {
+                mensaje = new MensajeAUsuario();
+                mensaje.mostrar("Error al eliminar crédito", ex.Message, "error");
+            }
+        }
+
         private void dateTimePickerFechaInicio_ValueChanged(object sender, EventArgs e)
         {
         }
@@ -526,5 +696,7 @@ namespace UI
         {
 
         }
+
+
     }
 }

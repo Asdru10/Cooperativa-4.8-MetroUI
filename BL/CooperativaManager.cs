@@ -252,6 +252,16 @@ namespace BL
             return cooperativa.getAbonosPorFecha(fechaInicio, fechaFin);
         }
 
+        public void actualizarAbono(Abono abono)
+        {
+            cooperativa.actualizarAbono(abono);
+        }   
+
+        public void eliminarAbono(int id)
+        {
+            cooperativa.eliminarAbono(id);
+        }
+
         public void crearProyeccion (List<ProyeccionPagoCredito> proyecciones)
         {
             cooperativa.crearProyeccion(proyecciones);

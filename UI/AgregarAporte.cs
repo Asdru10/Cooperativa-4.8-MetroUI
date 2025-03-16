@@ -21,7 +21,7 @@ namespace UI
         private List<Aporte> aportes;
         private MensajeAUsuario mensaje = new MensajeAUsuario();
         private PreguntaAUsuario pregunta = new PreguntaAUsuario();
-        private Aporte aporteSeleccionado;
+        private Aporte aporteSeleccionado = new Aporte();
         private string tipoAporte = "";
 
         public AgregarAporte()
@@ -155,7 +155,7 @@ namespace UI
 
             cooperativa.actualizarAporte(aporteSeleccionado);
             cooperativa.actualizarEstadoFinancieroMensual(estadoActual);
-            
+
             limpiarCampos();
             cargarAportes();
             metroButtonAgregar.Text = "Agregar";
@@ -247,14 +247,21 @@ namespace UI
 
         private void metroGridAportes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int idAporte = Convert.ToInt32(metroGridAportes.Rows[e.RowIndex].Cells["ID"].Value);
-            foreach (var aporte in aportes)
+            try
             {
-                if (aporte.ID == idAporte)
+                int idAporte = Convert.ToInt32(metroGridAportes.Rows[e.RowIndex].Cells["ID"].Value);
+                foreach (var aporte in aportes)
                 {
-                    aporteSeleccionado = aporte;
-                    break;
+                    if (aporte.ID == idAporte)
+                    {
+                        aporteSeleccionado = aporte;
+                        break;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                return;
             }
         }
 
