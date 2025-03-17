@@ -45,6 +45,9 @@ namespace UI
             this.metroGridAbonos = new MetroFramework.Controls.MetroGrid();
             this.metroButtonEditar = new MetroFramework.Controls.MetroButton();
             this.metroButtonEliminar = new MetroFramework.Controls.MetroButton();
+            this.metroRadioButtonCancelados = new MetroFramework.Controls.MetroRadioButton();
+            this.metroRadioButtonActivos = new MetroFramework.Controls.MetroRadioButton();
+            this.metroRadioButtonTodos = new MetroFramework.Controls.MetroRadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.metroGridCreditos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroGridAbonos)).BeginInit();
             this.SuspendLayout();
@@ -213,10 +216,52 @@ namespace UI
             this.metroButtonEliminar.UseSelectable = true;
             this.metroButtonEliminar.Click += new System.EventHandler(this.metroButtonEliminar_Click);
             // 
+            // metroRadioButtonCancelados
+            // 
+            this.metroRadioButtonCancelados.AutoSize = true;
+            this.metroRadioButtonCancelados.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.metroRadioButtonCancelados.Location = new System.Drawing.Point(877, 154);
+            this.metroRadioButtonCancelados.Name = "metroRadioButtonCancelados";
+            this.metroRadioButtonCancelados.Size = new System.Drawing.Size(101, 20);
+            this.metroRadioButtonCancelados.TabIndex = 93;
+            this.metroRadioButtonCancelados.Text = "Cancelados";
+            this.metroRadioButtonCancelados.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.metroRadioButtonCancelados.UseSelectable = true;
+            this.metroRadioButtonCancelados.CheckedChanged += new System.EventHandler(this.metroRadioButtonCancelados_CheckedChanged);
+            // 
+            // metroRadioButtonActivos
+            // 
+            this.metroRadioButtonActivos.AutoSize = true;
+            this.metroRadioButtonActivos.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.metroRadioButtonActivos.Location = new System.Drawing.Point(877, 128);
+            this.metroRadioButtonActivos.Name = "metroRadioButtonActivos";
+            this.metroRadioButtonActivos.Size = new System.Drawing.Size(73, 20);
+            this.metroRadioButtonActivos.TabIndex = 92;
+            this.metroRadioButtonActivos.Text = "Activos";
+            this.metroRadioButtonActivos.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.metroRadioButtonActivos.UseSelectable = true;
+            this.metroRadioButtonActivos.CheckedChanged += new System.EventHandler(this.metroRadioButtonActivos_CheckedChanged);
+            // 
+            // metroRadioButtonTodos
+            // 
+            this.metroRadioButtonTodos.AutoSize = true;
+            this.metroRadioButtonTodos.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.metroRadioButtonTodos.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.metroRadioButtonTodos.Location = new System.Drawing.Point(877, 102);
+            this.metroRadioButtonTodos.Name = "metroRadioButtonTodos";
+            this.metroRadioButtonTodos.Size = new System.Drawing.Size(65, 20);
+            this.metroRadioButtonTodos.TabIndex = 91;
+            this.metroRadioButtonTodos.Text = "Todos";
+            this.metroRadioButtonTodos.UseSelectable = true;
+            this.metroRadioButtonTodos.CheckedChanged += new System.EventHandler(this.metroRadioButtonTodos_CheckedChanged);
+            // 
             // DetalleAbonosCredito
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1012, 669);
+            this.Controls.Add(this.metroRadioButtonCancelados);
+            this.Controls.Add(this.metroRadioButtonActivos);
+            this.Controls.Add(this.metroRadioButtonTodos);
             this.Controls.Add(this.metroButtonEditar);
             this.Controls.Add(this.metroButtonEliminar);
             this.Controls.Add(this.metroGridAbonos);
@@ -245,5 +290,8 @@ namespace UI
         private MetroFramework.Controls.MetroGrid metroGridAbonos;
         private MetroFramework.Controls.MetroButton metroButtonEditar;
         private MetroFramework.Controls.MetroButton metroButtonEliminar;
+        private MetroFramework.Controls.MetroRadioButton metroRadioButtonCancelados;
+        private MetroFramework.Controls.MetroRadioButton metroRadioButtonActivos;
+        private MetroFramework.Controls.MetroRadioButton metroRadioButtonTodos;
     }
 }

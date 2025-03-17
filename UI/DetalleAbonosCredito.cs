@@ -18,11 +18,13 @@ namespace UI
         private CooperativaManager cooperativa = new CooperativaManager();
         private List<Asociado> asociados;
         private List<Credito> creditosActivos;
+        private List<Credito> creditosCancelados;
         private List<Abono> abonos;
         private MensajeAUsuario mensaje = new MensajeAUsuario();
         private PreguntaAUsuario pregunta = new PreguntaAUsuario();
         private Credito creditoAcutal = new Credito();
         private Abono abonoSeleccionado = new Abono();
+        private string tipo = "T";
 
         public DetalleAbonosCredito()
         {
@@ -33,6 +35,7 @@ namespace UI
         {
             asociados = cooperativa.getAsociados();
             cargarAsociados();
+            metroRadioButtonTodos.Checked = true;
             metroGridCreditos.DataSource = new List<Credito>();
             metroGridCreditos.Columns["Cedula_Asociado"].HeaderText = "Cédula Asociado";
             metroGridCreditos.Columns["ID_Estado_Financiero_Mensual"].Visible = false;
@@ -91,7 +94,7 @@ namespace UI
             }
         }
 
-        private void cargarCreditos()
+        private void cargarCreditos(string tipo)
         {
             try
             {
@@ -104,42 +107,71 @@ namespace UI
                 List<Credito> creditos = cooperativa.getCreditosAsociado(asociados[metroComboBoxAsociado.SelectedIndex].Cedula);
                 if (creditos.Count == 0)
                 {
+                    metroGridCreditos.DataSource = new List<Credito>();
+                    metroGridAbonos.DataSource = new List<Abono>();
                     mensaje = new MensajeAUsuario();
                     mensaje.mostrar("Aviso", "El asociado no tiene créditos", "info");
                     return;
                 }
-                else
+
+                switch (tipo)
                 {
-                    creditosActivos = new List<Credito>();
-                    foreach (var credito in creditos)
-                    {
-                        if (!credito.Estado.Equals("Cancelado"))
-                        {
-                            creditosActivos.Add(credito);
-                        }
-                    }
+                    case "T":
+                        metroGridCreditos.DataSource = creditos;
+                        break;
 
-                    if (creditosActivos.Count == 0)
-                    {
-                        mensaje = new MensajeAUsuario();
-                        mensaje.mostrar("Aviso", "El asociado no tiene créditos activos", "info");
-                    }
-                    metroGridCreditos.DataSource = creditosActivos;
-
-                    for (int i = 0; i < metroGridCreditos.Rows.Count; i++)
-                    {
-                        if (metroGridCreditos.Rows[i].Cells["Estado"].Value.Equals("Atrasado"))
+                    case "A":
+                        creditosActivos = new List<Credito>();
+                        foreach (var credito in creditos)
                         {
-                            metroGridCreditos.Rows[i].Cells["Estado"].Style.BackColor = Color.Red;
+                            if (!credito.Estado.Equals("Cancelado"))
+                            {
+                                creditosActivos.Add(credito);
+                            }
                         }
-                        else
-                        {
-                            metroGridCreditos.Rows[i].Cells["Estado"].Style.BackColor = Color.LightGreen;
-                        }
-                    }
 
+                        if (creditosActivos.Count == 0)
+                        {
+                            metroGridCreditos.DataSource = new List<Credito>();
+                            metroGridAbonos.DataSource = new List<Abono>();
+                            mensaje = new MensajeAUsuario();
+                            mensaje.mostrar("Aviso", "El asociado no tiene créditos activos", "info");
+                        }
+                        metroGridCreditos.DataSource = creditosActivos;
+                        break;
+
+                    case "C":
+                        creditosCancelados = new List<Credito>();
+                        foreach (var credito in creditos)
+                        {
+                            if (credito.Estado.Equals("Cancelado"))
+                            {
+                                creditosCancelados.Add(credito);
+                            }
+                        }
+
+                        if (creditosCancelados.Count == 0)
+                        {
+                            metroGridCreditos.DataSource = new List<Credito>();
+                            metroGridAbonos.DataSource = new List<Abono>();
+                            mensaje = new MensajeAUsuario();
+                            mensaje.mostrar("Aviso", "El asociado no tiene créditos cancelados", "info");
+                        }
+                        metroGridCreditos.DataSource = creditosCancelados;
+                        break;
                 }
 
+                for (int i = 0; i < metroGridCreditos.Rows.Count; i++)
+                {
+                    if (metroGridCreditos.Rows[i].Cells["Estado"].Value.Equals("Atrasado"))
+                    {
+                        metroGridCreditos.Rows[i].Cells["Estado"].Style.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        metroGridCreditos.Rows[i].Cells["Estado"].Style.BackColor = Color.LightGreen;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -150,7 +182,7 @@ namespace UI
 
         private void metroComboBoxAsociado_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cargarCreditos();
+            cargarCreditos(tipo);
         }
 
         private void metroGridCreditos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -208,6 +240,12 @@ namespace UI
                     mensaje.mostrar("Error al eliminar abono", "Debe seleccionar un abono", "error");
                     return;
                 }
+                else if (creditoAcutal.Estado.Equals("Cancelado"))
+                {
+                    mensaje = new MensajeAUsuario();
+                    mensaje.mostrar("Error al eliminar abono", "No se pueden eliminar abonos de un crédito cancelado", "error");
+                    return;
+                }
 
                 DialogResult resultado;
                 pregunta = new PreguntaAUsuario();
@@ -220,7 +258,8 @@ namespace UI
                     int idEstadoFinanciero = abonoSeleccionado.ID_Estado_Financiero_Mensual;
                     cooperativa.eliminarAbono(abonoSeleccionado.ID);
                     cooperativa.eliminarEstadoFinancieroMensual(idEstadoFinanciero);
-                    cargarCreditos();
+                    rollbackCredito();
+                    cargarCreditos(tipo);
                     metroGridAbonos.DataSource = cooperativa.getAbonosCredito(creditoAcutal.ID);
                     mensaje = new MensajeAUsuario();
                     mensaje.mostrar("Completado", "Abono eliminado correctamente", "check");
@@ -240,9 +279,76 @@ namespace UI
             }
         }
 
+        private void rollbackCredito()
+        {
+            creditoAcutal.Capital_Cancelado -= abonoSeleccionado.Abono_Capital;
+            creditoAcutal.Saldo_Capital += abonoSeleccionado.Abono_Capital;
+            creditoAcutal.Intereses_Cancelados -= abonoSeleccionado.Abono_Interes;
+            creditoAcutal.Saldo_Intereses += abonoSeleccionado.Abono_Interes;
+            creditoAcutal.Saldo_Total += abonoSeleccionado.Abono_Total;
+            cooperativa.actualizarCredito(creditoAcutal);
+        }
+
+        private void metroRadioButtonTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (metroRadioButtonTodos.Checked)
+            {
+                tipo = "T";
+                cargarCreditos(tipo);
+            }
+            else if (metroRadioButtonActivos.Checked)
+            {
+                tipo = "A";
+                cargarCreditos(tipo);
+            }
+            else if (metroRadioButtonCancelados.Checked)
+            {
+                tipo = "C";
+                cargarCreditos(tipo);
+            }
+        }
+
+        private void metroRadioButtonActivos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (metroRadioButtonTodos.Checked)
+            {
+                tipo = "T";
+                cargarCreditos(tipo);
+            }
+            else if (metroRadioButtonActivos.Checked)
+            {
+                tipo = "A";
+                cargarCreditos(tipo);
+            }
+            else if (metroRadioButtonCancelados.Checked)
+            {
+                tipo = "C";
+                cargarCreditos(tipo);
+            }
+        }
+
+        private void metroRadioButtonCancelados_CheckedChanged(object sender, EventArgs e)
+        {
+            if (metroRadioButtonTodos.Checked)
+            {
+                tipo = "T";
+                cargarCreditos(tipo);
+            }
+            else if (metroRadioButtonActivos.Checked)
+            {
+                tipo = "A";
+                cargarCreditos(tipo);
+            }
+            else if (metroRadioButtonCancelados.Checked)
+            {
+                tipo = "C";
+                cargarCreditos(tipo);
+            }
+        }
+
         private void dataGridViewCreditos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         private void comboBoxAsociado_SelectedIndexChanged(object sender, EventArgs e)
