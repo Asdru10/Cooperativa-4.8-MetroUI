@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class AgregarCredito : MetroForm
+    public partial class AgregarPlanAhorro : MetroForm
     {
         private CooperativaManager cooperativa = new CooperativaManager();
         private List<Asociado> asociados;
@@ -24,7 +24,7 @@ namespace UI
         private PreguntaAUsuario pregunta = new PreguntaAUsuario();
         private Credito creditoSeleccionado = new Credito();
 
-        public AgregarCredito()
+        public AgregarPlanAhorro()
         {
             InitializeComponent();
         }

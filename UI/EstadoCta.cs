@@ -106,6 +106,7 @@ namespace UI
                     totalAportes += aporte.Monto;
                 }
                 metroTextBoxTotalAportes.Text = totalAportes.ToString("N2");
+                metroTextBoxTotalAporteResumen.Text = metroTextBoxTotalAportes.Text;
                 metroGridAportes.DataSource = aportes;
                 calcularCuotasPendientesAporte(aportes);
             }
@@ -129,6 +130,7 @@ namespace UI
                 }
 
                 metroTextBoxTotalAhorros.Text = totalAhorros.ToString("N2");
+                metroTextBoxTotalAhorroResumen.Text= metroTextBoxTotalAhorros.Text;
                 metroGridAhorros.DataSource = ahorros;
             }
             catch (Exception ex)
@@ -170,13 +172,18 @@ namespace UI
                 {
                     metroTextBoxStatusCreditos.Text = "Atrasado";
                     metroTextBoxStatusCreditos.ForeColor = Color.Red;
+                    metroTextBoxStatusCreditoResumen.Text = "Atrasado";
+                    metroTextBoxStatusCreditoResumen.ForeColor = Color.Red;
                 }
                 else
                 {
                     metroTextBoxStatusCreditos.Text = "Al día";
                     metroTextBoxStatusCreditos.ForeColor = Color.Green;
+                    metroTextBoxStatusCreditoResumen.Text = "Al día";
+                    metroTextBoxStatusCreditoResumen.ForeColor = Color.Green;
                 }
                 metroTextBoxSaldoCreditos.Text = saldoCreditos.ToString("N2");
+                metroTextBoxSaldoCreditoResumen.Text = metroTextBoxSaldoCreditos.Text;
 
                 metroGridCreditos.DataSource = creditosActivos;
                 List<decimal> atrasos = calcularCuotasPendientesCredito(creditosActivos);
@@ -249,6 +256,7 @@ namespace UI
                 }
             }
             metroTextBoxTotalPendienteCreditos.Text = saldoTotal.ToString("N2");
+            metroTextBoxPendienteCreditoResumen.Text = metroTextBoxTotalPendienteCreditos.Text;
             return atrasos;
         }
 
@@ -287,7 +295,12 @@ namespace UI
             }
 
             decimal totalPendiente = totalAportesRequeridos - totalAportes;
+            if (totalPendiente < 0)
+            {
+                totalPendiente = 0;
+            }
             metroTextBoxTotalPendienteAportes.Text = totalPendiente.ToString("N2");
+            metroTextBoxPendienteAporteResumen.Text = metroTextBoxTotalPendienteAportes.Text;
         }
 
         private void label7_Click(object sender, EventArgs e)

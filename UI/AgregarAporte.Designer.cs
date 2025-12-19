@@ -58,7 +58,7 @@ namespace UI
             this.metroComboBoxAsociado.FontSize = MetroFramework.MetroComboBoxSize.Tall;
             this.metroComboBoxAsociado.FormattingEnabled = true;
             this.metroComboBoxAsociado.ItemHeight = 29;
-            this.metroComboBoxAsociado.Location = new System.Drawing.Point(151, 89);
+            this.metroComboBoxAsociado.Location = new System.Drawing.Point(251, 70);
             this.metroComboBoxAsociado.Name = "metroComboBoxAsociado";
             this.metroComboBoxAsociado.Size = new System.Drawing.Size(414, 35);
             this.metroComboBoxAsociado.TabIndex = 44;
@@ -69,7 +69,7 @@ namespace UI
             this.metroLabelAsociado.AutoSize = true;
             this.metroLabelAsociado.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelAsociado.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelAsociado.Location = new System.Drawing.Point(36, 89);
+            this.metroLabelAsociado.Location = new System.Drawing.Point(136, 70);
             this.metroLabelAsociado.Name = "metroLabelAsociado";
             this.metroLabelAsociado.Size = new System.Drawing.Size(95, 25);
             this.metroLabelAsociado.TabIndex = 43;
@@ -91,7 +91,7 @@ namespace UI
             this.metroTextBoxDetalle.CustomButton.Visible = false;
             this.metroTextBoxDetalle.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.metroTextBoxDetalle.Lines = new string[0];
-            this.metroTextBoxDetalle.Location = new System.Drawing.Point(151, 134);
+            this.metroTextBoxDetalle.Location = new System.Drawing.Point(251, 115);
             this.metroTextBoxDetalle.MaxLength = 32767;
             this.metroTextBoxDetalle.Multiline = true;
             this.metroTextBoxDetalle.Name = "metroTextBoxDetalle";
@@ -112,7 +112,7 @@ namespace UI
             this.metroLabelDetalle.AutoSize = true;
             this.metroLabelDetalle.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelDetalle.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelDetalle.Location = new System.Drawing.Point(36, 134);
+            this.metroLabelDetalle.Location = new System.Drawing.Point(136, 115);
             this.metroLabelDetalle.Name = "metroLabelDetalle";
             this.metroLabelDetalle.Size = new System.Drawing.Size(77, 25);
             this.metroLabelDetalle.TabIndex = 61;
@@ -134,7 +134,7 @@ namespace UI
             this.metroTextBoxMonto.CustomButton.Visible = false;
             this.metroTextBoxMonto.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.metroTextBoxMonto.Lines = new string[0];
-            this.metroTextBoxMonto.Location = new System.Drawing.Point(151, 182);
+            this.metroTextBoxMonto.Location = new System.Drawing.Point(251, 163);
             this.metroTextBoxMonto.MaxLength = 32767;
             this.metroTextBoxMonto.Multiline = true;
             this.metroTextBoxMonto.Name = "metroTextBoxMonto";
@@ -156,7 +156,7 @@ namespace UI
             this.metroLabelMonto.AutoSize = true;
             this.metroLabelMonto.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelMonto.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelMonto.Location = new System.Drawing.Point(36, 182);
+            this.metroLabelMonto.Location = new System.Drawing.Point(136, 163);
             this.metroLabelMonto.Name = "metroLabelMonto";
             this.metroLabelMonto.Size = new System.Drawing.Size(74, 25);
             this.metroLabelMonto.TabIndex = 63;
@@ -166,7 +166,7 @@ namespace UI
             // 
             this.metroDateTimeFecha.FontSize = MetroFramework.MetroDateTimeSize.Tall;
             this.metroDateTimeFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTimeFecha.Location = new System.Drawing.Point(151, 228);
+            this.metroDateTimeFecha.Location = new System.Drawing.Point(251, 209);
             this.metroDateTimeFecha.MinimumSize = new System.Drawing.Size(0, 35);
             this.metroDateTimeFecha.Name = "metroDateTimeFecha";
             this.metroDateTimeFecha.Size = new System.Drawing.Size(182, 35);
@@ -177,7 +177,7 @@ namespace UI
             this.metroLabelFecha.AutoSize = true;
             this.metroLabelFecha.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelFecha.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelFecha.Location = new System.Drawing.Point(36, 228);
+            this.metroLabelFecha.Location = new System.Drawing.Point(136, 209);
             this.metroLabelFecha.Name = "metroLabelFecha";
             this.metroLabelFecha.Size = new System.Drawing.Size(66, 25);
             this.metroLabelFecha.TabIndex = 66;
@@ -188,7 +188,7 @@ namespace UI
             this.metroLabelTipo.AutoSize = true;
             this.metroLabelTipo.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelTipo.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelTipo.Location = new System.Drawing.Point(36, 280);
+            this.metroLabelTipo.Location = new System.Drawing.Point(450, 209);
             this.metroLabelTipo.Name = "metroLabelTipo";
             this.metroLabelTipo.Size = new System.Drawing.Size(55, 25);
             this.metroLabelTipo.TabIndex = 67;
@@ -199,7 +199,7 @@ namespace UI
             this.metroRadioButtonMensual.AutoSize = true;
             this.metroRadioButtonMensual.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.metroRadioButtonMensual.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.metroRadioButtonMensual.Location = new System.Drawing.Point(151, 280);
+            this.metroRadioButtonMensual.Location = new System.Drawing.Point(565, 209);
             this.metroRadioButtonMensual.Name = "metroRadioButtonMensual";
             this.metroRadioButtonMensual.Size = new System.Drawing.Size(80, 20);
             this.metroRadioButtonMensual.TabIndex = 68;
@@ -210,7 +210,7 @@ namespace UI
             // 
             this.metroRadioButtonAnual.AutoSize = true;
             this.metroRadioButtonAnual.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.metroRadioButtonAnual.Location = new System.Drawing.Point(151, 306);
+            this.metroRadioButtonAnual.Location = new System.Drawing.Point(565, 235);
             this.metroRadioButtonAnual.Name = "metroRadioButtonAnual";
             this.metroRadioButtonAnual.Size = new System.Drawing.Size(63, 20);
             this.metroRadioButtonAnual.TabIndex = 69;
@@ -222,7 +222,7 @@ namespace UI
             // 
             this.metroRadioButtonInteresBanco.AutoSize = true;
             this.metroRadioButtonInteresBanco.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.metroRadioButtonInteresBanco.Location = new System.Drawing.Point(151, 332);
+            this.metroRadioButtonInteresBanco.Location = new System.Drawing.Point(565, 261);
             this.metroRadioButtonInteresBanco.Name = "metroRadioButtonInteresBanco";
             this.metroRadioButtonInteresBanco.Size = new System.Drawing.Size(114, 20);
             this.metroRadioButtonInteresBanco.TabIndex = 70;
@@ -233,7 +233,7 @@ namespace UI
             // metroButtonAgregar
             // 
             this.metroButtonAgregar.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButtonAgregar.Location = new System.Drawing.Point(412, 381);
+            this.metroButtonAgregar.Location = new System.Drawing.Point(412, 289);
             this.metroButtonAgregar.Name = "metroButtonAgregar";
             this.metroButtonAgregar.Size = new System.Drawing.Size(93, 38);
             this.metroButtonAgregar.TabIndex = 71;
@@ -269,7 +269,7 @@ namespace UI
             this.metroGridAportes.EnableHeadersVisualStyles = false;
             this.metroGridAportes.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGridAportes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGridAportes.Location = new System.Drawing.Point(23, 442);
+            this.metroGridAportes.Location = new System.Drawing.Point(23, 333);
             this.metroGridAportes.Name = "metroGridAportes";
             this.metroGridAportes.ReadOnly = true;
             this.metroGridAportes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -285,14 +285,14 @@ namespace UI
             this.metroGridAportes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGridAportes.RowTemplate.Height = 24;
             this.metroGridAportes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.metroGridAportes.Size = new System.Drawing.Size(748, 150);
+            this.metroGridAportes.Size = new System.Drawing.Size(819, 337);
             this.metroGridAportes.TabIndex = 72;
             this.metroGridAportes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGridAportes_CellClick);
             // 
             // metroButtonEditar
             // 
             this.metroButtonEditar.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButtonEditar.Location = new System.Drawing.Point(799, 442);
+            this.metroButtonEditar.Location = new System.Drawing.Point(848, 442);
             this.metroButtonEditar.Name = "metroButtonEditar";
             this.metroButtonEditar.Size = new System.Drawing.Size(93, 38);
             this.metroButtonEditar.TabIndex = 80;
@@ -303,7 +303,7 @@ namespace UI
             // metroButtonEliminar
             // 
             this.metroButtonEliminar.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButtonEliminar.Location = new System.Drawing.Point(799, 554);
+            this.metroButtonEliminar.Location = new System.Drawing.Point(848, 506);
             this.metroButtonEliminar.Name = "metroButtonEliminar";
             this.metroButtonEliminar.Size = new System.Drawing.Size(93, 38);
             this.metroButtonEliminar.TabIndex = 79;
@@ -314,7 +314,7 @@ namespace UI
             // AgregarAporte
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(915, 623);
+            this.ClientSize = new System.Drawing.Size(967, 678);
             this.Controls.Add(this.metroButtonEditar);
             this.Controls.Add(this.metroButtonEliminar);
             this.Controls.Add(this.metroGridAportes);
@@ -331,6 +331,7 @@ namespace UI
             this.Controls.Add(this.metroLabelDetalle);
             this.Controls.Add(this.metroComboBoxAsociado);
             this.Controls.Add(this.metroLabelAsociado);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AgregarAporte";
             this.Text = "Agregar Aporte";

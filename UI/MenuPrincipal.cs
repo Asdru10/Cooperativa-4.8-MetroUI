@@ -227,7 +227,7 @@ namespace UI
 
         private void nuevaSolicitudToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AgregarCredito agregarCredito = new AgregarCredito();
+            AgregarPlanAhorro agregarCredito = new AgregarCredito();
 
             agregarCredito.FormClosed += (s, args) =>
             {
