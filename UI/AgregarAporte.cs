@@ -42,7 +42,8 @@ namespace UI
             metroDateTimeFecha.MinDate = new DateTime(1900, 1, 1);
             metroDateTimeFecha.MaxDate = DateTime.Now.AddYears(1);
             metroDateTimeFecha.Value = DateTime.Now;
-            metroGridAportes.Columns["Cedula_Asociado"].HeaderText = "Cédula Asociado";
+            //metroGridAportes.Columns["Cedula_Asociado"].HeaderText = "Cédula Asociado";
+            metroGridAportes.Columns["Cedula_Asociado"].Visible = false;
             metroGridAportes.Columns["Nombre_Asociado"].HeaderText = "Nombre";
             metroGridAportes.Columns["ID_Estado_Financiero_Mensual"].Visible = false;
             metroGridAportes.Columns["Periodo_Estado_Financiero_Mensual"].HeaderText = "Periodo";

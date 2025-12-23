@@ -34,7 +34,8 @@ namespace UI
             asociados = cooperativa.getAsociados();
             cargarAsociados();
             cargarCreditos();
-            metroGridCreditos.Columns["Cedula_Asociado"].HeaderText = "Cédula Asociado";
+            //metroGridCreditos.Columns["Cedula_Asociado"].HeaderText = "Cédula Asociado";
+            metroGridCreditos.Columns["Cedula_Asociado"].Visible = false;
             metroGridCreditos.Columns["Nombre_Asociado"].HeaderText = "Nombre";
             metroGridCreditos.Columns["ID_Estado_Financiero_Mensual"].Visible = false;
             metroGridCreditos.Columns["Periodo_Estado_Financiero_Mensual"].HeaderText = "Periodo";

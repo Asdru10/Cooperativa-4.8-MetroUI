@@ -37,7 +37,9 @@ namespace UI
             cargarAsociados();
             metroRadioButtonTodos.Checked = true;
             metroGridCreditos.DataSource = new List<Credito>();
-            metroGridCreditos.Columns["Cedula_Asociado"].HeaderText = "Cédula Asociado";
+            //metroGridCreditos.Columns["Cedula_Asociado"].HeaderText = "Cédula Asociado";
+            metroGridCreditos.Columns["Cedula_Asociado"].Visible = false;
+            metroGridCreditos.Columns["Nombre_Asociado"].Visible = false;
             metroGridCreditos.Columns["ID_Estado_Financiero_Mensual"].Visible = false;
             metroGridCreditos.Columns["Periodo_Estado_Financiero_Mensual"].HeaderText = "Periodo";
             metroGridCreditos.Columns["Fecha_Desembolso"].HeaderText = "Desembolso";
