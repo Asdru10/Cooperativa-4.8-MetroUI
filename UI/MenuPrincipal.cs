@@ -227,6 +227,7 @@ namespace UI
 
         private void nuevaSolicitudToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            /*
             AgregarPlanAhorro agregarCredito = new AgregarCredito();
 
             agregarCredito.FormClosed += (s, args) =>
@@ -237,6 +238,7 @@ namespace UI
             this.Hide();
 
             agregarCredito.Show();
+            */
         }
 
         private void ConfigureDailyTask()

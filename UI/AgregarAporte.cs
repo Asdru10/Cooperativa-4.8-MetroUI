@@ -43,6 +43,7 @@ namespace UI
             metroDateTimeFecha.MaxDate = DateTime.Now.AddYears(1);
             metroDateTimeFecha.Value = DateTime.Now;
             metroGridAportes.Columns["Cedula_Asociado"].HeaderText = "Cédula Asociado";
+            metroGridAportes.Columns["Nombre_Asociado"].HeaderText = "Nombre";
             metroGridAportes.Columns["ID_Estado_Financiero_Mensual"].Visible = false;
             metroGridAportes.Columns["Periodo_Estado_Financiero_Mensual"].HeaderText = "Periodo";
             metroGridAportes.Columns["Monto"].DefaultCellStyle.Format = "N2";

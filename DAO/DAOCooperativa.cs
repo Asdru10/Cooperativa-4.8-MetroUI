@@ -10,8 +10,8 @@ namespace DAO
     public class DAOCooperativa
     {
 
-        private SqlConnection conexion = new SqlConnection("Data Source=.; Initial Catalog=CoopeBarZam; Integrated Security=true");
-        //private SqlConnection conexion = new SqlConnection("Data Source=ASDRU-PC\\SQLDEVELOPER22; Initial Catalog=CoopeBarZam; Integrated Security=true");
+        //private SqlConnection conexion = new SqlConnection("Data Source=.; Initial Catalog=CoopeBarZam; Integrated Security=true");
+        private SqlConnection conexion = new SqlConnection("Data Source=ASDRU-PC\\SQLDEVELOPER22; Initial Catalog=CoopeBarZam; Integrated Security=true");
 
 
 
@@ -261,7 +261,7 @@ namespace DAO
             string sentence = "";
             SqlCommand command = new SqlCommand(sentence, conexion);
             openConnection();
-            command.CommandText = "select ID, Cedula_Asociado, ID_Estado_Financiero_Mensual, Periodo_Estado_Financiero_Mensual, Detalle, Monto, Fecha, Tipo from Aporte";
+            command.CommandText = "select ID, Cedula_Asociado, ID_Estado_Financiero_Mensual, Periodo_Estado_Financiero_Mensual, Detalle, Monto, Fecha, Tipo, Nombre from Aporte join Asociado on Cedula = Cedula_Asociado";
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -274,6 +274,7 @@ namespace DAO
                 aporte.Monto = reader.GetDecimal(5);
                 aporte.Fecha = reader.GetDateTime(6);
                 aporte.Tipo = reader.GetString(7);
+                aporte.Nombre_Asociado = reader.GetString(8);
                 aportes.Add(aporte);
             }
             closeConnection();
