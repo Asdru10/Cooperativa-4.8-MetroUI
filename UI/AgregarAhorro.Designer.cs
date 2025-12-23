@@ -51,7 +51,7 @@ namespace UI
             // 
             this.metroComboBoxAsociado.FormattingEnabled = true;
             this.metroComboBoxAsociado.ItemHeight = 24;
-            this.metroComboBoxAsociado.Location = new System.Drawing.Point(139, 87);
+            this.metroComboBoxAsociado.Location = new System.Drawing.Point(188, 65);
             this.metroComboBoxAsociado.Name = "metroComboBoxAsociado";
             this.metroComboBoxAsociado.Size = new System.Drawing.Size(383, 30);
             this.metroComboBoxAsociado.TabIndex = 46;
@@ -62,7 +62,7 @@ namespace UI
             this.metroLabelAsociado.AutoSize = true;
             this.metroLabelAsociado.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelAsociado.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelAsociado.Location = new System.Drawing.Point(23, 87);
+            this.metroLabelAsociado.Location = new System.Drawing.Point(72, 65);
             this.metroLabelAsociado.Name = "metroLabelAsociado";
             this.metroLabelAsociado.Size = new System.Drawing.Size(95, 25);
             this.metroLabelAsociado.TabIndex = 45;
@@ -84,7 +84,7 @@ namespace UI
             this.metroTextBoxMonto.CustomButton.Visible = false;
             this.metroTextBoxMonto.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.metroTextBoxMonto.Lines = new string[0];
-            this.metroTextBoxMonto.Location = new System.Drawing.Point(139, 143);
+            this.metroTextBoxMonto.Location = new System.Drawing.Point(188, 106);
             this.metroTextBoxMonto.MaxLength = 32767;
             this.metroTextBoxMonto.Name = "metroTextBoxMonto";
             this.metroTextBoxMonto.PasswordChar = '\0';
@@ -105,7 +105,7 @@ namespace UI
             this.metroLabelMonto.AutoSize = true;
             this.metroLabelMonto.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelMonto.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelMonto.Location = new System.Drawing.Point(23, 143);
+            this.metroLabelMonto.Location = new System.Drawing.Point(72, 106);
             this.metroLabelMonto.Name = "metroLabelMonto";
             this.metroLabelMonto.Size = new System.Drawing.Size(74, 25);
             this.metroLabelMonto.TabIndex = 65;
@@ -114,7 +114,7 @@ namespace UI
             // metroButtonAgregar
             // 
             this.metroButtonAgregar.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButtonAgregar.Location = new System.Drawing.Point(303, 274);
+            this.metroButtonAgregar.Location = new System.Drawing.Point(304, 192);
             this.metroButtonAgregar.Name = "metroButtonAgregar";
             this.metroButtonAgregar.Size = new System.Drawing.Size(93, 38);
             this.metroButtonAgregar.TabIndex = 73;
@@ -150,7 +150,7 @@ namespace UI
             this.metroGridAhorros.EnableHeadersVisualStyles = false;
             this.metroGridAhorros.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGridAhorros.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGridAhorros.Location = new System.Drawing.Point(23, 342);
+            this.metroGridAhorros.Location = new System.Drawing.Point(23, 236);
             this.metroGridAhorros.Name = "metroGridAhorros";
             this.metroGridAhorros.ReadOnly = true;
             this.metroGridAhorros.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -166,7 +166,7 @@ namespace UI
             this.metroGridAhorros.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGridAhorros.RowTemplate.Height = 24;
             this.metroGridAhorros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.metroGridAhorros.Size = new System.Drawing.Size(548, 150);
+            this.metroGridAhorros.Size = new System.Drawing.Size(593, 321);
             this.metroGridAhorros.TabIndex = 74;
             this.metroGridAhorros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGridAhorros_CellClick);
             // 
@@ -174,7 +174,7 @@ namespace UI
             // 
             this.metroDateTimeFecha.FontSize = MetroFramework.MetroDateTimeSize.Tall;
             this.metroDateTimeFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTimeFecha.Location = new System.Drawing.Point(138, 202);
+            this.metroDateTimeFecha.Location = new System.Drawing.Point(187, 151);
             this.metroDateTimeFecha.MinimumSize = new System.Drawing.Size(0, 35);
             this.metroDateTimeFecha.Name = "metroDateTimeFecha";
             this.metroDateTimeFecha.Size = new System.Drawing.Size(182, 35);
@@ -185,7 +185,7 @@ namespace UI
             this.metroLabelFecha.AutoSize = true;
             this.metroLabelFecha.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabelFecha.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelFecha.Location = new System.Drawing.Point(23, 202);
+            this.metroLabelFecha.Location = new System.Drawing.Point(72, 151);
             this.metroLabelFecha.Name = "metroLabelFecha";
             this.metroLabelFecha.Size = new System.Drawing.Size(66, 25);
             this.metroLabelFecha.TabIndex = 76;
@@ -194,7 +194,7 @@ namespace UI
             // metroButtonEliminar
             // 
             this.metroButtonEliminar.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButtonEliminar.Location = new System.Drawing.Point(596, 454);
+            this.metroButtonEliminar.Location = new System.Drawing.Point(638, 454);
             this.metroButtonEliminar.Name = "metroButtonEliminar";
             this.metroButtonEliminar.Size = new System.Drawing.Size(93, 38);
             this.metroButtonEliminar.TabIndex = 77;
@@ -205,7 +205,7 @@ namespace UI
             // metroButtonEditar
             // 
             this.metroButtonEditar.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButtonEditar.Location = new System.Drawing.Point(596, 342);
+            this.metroButtonEditar.Location = new System.Drawing.Point(638, 342);
             this.metroButtonEditar.Name = "metroButtonEditar";
             this.metroButtonEditar.Size = new System.Drawing.Size(93, 38);
             this.metroButtonEditar.TabIndex = 78;
@@ -216,7 +216,7 @@ namespace UI
             // AgregarAhorro
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(712, 515);
+            this.ClientSize = new System.Drawing.Size(743, 565);
             this.Controls.Add(this.metroButtonEditar);
             this.Controls.Add(this.metroButtonEliminar);
             this.Controls.Add(this.metroDateTimeFecha);

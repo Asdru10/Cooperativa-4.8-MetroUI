@@ -81,9 +81,11 @@
     </Compile>
     <Compile Include="AgregarCredito.cs">
       <SubType>Form</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="AgregarCredito.Designer.cs">
       <DependentUpon>AgregarCredito.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="CierreMensual.cs">
       <SubType>Form</SubType>
@@ -155,6 +157,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarCredito.resx">
       <DependentUpon>AgregarCredito.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="CierreMensual.resx">
       <DependentUpon>CierreMensual.cs</DependentUpon>

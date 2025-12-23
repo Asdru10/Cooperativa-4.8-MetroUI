@@ -9,7 +9,7 @@ namespace DOM
     public class Constantes
     {
         public DateTime FECHA_INICIO_COOPERATIVA = new DateTime(2024, 06, 05);
-        public decimal CUOTA_INGRESO = 5000;
+        public decimal CUOTA_INGRESO =10000;
         public decimal CUOTA_MENSUAL = 2500;
         public decimal CUOTA_ANUAL = 10000;
         public int PORCENTAJE_INTERESES_CREDITO = 12;

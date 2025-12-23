@@ -61,6 +61,22 @@ namespace UI
             this.metroGridAhorros = new MetroFramework.Controls.MetroGrid();
             this.metroTextBoxTotalAhorros = new MetroFramework.Controls.MetroTextBox();
             this.metroLabelTotalAhorros = new MetroFramework.Controls.MetroLabel();
+            this.metroTabPageResumen = new MetroFramework.Controls.MetroTabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.metroTextBoxTotalAhorroResumen = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.metroTextBoxPendienteCreditoResumen = new MetroFramework.Controls.MetroTextBox();
+            this.metroTextBoxStatusCreditoResumen = new MetroFramework.Controls.MetroTextBox();
+            this.metroTextBoxSaldoCreditoResumen = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.metroTextBoxPendienteAporteResumen = new MetroFramework.Controls.MetroTextBox();
+            this.metroTextBoxTotalAporteResumen = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroTabControlCreditos.SuspendLayout();
             this.metroTabPageCreditos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGridCreditos)).BeginInit();
@@ -68,6 +84,10 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.metroGridAportes)).BeginInit();
             this.metroTabPageAhorros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGridAhorros)).BeginInit();
+            this.metroTabPageResumen.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroLabelAsociado
@@ -98,11 +118,12 @@ namespace UI
             this.metroTabControlCreditos.Controls.Add(this.metroTabPageCreditos);
             this.metroTabControlCreditos.Controls.Add(this.metroTabPageAportes);
             this.metroTabControlCreditos.Controls.Add(this.metroTabPageAhorros);
+            this.metroTabControlCreditos.Controls.Add(this.metroTabPageResumen);
             this.metroTabControlCreditos.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.metroTabControlCreditos.Location = new System.Drawing.Point(23, 152);
             this.metroTabControlCreditos.Name = "metroTabControlCreditos";
-            this.metroTabControlCreditos.SelectedIndex = 0;
-            this.metroTabControlCreditos.Size = new System.Drawing.Size(744, 379);
+            this.metroTabControlCreditos.SelectedIndex = 3;
+            this.metroTabControlCreditos.Size = new System.Drawing.Size(744, 525);
             this.metroTabControlCreditos.TabIndex = 43;
             this.metroTabControlCreditos.UseSelectable = true;
             // 
@@ -121,7 +142,7 @@ namespace UI
             this.metroTabPageCreditos.HorizontalScrollbarSize = 10;
             this.metroTabPageCreditos.Location = new System.Drawing.Point(4, 38);
             this.metroTabPageCreditos.Name = "metroTabPageCreditos";
-            this.metroTabPageCreditos.Size = new System.Drawing.Size(736, 337);
+            this.metroTabPageCreditos.Size = new System.Drawing.Size(736, 483);
             this.metroTabPageCreditos.TabIndex = 0;
             this.metroTabPageCreditos.Text = "Créditos";
             this.metroTabPageCreditos.VerticalScrollbarBarColor = true;
@@ -172,7 +193,7 @@ namespace UI
             this.metroGridCreditos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGridCreditos.RowTemplate.Height = 24;
             this.metroGridCreditos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.metroGridCreditos.Size = new System.Drawing.Size(728, 150);
+            this.metroGridCreditos.Size = new System.Drawing.Size(728, 348);
             this.metroGridCreditos.TabIndex = 76;
             // 
             // metroTextBoxTotalPendienteCreditos
@@ -191,7 +212,7 @@ namespace UI
             this.metroTextBoxTotalPendienteCreditos.CustomButton.Visible = false;
             this.metroTextBoxTotalPendienteCreditos.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.metroTextBoxTotalPendienteCreditos.Lines = new string[0];
-            this.metroTextBoxTotalPendienteCreditos.Location = new System.Drawing.Point(157, 264);
+            this.metroTextBoxTotalPendienteCreditos.Location = new System.Drawing.Point(157, 443);
             this.metroTextBoxTotalPendienteCreditos.MaxLength = 32767;
             this.metroTextBoxTotalPendienteCreditos.Name = "metroTextBoxTotalPendienteCreditos";
             this.metroTextBoxTotalPendienteCreditos.PasswordChar = '\0';
@@ -222,7 +243,7 @@ namespace UI
             this.metroTextBoxStatusCreditos.CustomButton.Visible = false;
             this.metroTextBoxStatusCreditos.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.metroTextBoxStatusCreditos.Lines = new string[0];
-            this.metroTextBoxStatusCreditos.Location = new System.Drawing.Point(157, 228);
+            this.metroTextBoxStatusCreditos.Location = new System.Drawing.Point(157, 407);
             this.metroTextBoxStatusCreditos.MaxLength = 32767;
             this.metroTextBoxStatusCreditos.Name = "metroTextBoxStatusCreditos";
             this.metroTextBoxStatusCreditos.PasswordChar = '\0';
@@ -233,6 +254,7 @@ namespace UI
             this.metroTextBoxStatusCreditos.ShortcutsEnabled = true;
             this.metroTextBoxStatusCreditos.Size = new System.Drawing.Size(181, 23);
             this.metroTextBoxStatusCreditos.TabIndex = 7;
+            this.metroTextBoxStatusCreditos.UseCustomForeColor = true;
             this.metroTextBoxStatusCreditos.UseSelectable = true;
             this.metroTextBoxStatusCreditos.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBoxStatusCreditos.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -253,7 +275,7 @@ namespace UI
             this.metroTextBoxSaldoCreditos.CustomButton.Visible = false;
             this.metroTextBoxSaldoCreditos.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.metroTextBoxSaldoCreditos.Lines = new string[0];
-            this.metroTextBoxSaldoCreditos.Location = new System.Drawing.Point(157, 192);
+            this.metroTextBoxSaldoCreditos.Location = new System.Drawing.Point(157, 371);
             this.metroTextBoxSaldoCreditos.MaxLength = 32767;
             this.metroTextBoxSaldoCreditos.Name = "metroTextBoxSaldoCreditos";
             this.metroTextBoxSaldoCreditos.PasswordChar = '\0';
@@ -272,7 +294,7 @@ namespace UI
             // 
             this.metroLabelTotalPendienteCreditos.AutoSize = true;
             this.metroLabelTotalPendienteCreditos.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelTotalPendienteCreditos.Location = new System.Drawing.Point(3, 264);
+            this.metroLabelTotalPendienteCreditos.Location = new System.Drawing.Point(3, 443);
             this.metroLabelTotalPendienteCreditos.Name = "metroLabelTotalPendienteCreditos";
             this.metroLabelTotalPendienteCreditos.Size = new System.Drawing.Size(129, 20);
             this.metroLabelTotalPendienteCreditos.TabIndex = 5;
@@ -282,7 +304,7 @@ namespace UI
             // 
             this.metroLabelStatusCreditos.AutoSize = true;
             this.metroLabelStatusCreditos.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelStatusCreditos.Location = new System.Drawing.Point(3, 228);
+            this.metroLabelStatusCreditos.Location = new System.Drawing.Point(3, 407);
             this.metroLabelStatusCreditos.Name = "metroLabelStatusCreditos";
             this.metroLabelStatusCreditos.Size = new System.Drawing.Size(140, 20);
             this.metroLabelStatusCreditos.TabIndex = 4;
@@ -292,7 +314,7 @@ namespace UI
             // 
             this.metroLabelSaldoCreditos.AutoSize = true;
             this.metroLabelSaldoCreditos.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelSaldoCreditos.Location = new System.Drawing.Point(3, 192);
+            this.metroLabelSaldoCreditos.Location = new System.Drawing.Point(3, 371);
             this.metroLabelSaldoCreditos.Name = "metroLabelSaldoCreditos";
             this.metroLabelSaldoCreditos.Size = new System.Drawing.Size(134, 20);
             this.metroLabelSaldoCreditos.TabIndex = 3;
@@ -309,9 +331,9 @@ namespace UI
             this.metroTabPageAportes.HorizontalScrollbarBarColor = true;
             this.metroTabPageAportes.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPageAportes.HorizontalScrollbarSize = 10;
-            this.metroTabPageAportes.Location = new System.Drawing.Point(4, 39);
+            this.metroTabPageAportes.Location = new System.Drawing.Point(4, 38);
             this.metroTabPageAportes.Name = "metroTabPageAportes";
-            this.metroTabPageAportes.Size = new System.Drawing.Size(736, 336);
+            this.metroTabPageAportes.Size = new System.Drawing.Size(736, 483);
             this.metroTabPageAportes.TabIndex = 1;
             this.metroTabPageAportes.Text = "Aportes";
             this.metroTabPageAportes.VerticalScrollbarBarColor = true;
@@ -362,7 +384,7 @@ namespace UI
             this.metroGridAportes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGridAportes.RowTemplate.Height = 24;
             this.metroGridAportes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.metroGridAportes.Size = new System.Drawing.Size(727, 150);
+            this.metroGridAportes.Size = new System.Drawing.Size(727, 375);
             this.metroGridAportes.TabIndex = 76;
             // 
             // metroTextBoxTotalPendienteAportes
@@ -381,7 +403,7 @@ namespace UI
             this.metroTextBoxTotalPendienteAportes.CustomButton.Visible = false;
             this.metroTextBoxTotalPendienteAportes.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.metroTextBoxTotalPendienteAportes.Lines = new string[0];
-            this.metroTextBoxTotalPendienteAportes.Location = new System.Drawing.Point(160, 226);
+            this.metroTextBoxTotalPendienteAportes.Location = new System.Drawing.Point(160, 436);
             this.metroTextBoxTotalPendienteAportes.MaxLength = 32767;
             this.metroTextBoxTotalPendienteAportes.Name = "metroTextBoxTotalPendienteAportes";
             this.metroTextBoxTotalPendienteAportes.PasswordChar = '\0';
@@ -412,7 +434,7 @@ namespace UI
             this.metroTextBoxTotalAportes.CustomButton.Visible = false;
             this.metroTextBoxTotalAportes.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.metroTextBoxTotalAportes.Lines = new string[0];
-            this.metroTextBoxTotalAportes.Location = new System.Drawing.Point(160, 190);
+            this.metroTextBoxTotalAportes.Location = new System.Drawing.Point(160, 400);
             this.metroTextBoxTotalAportes.MaxLength = 32767;
             this.metroTextBoxTotalAportes.Name = "metroTextBoxTotalAportes";
             this.metroTextBoxTotalAportes.PasswordChar = '\0';
@@ -431,7 +453,7 @@ namespace UI
             // 
             this.metroLabelTotalPendienteAportes.AutoSize = true;
             this.metroLabelTotalPendienteAportes.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelTotalPendienteAportes.Location = new System.Drawing.Point(3, 226);
+            this.metroLabelTotalPendienteAportes.Location = new System.Drawing.Point(3, 436);
             this.metroLabelTotalPendienteAportes.Name = "metroLabelTotalPendienteAportes";
             this.metroLabelTotalPendienteAportes.Size = new System.Drawing.Size(122, 20);
             this.metroLabelTotalPendienteAportes.TabIndex = 10;
@@ -441,7 +463,7 @@ namespace UI
             // 
             this.metroLabelTotalAportes.AutoSize = true;
             this.metroLabelTotalAportes.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelTotalAportes.Location = new System.Drawing.Point(3, 190);
+            this.metroLabelTotalAportes.Location = new System.Drawing.Point(3, 400);
             this.metroLabelTotalAportes.Name = "metroLabelTotalAportes";
             this.metroLabelTotalAportes.Size = new System.Drawing.Size(129, 20);
             this.metroLabelTotalAportes.TabIndex = 9;
@@ -456,9 +478,9 @@ namespace UI
             this.metroTabPageAhorros.HorizontalScrollbarBarColor = true;
             this.metroTabPageAhorros.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPageAhorros.HorizontalScrollbarSize = 10;
-            this.metroTabPageAhorros.Location = new System.Drawing.Point(4, 39);
+            this.metroTabPageAhorros.Location = new System.Drawing.Point(4, 38);
             this.metroTabPageAhorros.Name = "metroTabPageAhorros";
-            this.metroTabPageAhorros.Size = new System.Drawing.Size(736, 336);
+            this.metroTabPageAhorros.Size = new System.Drawing.Size(736, 483);
             this.metroTabPageAhorros.TabIndex = 2;
             this.metroTabPageAhorros.Text = "Ahorros";
             this.metroTabPageAhorros.VerticalScrollbarBarColor = true;
@@ -509,7 +531,7 @@ namespace UI
             this.metroGridAhorros.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGridAhorros.RowTemplate.Height = 24;
             this.metroGridAhorros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.metroGridAhorros.Size = new System.Drawing.Size(446, 150);
+            this.metroGridAhorros.Size = new System.Drawing.Size(503, 414);
             this.metroGridAhorros.TabIndex = 75;
             // 
             // metroTextBoxTotalAhorros
@@ -528,7 +550,7 @@ namespace UI
             this.metroTextBoxTotalAhorros.CustomButton.Visible = false;
             this.metroTextBoxTotalAhorros.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.metroTextBoxTotalAhorros.Lines = new string[0];
-            this.metroTextBoxTotalAhorros.Location = new System.Drawing.Point(156, 191);
+            this.metroTextBoxTotalAhorros.Location = new System.Drawing.Point(156, 423);
             this.metroTextBoxTotalAhorros.MaxLength = 32767;
             this.metroTextBoxTotalAhorros.Name = "metroTextBoxTotalAhorros";
             this.metroTextBoxTotalAhorros.PasswordChar = '\0';
@@ -547,19 +569,323 @@ namespace UI
             // 
             this.metroLabelTotalAhorros.AutoSize = true;
             this.metroLabelTotalAhorros.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabelTotalAhorros.Location = new System.Drawing.Point(3, 191);
+            this.metroLabelTotalAhorros.Location = new System.Drawing.Point(3, 423);
             this.metroLabelTotalAhorros.Name = "metroLabelTotalAhorros";
             this.metroLabelTotalAhorros.Size = new System.Drawing.Size(130, 20);
             this.metroLabelTotalAhorros.TabIndex = 13;
             this.metroLabelTotalAhorros.Text = "Total de Ahorros:";
             // 
+            // metroTabPageResumen
+            // 
+            this.metroTabPageResumen.Controls.Add(this.groupBox3);
+            this.metroTabPageResumen.Controls.Add(this.groupBox2);
+            this.metroTabPageResumen.Controls.Add(this.groupBox1);
+            this.metroTabPageResumen.HorizontalScrollbarBarColor = true;
+            this.metroTabPageResumen.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPageResumen.HorizontalScrollbarSize = 10;
+            this.metroTabPageResumen.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPageResumen.Name = "metroTabPageResumen";
+            this.metroTabPageResumen.Size = new System.Drawing.Size(736, 483);
+            this.metroTabPageResumen.TabIndex = 3;
+            this.metroTabPageResumen.Text = "Resumen";
+            this.metroTabPageResumen.VerticalScrollbarBarColor = true;
+            this.metroTabPageResumen.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPageResumen.VerticalScrollbarSize = 10;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.metroTextBoxTotalAhorroResumen);
+            this.groupBox3.Controls.Add(this.metroLabel6);
+            this.groupBox3.Location = new System.Drawing.Point(497, 13);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(236, 309);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Ahorros";
+            // 
+            // metroTextBoxTotalAhorroResumen
+            // 
+            // 
+            // 
+            // 
+            this.metroTextBoxTotalAhorroResumen.CustomButton.Image = null;
+            this.metroTextBoxTotalAhorroResumen.CustomButton.Location = new System.Drawing.Point(159, 1);
+            this.metroTextBoxTotalAhorroResumen.CustomButton.Name = "";
+            this.metroTextBoxTotalAhorroResumen.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.metroTextBoxTotalAhorroResumen.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBoxTotalAhorroResumen.CustomButton.TabIndex = 1;
+            this.metroTextBoxTotalAhorroResumen.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBoxTotalAhorroResumen.CustomButton.UseSelectable = true;
+            this.metroTextBoxTotalAhorroResumen.CustomButton.Visible = false;
+            this.metroTextBoxTotalAhorroResumen.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.metroTextBoxTotalAhorroResumen.Lines = new string[0];
+            this.metroTextBoxTotalAhorroResumen.Location = new System.Drawing.Point(30, 56);
+            this.metroTextBoxTotalAhorroResumen.MaxLength = 32767;
+            this.metroTextBoxTotalAhorroResumen.Name = "metroTextBoxTotalAhorroResumen";
+            this.metroTextBoxTotalAhorroResumen.PasswordChar = '\0';
+            this.metroTextBoxTotalAhorroResumen.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBoxTotalAhorroResumen.SelectedText = "";
+            this.metroTextBoxTotalAhorroResumen.SelectionLength = 0;
+            this.metroTextBoxTotalAhorroResumen.SelectionStart = 0;
+            this.metroTextBoxTotalAhorroResumen.ShortcutsEnabled = true;
+            this.metroTextBoxTotalAhorroResumen.Size = new System.Drawing.Size(181, 23);
+            this.metroTextBoxTotalAhorroResumen.TabIndex = 16;
+            this.metroTextBoxTotalAhorroResumen.UseSelectable = true;
+            this.metroTextBoxTotalAhorroResumen.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBoxTotalAhorroResumen.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel6.Location = new System.Drawing.Point(57, 33);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(130, 20);
+            this.metroLabel6.TabIndex = 15;
+            this.metroLabel6.Text = "Total de Ahorros:";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.metroTextBoxPendienteCreditoResumen);
+            this.groupBox2.Controls.Add(this.metroTextBoxStatusCreditoResumen);
+            this.groupBox2.Controls.Add(this.metroTextBoxSaldoCreditoResumen);
+            this.groupBox2.Controls.Add(this.metroLabel1);
+            this.groupBox2.Controls.Add(this.metroLabel2);
+            this.groupBox2.Controls.Add(this.metroLabel3);
+            this.groupBox2.Location = new System.Drawing.Point(242, 13);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(249, 309);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Créditos";
+            // 
+            // metroTextBoxPendienteCreditoResumen
+            // 
+            // 
+            // 
+            // 
+            this.metroTextBoxPendienteCreditoResumen.CustomButton.Image = null;
+            this.metroTextBoxPendienteCreditoResumen.CustomButton.Location = new System.Drawing.Point(159, 1);
+            this.metroTextBoxPendienteCreditoResumen.CustomButton.Name = "";
+            this.metroTextBoxPendienteCreditoResumen.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.metroTextBoxPendienteCreditoResumen.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBoxPendienteCreditoResumen.CustomButton.TabIndex = 1;
+            this.metroTextBoxPendienteCreditoResumen.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBoxPendienteCreditoResumen.CustomButton.UseSelectable = true;
+            this.metroTextBoxPendienteCreditoResumen.CustomButton.Visible = false;
+            this.metroTextBoxPendienteCreditoResumen.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.metroTextBoxPendienteCreditoResumen.Lines = new string[0];
+            this.metroTextBoxPendienteCreditoResumen.Location = new System.Drawing.Point(33, 268);
+            this.metroTextBoxPendienteCreditoResumen.MaxLength = 32767;
+            this.metroTextBoxPendienteCreditoResumen.Name = "metroTextBoxPendienteCreditoResumen";
+            this.metroTextBoxPendienteCreditoResumen.PasswordChar = '\0';
+            this.metroTextBoxPendienteCreditoResumen.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBoxPendienteCreditoResumen.SelectedText = "";
+            this.metroTextBoxPendienteCreditoResumen.SelectionLength = 0;
+            this.metroTextBoxPendienteCreditoResumen.SelectionStart = 0;
+            this.metroTextBoxPendienteCreditoResumen.ShortcutsEnabled = true;
+            this.metroTextBoxPendienteCreditoResumen.Size = new System.Drawing.Size(181, 23);
+            this.metroTextBoxPendienteCreditoResumen.TabIndex = 14;
+            this.metroTextBoxPendienteCreditoResumen.UseSelectable = true;
+            this.metroTextBoxPendienteCreditoResumen.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBoxPendienteCreditoResumen.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroTextBoxStatusCreditoResumen
+            // 
+            // 
+            // 
+            // 
+            this.metroTextBoxStatusCreditoResumen.CustomButton.Image = null;
+            this.metroTextBoxStatusCreditoResumen.CustomButton.Location = new System.Drawing.Point(159, 1);
+            this.metroTextBoxStatusCreditoResumen.CustomButton.Name = "";
+            this.metroTextBoxStatusCreditoResumen.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.metroTextBoxStatusCreditoResumen.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBoxStatusCreditoResumen.CustomButton.TabIndex = 1;
+            this.metroTextBoxStatusCreditoResumen.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBoxStatusCreditoResumen.CustomButton.UseSelectable = true;
+            this.metroTextBoxStatusCreditoResumen.CustomButton.Visible = false;
+            this.metroTextBoxStatusCreditoResumen.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.metroTextBoxStatusCreditoResumen.Lines = new string[0];
+            this.metroTextBoxStatusCreditoResumen.Location = new System.Drawing.Point(33, 159);
+            this.metroTextBoxStatusCreditoResumen.MaxLength = 32767;
+            this.metroTextBoxStatusCreditoResumen.Name = "metroTextBoxStatusCreditoResumen";
+            this.metroTextBoxStatusCreditoResumen.PasswordChar = '\0';
+            this.metroTextBoxStatusCreditoResumen.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBoxStatusCreditoResumen.SelectedText = "";
+            this.metroTextBoxStatusCreditoResumen.SelectionLength = 0;
+            this.metroTextBoxStatusCreditoResumen.SelectionStart = 0;
+            this.metroTextBoxStatusCreditoResumen.ShortcutsEnabled = true;
+            this.metroTextBoxStatusCreditoResumen.Size = new System.Drawing.Size(181, 23);
+            this.metroTextBoxStatusCreditoResumen.TabIndex = 13;
+            this.metroTextBoxStatusCreditoResumen.UseCustomForeColor = true;
+            this.metroTextBoxStatusCreditoResumen.UseSelectable = true;
+            this.metroTextBoxStatusCreditoResumen.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBoxStatusCreditoResumen.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroTextBoxSaldoCreditoResumen
+            // 
+            // 
+            // 
+            // 
+            this.metroTextBoxSaldoCreditoResumen.CustomButton.Image = null;
+            this.metroTextBoxSaldoCreditoResumen.CustomButton.Location = new System.Drawing.Point(159, 1);
+            this.metroTextBoxSaldoCreditoResumen.CustomButton.Name = "";
+            this.metroTextBoxSaldoCreditoResumen.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.metroTextBoxSaldoCreditoResumen.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBoxSaldoCreditoResumen.CustomButton.TabIndex = 1;
+            this.metroTextBoxSaldoCreditoResumen.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBoxSaldoCreditoResumen.CustomButton.UseSelectable = true;
+            this.metroTextBoxSaldoCreditoResumen.CustomButton.Visible = false;
+            this.metroTextBoxSaldoCreditoResumen.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.metroTextBoxSaldoCreditoResumen.Lines = new string[0];
+            this.metroTextBoxSaldoCreditoResumen.Location = new System.Drawing.Point(33, 56);
+            this.metroTextBoxSaldoCreditoResumen.MaxLength = 32767;
+            this.metroTextBoxSaldoCreditoResumen.Name = "metroTextBoxSaldoCreditoResumen";
+            this.metroTextBoxSaldoCreditoResumen.PasswordChar = '\0';
+            this.metroTextBoxSaldoCreditoResumen.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBoxSaldoCreditoResumen.SelectedText = "";
+            this.metroTextBoxSaldoCreditoResumen.SelectionLength = 0;
+            this.metroTextBoxSaldoCreditoResumen.SelectionStart = 0;
+            this.metroTextBoxSaldoCreditoResumen.ShortcutsEnabled = true;
+            this.metroTextBoxSaldoCreditoResumen.Size = new System.Drawing.Size(181, 23);
+            this.metroTextBoxSaldoCreditoResumen.TabIndex = 12;
+            this.metroTextBoxSaldoCreditoResumen.UseSelectable = true;
+            this.metroTextBoxSaldoCreditoResumen.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBoxSaldoCreditoResumen.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel1.Location = new System.Drawing.Point(51, 230);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(129, 20);
+            this.metroLabel1.TabIndex = 11;
+            this.metroLabel1.Text = "Total Pendientes:";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel2.Location = new System.Drawing.Point(57, 136);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(140, 20);
+            this.metroLabel2.TabIndex = 10;
+            this.metroLabel2.Text = "Status de Créditos:";
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel3.Location = new System.Drawing.Point(57, 33);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(134, 20);
+            this.metroLabel3.TabIndex = 9;
+            this.metroLabel3.Text = "Saldo de Créditos:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.metroTextBoxPendienteAporteResumen);
+            this.groupBox1.Controls.Add(this.metroTextBoxTotalAporteResumen);
+            this.groupBox1.Controls.Add(this.metroLabel4);
+            this.groupBox1.Controls.Add(this.metroLabel5);
+            this.groupBox1.Location = new System.Drawing.Point(18, 13);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(218, 309);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Aportes";
+            // 
+            // metroTextBoxPendienteAporteResumen
+            // 
+            // 
+            // 
+            // 
+            this.metroTextBoxPendienteAporteResumen.CustomButton.Image = null;
+            this.metroTextBoxPendienteAporteResumen.CustomButton.Location = new System.Drawing.Point(159, 1);
+            this.metroTextBoxPendienteAporteResumen.CustomButton.Name = "";
+            this.metroTextBoxPendienteAporteResumen.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.metroTextBoxPendienteAporteResumen.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBoxPendienteAporteResumen.CustomButton.TabIndex = 1;
+            this.metroTextBoxPendienteAporteResumen.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBoxPendienteAporteResumen.CustomButton.UseSelectable = true;
+            this.metroTextBoxPendienteAporteResumen.CustomButton.Visible = false;
+            this.metroTextBoxPendienteAporteResumen.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.metroTextBoxPendienteAporteResumen.Lines = new string[0];
+            this.metroTextBoxPendienteAporteResumen.Location = new System.Drawing.Point(16, 159);
+            this.metroTextBoxPendienteAporteResumen.MaxLength = 32767;
+            this.metroTextBoxPendienteAporteResumen.Name = "metroTextBoxPendienteAporteResumen";
+            this.metroTextBoxPendienteAporteResumen.PasswordChar = '\0';
+            this.metroTextBoxPendienteAporteResumen.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBoxPendienteAporteResumen.SelectedText = "";
+            this.metroTextBoxPendienteAporteResumen.SelectionLength = 0;
+            this.metroTextBoxPendienteAporteResumen.SelectionStart = 0;
+            this.metroTextBoxPendienteAporteResumen.ShortcutsEnabled = true;
+            this.metroTextBoxPendienteAporteResumen.Size = new System.Drawing.Size(181, 23);
+            this.metroTextBoxPendienteAporteResumen.TabIndex = 16;
+            this.metroTextBoxPendienteAporteResumen.UseSelectable = true;
+            this.metroTextBoxPendienteAporteResumen.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBoxPendienteAporteResumen.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroTextBoxTotalAporteResumen
+            // 
+            // 
+            // 
+            // 
+            this.metroTextBoxTotalAporteResumen.CustomButton.Image = null;
+            this.metroTextBoxTotalAporteResumen.CustomButton.Location = new System.Drawing.Point(159, 1);
+            this.metroTextBoxTotalAporteResumen.CustomButton.Name = "";
+            this.metroTextBoxTotalAporteResumen.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.metroTextBoxTotalAporteResumen.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBoxTotalAporteResumen.CustomButton.TabIndex = 1;
+            this.metroTextBoxTotalAporteResumen.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBoxTotalAporteResumen.CustomButton.UseSelectable = true;
+            this.metroTextBoxTotalAporteResumen.CustomButton.Visible = false;
+            this.metroTextBoxTotalAporteResumen.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.metroTextBoxTotalAporteResumen.Lines = new string[0];
+            this.metroTextBoxTotalAporteResumen.Location = new System.Drawing.Point(16, 56);
+            this.metroTextBoxTotalAporteResumen.MaxLength = 32767;
+            this.metroTextBoxTotalAporteResumen.Name = "metroTextBoxTotalAporteResumen";
+            this.metroTextBoxTotalAporteResumen.PasswordChar = '\0';
+            this.metroTextBoxTotalAporteResumen.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBoxTotalAporteResumen.SelectedText = "";
+            this.metroTextBoxTotalAporteResumen.SelectionLength = 0;
+            this.metroTextBoxTotalAporteResumen.SelectionStart = 0;
+            this.metroTextBoxTotalAporteResumen.ShortcutsEnabled = true;
+            this.metroTextBoxTotalAporteResumen.Size = new System.Drawing.Size(181, 23);
+            this.metroTextBoxTotalAporteResumen.TabIndex = 15;
+            this.metroTextBoxTotalAporteResumen.UseSelectable = true;
+            this.metroTextBoxTotalAporteResumen.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBoxTotalAporteResumen.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel4.Location = new System.Drawing.Point(39, 136);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(122, 20);
+            this.metroLabel4.TabIndex = 14;
+            this.metroLabel4.Text = "Total Pendiente:";
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel5.Location = new System.Drawing.Point(39, 33);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(129, 20);
+            this.metroLabel5.TabIndex = 13;
+            this.metroLabel5.Text = "Total de Aportes:";
+            // 
             // EstadoCta
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(792, 568);
+            this.ClientSize = new System.Drawing.Size(776, 688);
             this.Controls.Add(this.metroTabControlCreditos);
             this.Controls.Add(this.metroComboBoxAsociado);
             this.Controls.Add(this.metroLabelAsociado);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "EstadoCta";
             this.Text = "Estado de Cuenta";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
@@ -574,6 +900,13 @@ namespace UI
             this.metroTabPageAhorros.ResumeLayout(false);
             this.metroTabPageAhorros.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGridAhorros)).EndInit();
+            this.metroTabPageResumen.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -601,5 +934,21 @@ namespace UI
         private MetroFramework.Controls.MetroGrid metroGridAhorros;
         private MetroFramework.Controls.MetroGrid metroGridCreditos;
         private MetroFramework.Controls.MetroGrid metroGridAportes;
+        private MetroFramework.Controls.MetroTabPage metroTabPageResumen;
+        private GroupBox groupBox3;
+        private GroupBox groupBox2;
+        private MetroFramework.Controls.MetroTextBox metroTextBoxPendienteCreditoResumen;
+        private MetroFramework.Controls.MetroTextBox metroTextBoxStatusCreditoResumen;
+        private MetroFramework.Controls.MetroTextBox metroTextBoxSaldoCreditoResumen;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private GroupBox groupBox1;
+        private MetroFramework.Controls.MetroTextBox metroTextBoxTotalAhorroResumen;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroTextBox metroTextBoxPendienteAporteResumen;
+        private MetroFramework.Controls.MetroTextBox metroTextBoxTotalAporteResumen;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
     }
 }

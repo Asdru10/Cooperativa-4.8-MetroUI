@@ -10,6 +10,7 @@ namespace DOM
     {
         public int ID { get; set; }
         public int Cedula_Asociado { get; set; }
+        public String Nombre_Asociado { get; set; }
         public int ID_Estado_Financiero_Mensual { get; set; }
         public int Periodo_Estado_Financiero_Mensual { get; set; }
         public DateTime Fecha_Desembolso { get; set; }
@@ -34,10 +35,11 @@ namespace DOM
             Abonos = new List<Abono>();
         }
 
-        public Credito(int id, int cedula_asociado, int id_Estado_Financiero_Mensual, int periodo_Estado_Financiero_Mensual, DateTime fecha_desembolso, DateTime fecha_final, decimal capital_desembolsado, decimal capital_cancelado, decimal saldo_capital, decimal intereses, decimal intereses_cancelados, decimal saldo_intereses, decimal saldo_total, decimal cuota_mensual, decimal cuota_intereses, decimal total_cuota, decimal total_credito, string estado)
+        public Credito(int id, int cedula_asociado, String nombre_Asociado, int id_Estado_Financiero_Mensual, int periodo_Estado_Financiero_Mensual, DateTime fecha_desembolso, DateTime fecha_final, decimal capital_desembolsado, decimal capital_cancelado, decimal saldo_capital, decimal intereses, decimal intereses_cancelados, decimal saldo_intereses, decimal saldo_total, decimal cuota_mensual, decimal cuota_intereses, decimal total_cuota, decimal total_credito, string estado)
         {
             ID = id;
             Cedula_Asociado = cedula_asociado;
+            Nombre_Asociado = nombre_Asociado;
             ID_Estado_Financiero_Mensual = id_Estado_Financiero_Mensual;
             Periodo_Estado_Financiero_Mensual = periodo_Estado_Financiero_Mensual;
             Fecha_Desembolso = fecha_desembolso;

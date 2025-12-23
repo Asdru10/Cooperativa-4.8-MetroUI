@@ -10,8 +10,8 @@ namespace DAO
     public class DAOCooperativa
     {
 
-        //private SqlConnection conexion = new SqlConnection("Data Source=.; Initial Catalog=CoopeBarZam; Integrated Security=true");
-        private SqlConnection conexion = new SqlConnection("Data Source=ASDRU-PC\\SQLDEVELOPER22; Initial Catalog=CoopeBarZam; Integrated Security=true");
+        private SqlConnection conexion = new SqlConnection("Data Source=.; Initial Catalog=CoopeBarZam; Integrated Security=true");
+        //private SqlConnection conexion = new SqlConnection("Data Source=ASDRU-PC\\SQLDEVELOPER22; Initial Catalog=CoopeBarZam; Integrated Security=true");
 
 
 
@@ -261,19 +261,21 @@ namespace DAO
             string sentence = "";
             SqlCommand command = new SqlCommand(sentence, conexion);
             openConnection();
-            command.CommandText = "select ID, Cedula_Asociado, ID_Estado_Financiero_Mensual, Periodo_Estado_Financiero_Mensual, Detalle, Monto, Fecha, Tipo from Aporte";
+            command.CommandText = "select ID, Cedula_Asociado, Nombre, ID_Estado_Financiero_Mensual, Periodo_Estado_Financiero_Mensual, Detalle, Monto, Fecha, Tipo from Aporte join Asociado on Cedula = Cedula_Asociado";
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
                 Aporte aporte = new Aporte();
                 aporte.ID = reader.GetInt32(0);
                 aporte.Cedula_Asociado = reader.GetInt32(1);
-                aporte.ID_Estado_Financiero_Mensual = reader.GetInt32(2);
-                aporte.Periodo_Estado_Financiero_Mensual = reader.GetInt32(3);
-                aporte.Detalle = reader.GetString(4);
-                aporte.Monto = reader.GetDecimal(5);
-                aporte.Fecha = reader.GetDateTime(6);
-                aporte.Tipo = reader.GetString(7);
+                aporte.Nombre_Asociado = reader.GetString(2);
+                aporte.ID_Estado_Financiero_Mensual = reader.GetInt32(3);
+                aporte.Periodo_Estado_Financiero_Mensual = reader.GetInt32(4);
+                aporte.Detalle = reader.GetString(5);
+                aporte.Monto = reader.GetDecimal(6);
+                aporte.Fecha = reader.GetDateTime(7);
+                aporte.Tipo = reader.GetString(8);
+                
                 aportes.Add(aporte);
             }
             closeConnection();
@@ -435,17 +437,18 @@ namespace DAO
             string sentence = "";
             SqlCommand command = new SqlCommand(sentence, conexion);
             openConnection();
-            command.CommandText = "select ID, Cedula_Asociado, ID_Estado_Financiero_Mensual, Periodo_Estado_Financiero_Mensual, Monto, Fecha from Ahorro";
+            command.CommandText = "select ID, Cedula_Asociado, Nombre, ID_Estado_Financiero_Mensual, Periodo_Estado_Financiero_Mensual, Monto, Fecha from Ahorro join Asociado on Cedula = Cedula_Asociado";
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
                 Ahorro ahorro = new Ahorro();
                 ahorro.ID = reader.GetInt32(0);
                 ahorro.Cedula_Asociado = reader.GetInt32(1);
-                ahorro.ID_Estado_Financiero_Mensual = reader.GetInt32(2);
-                ahorro.Periodo_Estado_Financiero_Mensual = reader.GetInt32(3);
-                ahorro.Monto = reader.GetDecimal(4);
-                ahorro.Fecha = reader.GetDateTime(5);
+                ahorro.Nombre_Asociado = reader.GetString(2);
+                ahorro.ID_Estado_Financiero_Mensual = reader.GetInt32(3);
+                ahorro.Periodo_Estado_Financiero_Mensual = reader.GetInt32(4);
+                ahorro.Monto = reader.GetDecimal(5);
+                ahorro.Fecha = reader.GetDateTime(6);
                 ahorros.Add(ahorro);
             }
             closeConnection();
@@ -609,29 +612,30 @@ namespace DAO
             string sentence = "";
             SqlCommand command = new SqlCommand(sentence, conexion);
             openConnection();
-            command.CommandText = "select ID, Cedula_Asociado, ID_Estado_Financiero_Mensual, Periodo_Estado_Financiero_Mensual, Fecha_Desembolso, Fecha_Final, Capital_Desembolsado, Capital_Cancelado, Saldo_Capital, Intereses, Intereses_Cancelados, Saldo_Intereses, Saldo_Total, Cuota_Mensual, Cuota_Intereses, Total_Cuota, Total_Credito, Estado from Credito";
+            command.CommandText = "select ID, Cedula_Asociado, Nombre, ID_Estado_Financiero_Mensual, Periodo_Estado_Financiero_Mensual, Fecha_Desembolso, Fecha_Final, Capital_Desembolsado, Capital_Cancelado, Saldo_Capital, Intereses, Intereses_Cancelados, Saldo_Intereses, Saldo_Total, Cuota_Mensual, Cuota_Intereses, Total_Cuota, Total_Credito, Estado from Credito join Asociado on Cedula = Cedula_Asociado";
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
                 Credito credito = new Credito();
                 credito.ID = reader.GetInt32(0);
                 credito.Cedula_Asociado = reader.GetInt32(1);
-                credito.ID_Estado_Financiero_Mensual = reader.GetInt32(2);
-                credito.Periodo_Estado_Financiero_Mensual = reader.GetInt32(3);
-                credito.Fecha_Desembolso = reader.GetDateTime(4);
-                credito.Fecha_Final = reader.GetDateTime(5);
-                credito.Capital_Desembolsado = reader.GetDecimal(6);
-                credito.Capital_Cancelado = reader.GetDecimal(7);
-                credito.Saldo_Capital = reader.GetDecimal(8);
-                credito.Intereses = reader.GetDecimal(9);
-                credito.Intereses_Cancelados = reader.GetDecimal(10);
-                credito.Saldo_Intereses = reader.GetDecimal(11);
-                credito.Saldo_Total = reader.GetDecimal(12);
-                credito.Cuota_Mensual = reader.GetDecimal(13);
-                credito.Cuota_Intereses = reader.GetDecimal(14);
-                credito.Total_Cuota = reader.GetDecimal(15);
-                credito.Total_Credito = reader.GetDecimal(16);
-                credito.Estado = reader.GetString(17);
+                credito.Nombre_Asociado = reader.GetString(2);
+                credito.ID_Estado_Financiero_Mensual = reader.GetInt32(3);
+                credito.Periodo_Estado_Financiero_Mensual = reader.GetInt32(4);
+                credito.Fecha_Desembolso = reader.GetDateTime(5);
+                credito.Fecha_Final = reader.GetDateTime(6);
+                credito.Capital_Desembolsado = reader.GetDecimal(7);
+                credito.Capital_Cancelado = reader.GetDecimal(8);
+                credito.Saldo_Capital = reader.GetDecimal(9);
+                credito.Intereses = reader.GetDecimal(10);
+                credito.Intereses_Cancelados = reader.GetDecimal(11);
+                credito.Saldo_Intereses = reader.GetDecimal(12);
+                credito.Saldo_Total = reader.GetDecimal(13);
+                credito.Cuota_Mensual = reader.GetDecimal(14);
+                credito.Cuota_Intereses = reader.GetDecimal(15);
+                credito.Total_Cuota = reader.GetDecimal(16);
+                credito.Total_Credito = reader.GetDecimal(17);
+                credito.Estado = reader.GetString(18);
                 creditos.Add(credito);
             }
             closeConnection();
