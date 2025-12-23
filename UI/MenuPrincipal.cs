@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
-using System.Timers;
 using Timer = System.Timers.Timer;
 using MetroFramework.Forms;
 using MetroFramework;
@@ -227,8 +226,7 @@ namespace UI
 
         private void nuevaSolicitudToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /*
-            AgregarPlanAhorro agregarCredito = new AgregarCredito();
+            AgregarCredito agregarCredito = new AgregarCredito();
 
             agregarCredito.FormClosed += (s, args) =>
             {
@@ -238,7 +236,6 @@ namespace UI
             this.Hide();
 
             agregarCredito.Show();
-            */
         }
 
         private void ConfigureDailyTask()

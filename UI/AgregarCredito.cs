@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class AgregarPlanAhorro : MetroForm
+    public partial class AgregarCredito : MetroForm
     {
         private CooperativaManager cooperativa = new CooperativaManager();
         private List<Asociado> asociados;
@@ -24,7 +24,7 @@ namespace UI
         private PreguntaAUsuario pregunta = new PreguntaAUsuario();
         private Credito creditoSeleccionado = new Credito();
 
-        public AgregarPlanAhorro()
+        public AgregarCredito()
         {
             InitializeComponent();
         }
@@ -35,6 +35,7 @@ namespace UI
             cargarAsociados();
             cargarCreditos();
             metroGridCreditos.Columns["Cedula_Asociado"].HeaderText = "Cédula Asociado";
+            metroGridCreditos.Columns["Nombre_Asociado"].HeaderText = "Nombre";
             metroGridCreditos.Columns["ID_Estado_Financiero_Mensual"].Visible = false;
             metroGridCreditos.Columns["Periodo_Estado_Financiero_Mensual"].HeaderText = "Periodo";
             metroGridCreditos.Columns["Fecha_Desembolso"].HeaderText = "Desembolso";

@@ -10,6 +10,7 @@ namespace DOM
     {
         public int ID { get; set; }
         public int Cedula_Asociado { get; set; }
+        public String Nombre_Asociado { get; set; }
         public int ID_Estado_Financiero_Mensual { get; set; }
         public int Periodo_Estado_Financiero_Mensual { get; set; }
         public decimal Monto { get; set; }
@@ -18,10 +19,11 @@ namespace DOM
 
         public Ahorro() { }
 
-        public Ahorro(int id, int cedula_Asociado, int id_Estado_Financiero_Mensual, int periodo_Estado_Financiero_Mensual, decimal monto, DateTime fecha)
+        public Ahorro(int id, int cedula_Asociado, String nombre_Asociado, int id_Estado_Financiero_Mensual, int periodo_Estado_Financiero_Mensual, decimal monto, DateTime fecha)
         {
             ID = id;
             Cedula_Asociado = cedula_Asociado;
+            Nombre_Asociado = nombre_Asociado;
             ID_Estado_Financiero_Mensual = id_Estado_Financiero_Mensual;
             Periodo_Estado_Financiero_Mensual = periodo_Estado_Financiero_Mensual;
             Monto = monto;
