@@ -144,22 +144,31 @@ namespace UI
 
             foreach (Credito credito in creditosActivos)
             {
-                List<ProyeccionPagoCredito> proyecciones = cooperativa.getProyeccionesCredito(credito.ID);
-
-                for (int i = 0; i < proyecciones.Count; i++)
+                if (credito.Fecha_Final < fechaActual)
                 {
-                    if (proyecciones[i].Fecha.Month == mesActual && proyecciones[i].Fecha.Year == annoActual)
+                    credito.Estado = "Vencido";
+                    continue;
+                }
+                else
+                {
+
+                    List<ProyeccionPagoCredito> proyecciones = cooperativa.getProyeccionesCredito(credito.ID);
+
+                    for (int i = 0; i < proyecciones.Count; i++)
                     {
-                        saldoTotal = proyecciones[i].Saldo_Total;
-                        if (saldoTotal >= credito.Saldo_Total)
+                        if (proyecciones[i].Fecha.Month == mesActual && proyecciones[i].Fecha.Year == annoActual)
                         {
-                            credito.Estado = "Al día";
-                            break;
-                        }
-                        else //if (saldoTotal < credito.Saldo_Total)
-                        {
-                            credito.Estado = "Atrasado";
-                            break;
+                            saldoTotal = proyecciones[i].Saldo_Total;
+                            if (saldoTotal >= credito.Saldo_Total)
+                            {
+                                credito.Estado = "Al día";
+                                break;
+                            }
+                            else //if (saldoTotal < credito.Saldo_Total)
+                            {
+                                credito.Estado = "Atrasado";
+                                break;
+                            }
                         }
                     }
                 }

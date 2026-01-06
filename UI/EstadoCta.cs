@@ -35,12 +35,14 @@ namespace UI
 
             metroGridAportes.DataSource = new List<Aporte>();
             metroGridAportes.Columns["Cedula_Asociado"].Visible = false;
+            metroGridAportes.Columns["Nombre_Asociado"].Visible = false;
             metroGridAportes.Columns["ID_Estado_Financiero_Mensual"].Visible = false;
             metroGridAportes.Columns["Periodo_Estado_Financiero_Mensual"].Visible = false;
             metroGridAportes.Columns["Monto"].DefaultCellStyle.Format = "N2";
 
             metroGridAhorros.DataSource = new List<Ahorro>();
             metroGridAhorros.Columns["Cedula_Asociado"].Visible = false;
+            metroGridAhorros.Columns["Nombre_Asociado"].Visible = false;
             metroGridAhorros.Columns["ID_Estado_Financiero_Mensual"].Visible = false;
             metroGridAhorros.Columns["Periodo_Estado_Financiero_Mensual"].Visible = false;
             metroGridAhorros.Columns["Monto"].DefaultCellStyle.Format = "N2";
@@ -48,6 +50,7 @@ namespace UI
 
             metroGridCreditos.DataSource = new List<Credito>();
             metroGridCreditos.Columns["Cedula_Asociado"].Visible = false;
+            metroGridCreditos.Columns["Nombre_Asociado"].Visible = false;
             metroGridCreditos.Columns["ID_Estado_Financiero_Mensual"].Visible = false;
             metroGridCreditos.Columns["Periodo_Estado_Financiero_Mensual"].Visible = false;
             metroGridCreditos.Columns["Fecha_Desembolso"].Visible = false;
@@ -158,7 +161,7 @@ namespace UI
                     }
                     else
                     {
-                        if (credito.Estado.Equals("Atrasado"))
+                        if (credito.Estado.Equals("Atrasado") || credito.Estado.Equals("Vencido"))
                         {
                             creditosActivos.Add(credito);
                             atrasado = true;
@@ -248,6 +251,11 @@ namespace UI
                             }
                         }
                     }
+                }
+                else if (credito.Estado.Equals("Vencido"))
+                {
+                    atrasos.Add(credito.Saldo_Total);
+                    continue;
                 }
                 else
                 {

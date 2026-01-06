@@ -122,7 +122,7 @@ namespace UI
             this.metroTabControlCreditos.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.metroTabControlCreditos.Location = new System.Drawing.Point(23, 152);
             this.metroTabControlCreditos.Name = "metroTabControlCreditos";
-            this.metroTabControlCreditos.SelectedIndex = 3;
+            this.metroTabControlCreditos.SelectedIndex = 0;
             this.metroTabControlCreditos.Size = new System.Drawing.Size(744, 525);
             this.metroTabControlCreditos.TabIndex = 43;
             this.metroTabControlCreditos.UseSelectable = true;
@@ -331,9 +331,9 @@ namespace UI
             this.metroTabPageAportes.HorizontalScrollbarBarColor = true;
             this.metroTabPageAportes.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPageAportes.HorizontalScrollbarSize = 10;
-            this.metroTabPageAportes.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPageAportes.Location = new System.Drawing.Point(4, 39);
             this.metroTabPageAportes.Name = "metroTabPageAportes";
-            this.metroTabPageAportes.Size = new System.Drawing.Size(736, 483);
+            this.metroTabPageAportes.Size = new System.Drawing.Size(736, 482);
             this.metroTabPageAportes.TabIndex = 1;
             this.metroTabPageAportes.Text = "Aportes";
             this.metroTabPageAportes.VerticalScrollbarBarColor = true;
@@ -478,9 +478,9 @@ namespace UI
             this.metroTabPageAhorros.HorizontalScrollbarBarColor = true;
             this.metroTabPageAhorros.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPageAhorros.HorizontalScrollbarSize = 10;
-            this.metroTabPageAhorros.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPageAhorros.Location = new System.Drawing.Point(4, 39);
             this.metroTabPageAhorros.Name = "metroTabPageAhorros";
-            this.metroTabPageAhorros.Size = new System.Drawing.Size(736, 483);
+            this.metroTabPageAhorros.Size = new System.Drawing.Size(736, 482);
             this.metroTabPageAhorros.TabIndex = 2;
             this.metroTabPageAhorros.Text = "Ahorros";
             this.metroTabPageAhorros.VerticalScrollbarBarColor = true;
